@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Austral Drones | Marketing FPV de Alta Gama</title>
+    <title>Austral Drones | Marketing FPV con DJI Avata 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -19,14 +19,14 @@
         }
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
-        .hero-video-overlay {
-            background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,1) 100%);
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%);
         }
 
         .glass {
             background: rgba(26, 26, 27, 0.8);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .btn-neon {
@@ -40,13 +40,14 @@
 
         .card-service {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #111111;
         }
         .card-service:hover {
             border-color: var(--neon-blue);
-            transform: scale(1.02);
+            transform: translateY(-10px);
+            background: #161617;
         }
 
-        /* Animación de entrada */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -56,6 +57,10 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .avata-glow {
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
+        }
     </style>
 </head>
 <body>
@@ -63,151 +68,143 @@
     <nav class="fixed w-full z-50 glass">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <i data-lucide="navigation-2" class="text-[#00E5FF] rotate-45"></i>
-                <span class="font-orbitron text-xl font-bold tracking-tighter text-white">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+                <i data-lucide="zap" class="text-[#00E5FF] fill-[#00E5FF]"></i>
+                <span class="font-orbitron text-xl font-bold tracking-tighter text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 font-orbitron text-xs tracking-widest">
+            <div class="hidden md:flex space-x-8 font-orbitron text-[10px] tracking-[0.2em]">
                 <a href="#inicio" class="hover:text-[#00E5FF] transition">INICIO</a>
-                <a href="#avata" class="hover:text-[#00E5FF] transition">TECNOLOGÍA</a>
+                <a href="#avata" class="hover:text-[#00E5FF] transition">EL AVATA 2</a>
                 <a href="#servicios" class="hover:text-[#00E5FF] transition">SERVICIOS</a>
             </div>
-            <a href="https://wa.me/56987491964" target="_blank" class="bg-[#FF5E00] text-white px-5 py-2 rounded-full font-bold text-sm btn-neon">
-                CONTACTAR
+            <a href="https://wa.me/56987491964" target="_blank" class="bg-[#FF5E00] text-white px-6 py-2 rounded-sm font-bold text-xs btn-neon font-orbitron tracking-widest">
+                COTIZAR
             </a>
         </div>
     </nav>
 
     <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80" class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 hero-video-overlay"></div>
+            <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" class="w-full h-full object-cover opacity-30 grayscale">
+            <div class="absolute inset-0 hero-overlay"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 max-w-4xl">
-            <h1 class="font-orbitron text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                TU NEGOCIO DESDE UNA <span class="text-[#00E5FF]">PERSPECTIVA IMPOSIBLE</span>
+        <div class="relative z-10 text-center px-6 max-w-5xl">
+            <div class="mb-6 inline-block border border-[#00E5FF] px-4 py-1 rounded-full">
+                <p class="text-[#00E5FF] font-orbitron text-[10px] tracking-[0.4em] uppercase">Tecnología FPV de Última Generación</p>
+            </div>
+            <h1 class="font-orbitron text-5xl md:text-8xl font-bold text-white mb-6 leading-none">
+                HACEMOS LO <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-600">IMPOSIBLE</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-10 font-light">
-                Marketing publicitario con tecnología FPV en Puerto Montt. <br>
-                <span class="text-white font-semibold italic">"Hacemos que tu marca sea imposible de ignorar."</span>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Elevamos la imagen de tu negocio en Puerto Montt con tomas cinemáticas que rompen el algoritmo. 
+                <span class="text-white font-medium block mt-2 underline decoration-[#FF5E00] underline-offset-8">Imposible de ignorar.</span>
             </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#servicios" class="border border-[#00E5FF] text-[#00E5FF] px-8 py-4 rounded-full font-orbitron font-bold hover:bg-[#00E5FF] hover:text-black transition duration-300">
-                    VER SERVICIOS
-                </a>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="text-gray-500"></i>
+            <a href="#servicios" class="bg-white text-black px-10 py-4 font-orbitron font-bold hover:bg-[#00E5FF] hover:text-white transition duration-500">
+                DESCUBRE EL IMPACTO
+            </a>
         </div>
     </section>
 
-    <section id="avata" class="py-24 px-6 bg-[#0F0F0F]">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="avata" class="py-32 px-6 bg-[#080808] border-y border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
             <div class="reveal">
-                <h2 class="font-orbitron text-[#00E5FF] text-sm tracking-[0.3em] mb-4">TECNOLOGÍA DE VANGUARDIA</h2>
-                <h3 class="text-4xl font-bold text-white mb-6 font-orbitron">DJI AVATA 2: INMERSIÓN TOTAL</h3>
+                <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 font-orbitron leading-tight">DJI AVATA 2:<br><span class="text-[#00E5FF]">EL REY DEL INTERIOR</span></h3>
                 <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                    No grabamos simples videos; creamos experiencias. Gracias a la tecnología **FPV (First Person View)**, nuestro dron puede volar a centímetros de objetos, atravesar espacios reducidos y realizar maniobras cinemáticas que los drones convencionales no pueden soñar.
+                    Nuestro equipo estrella no es un dron cualquiera. El **DJI Avata 2** permite realizar vuelos inmersivos que atraviesan puertas, ventanas y espacios estrechos con una fluidez cinematográfica total.
                 </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center space-x-3 text-gray-300">
-                        <i data-lucide="check-circle-2" class="text-[#FF5E00] w-5 h-5"></i>
-                        <span>Vuelos seguros en interiores (Oficinas, Galpones, Locales).</span>
-                    </li>
-                    <li class="flex items-center space-x-3 text-gray-300">
-                        <i data-lucide="check-circle-2" class="text-[#FF5E00] w-5 h-5"></i>
-                        <span>Resolución 4K HDR para máxima nitidez publicitaria.</span>
-                    </li>
-                    <li class="flex items-center space-x-3 text-gray-300">
-                        <i data-lucide="check-circle-2" class="text-[#FF5E00] w-5 h-5"></i>
-                        <span>Tomas dinámicas de alta velocidad.</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="relative reveal">
-                <div class="absolute -inset-4 bg-[#00E5FF] opacity-10 blur-3xl rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&q=80" alt="Dron FPV" class="relative rounded-2xl grayscale hover:grayscale-0 transition duration-500 shadow-2xl">
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto text-center mb-16 reveal">
-            <h2 class="font-orbitron text-4xl font-bold text-white mb-4 text-center">SERVICIOS DE ALTO IMPACTO</h2>
-            <div class="w-24 h-1 bg-[#FF5E00] mx-auto"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="card-service bg-[#1A1A1B] p-10 rounded-3xl border border-gray-800 text-center reveal">
-                <i data-lucide="home" class="w-12 h-12 mx-auto mb-6 text-[#00E5FF]"></i>
-                <h4 class="font-orbitron text-xl mb-4 text-white">Inmobiliaria Premium</h4>
-                <p class="text-gray-400">Recorridos aéreos por el interior y exterior de propiedades. Vende una experiencia, no solo un terreno.</p>
-            </div>
-            <div class="card-service bg-[#1A1A1B] p-10 rounded-3xl border border-gray-800 text-center reveal">
-                <i data-lucide="smartphone" class="w-12 h-12 mx-auto mb-6 text-[#00E5FF]"></i>
-                <h4 class="font-orbitron text-xl mb-4 text-white">Reels & TikTok</h4>
-                <p class="text-gray-400">Contenido en formato vertical diseñado para volverse viral. Perfecto para restaurantes y pymes.</p>
-            </div>
-            <div class="card-service bg-[#1A1A1B] p-10 rounded-3xl border border-gray-800 text-center reveal">
-                <i data-lucide="zap" class="w-12 h-12 mx-auto mb-6 text-[#00E5FF]"></i>
-                <h4 class="font-orbitron text-xl mb-4 text-white">Eventos & Marketing</h4>
-                <p class="text-gray-400">Cobertura inmersiva de inauguraciones y eventos corporativos con tomas que nadie más tiene.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-[#050505] pt-20 pb-10 px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mb-16">
-            <div>
-                <span class="font-orbitron text-2xl font-bold text-white">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
-                <p class="mt-4 text-gray-500 italic">Especialistas en contenido audiovisual disruptivo para negocios que no quieren pasar desapercibidos.</p>
-            </div>
-            <div>
-                <h5 class="font-orbitron text-white mb-6 uppercase tracking-widest text-sm">Contacto</h5>
-                <ul class="space-y-4 text-gray-400">
-                    <li class="flex items-center space-x-3">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-[#FF5E00]"></i>
-                        <span>Puerto Montt, Chile</span>
-                    </li>
-                    <li class="flex items-center space-x-3">
-                        <i data-lucide="phone" class="w-5 h-5 text-[#FF5E00]"></i>
-                        <span>+56 9 8749 1964</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="font-orbitron text-white mb-6 uppercase tracking-widest text-sm">Redes Sociales</h5>
-                <div class="flex space-x-6 text-gray-400">
-                    <a href="https://instagram.com/austral_ecommerce" class="hover:text-[#00E5FF] transition"><i data-lucide="instagram"></i></a>
-                    <a href="#" class="hover:text-[#00E5FF] transition"><i data-lucide="facebook"></i></a>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-blue-900/20 p-3 rounded-lg"><i data-lucide="shield-check" class="text-[#00E5FF]"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold font-orbitron text-sm">SEGURIDAD TOTAL</h4>
+                            <p class="text-gray-500 text-sm">Hélices protegidas para grabaciones cerca de personas y productos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-blue-900/20 p-3 rounded-lg"><i data-lucide="video" class="text-[#00E5FF]"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold font-orbitron text-sm">CALIDAD 4K HDR</h4>
+                            <p class="text-gray-500 text-sm">Color y detalle profesional listos para pantallas gigantes o móviles.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="relative reveal">
+                <div class="absolute -inset-10 bg-[#00E5FF]/10 blur-[100px] rounded-full"></div>
+                <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" alt="DJI Avata 2 Austral Drones" class="relative rounded-xl avata-glow border border-white/10 shadow-2xl">
+            </div>
         </div>
-        <div class="text-center text-gray-700 text-sm border-t border-gray-900 pt-8">
-            &copy; 2026 Austral Drones. Desarrollado para el impacto visual.
+    </section>
+
+    <section id="servicios" class="py-32 px-6 bg-[#0A0A0A]">
+        <div class="max-w-7xl mx-auto text-center mb-20 reveal">
+            <h2 class="font-orbitron text-4xl font-bold text-white mb-4">SOLUCIONES DISRUPTIVAS</h2>
+            <p class="text-[#FF5E00] font-orbitron text-xs tracking-[0.5em]">MARKETING DE ALTO NIVEL</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+            <div class="card-service p-12 border border-white/5 reveal">
+                <i data-lucide="building-2" class="w-10 h-10 mb-8 text-[#00E5FF]"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold">Inmobiliaria</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">No solo grabamos casas. Creamos recorridos que conectan emocionalmente al comprador con su futuro hogar.</p>
+            </div>
+            <div class="card-service p-12 border border-white/5 reveal">
+                <i data-lucide="clapperboard" class="w-10 h-10 mb-8 text-[#00E5FF]"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold">Reels Virales</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Contenido vertical de alto impacto para Instagram y TikTok que detiene el scroll de tus clientes.</p>
+            </div>
+            <div class="card-service p-12 border border-white/5 reveal">
+                <i data-lucide="rocket" class="w-10 h-10 mb-8 text-[#00E5FF]"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold">PYMES & Locales</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Mostramos tu local comercial desde adentro hacia afuera, resaltando cada detalle de tu marca.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
+            <div>
+                <span class="font-orbitron text-2xl font-bold text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+                <p class="mt-6 text-gray-500 text-sm leading-relaxed">Agencia audiovisual especializada en tecnología FPV. Transformamos espacios en historias visuales en el sur de Chile.</p>
+            </div>
+            <div>
+                <h5 class="font-orbitron text-white text-xs tracking-widest mb-8 uppercase">Puerto Montt</h5>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="instagram" class="w-4 h-4 text-[#FF5E00]"></i>
+                        <a href="https://instagram.com/austral_ecommerce" target="_blank">@austral_ecommerce</a>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="facebook" class="w-4 h-4 text-[#FF5E00]"></i>
+                        <span>Austral E-Commerce</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-orbitron text-white text-xs tracking-widest mb-8 uppercase">Hablemos</h5>
+                <a href="https://wa.me/56987491964" class="text-[#00E5FF] font-bold text-xl hover:underline">+56 9 8749 1964</a>
+                <p class="text-gray-600 text-xs mt-2 uppercase tracking-tighter">Respuesta inmediata vía WhatsApp</p>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-white/5 text-center text-[10px] text-gray-700 font-orbitron tracking-widest uppercase">
+            &copy; 2026 Austral Drones - Elevando el estándar visual.
         </div>
     </footer>
 
     <script>
-        // Inicializar iconos
         lucide.createIcons();
 
-        // Efecto Reveal al hacer scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
+            reveals.forEach(el => {
                 var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+                var elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add("active");
                 }
-            }
+            });
         }
         window.addEventListener("scroll", reveal);
-        // Ejecutar una vez al cargar para mostrar lo que está en pantalla
         reveal();
     </script>
 </body>
