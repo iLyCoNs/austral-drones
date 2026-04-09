@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios | Austral Drones - Marketing FPV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --neon-blue: #00E5FF;
+            --neon-orange: #FF5E00;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #E2E8F0;
+        }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        .glass {
+            background: rgba(26, 26, 27, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-neon {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0px var(--neon-orange);
+        }
+        .btn-neon:hover {
+            box-shadow: 0 0 20px var(--neon-orange);
+            transform: translateY(-2px);
+        }
+
+        .price-card {
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+        .price-card:hover {
+            border-color: var(--neon-blue);
+            background: #161617;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="zap" class="text-[#00E5FF] fill-[#00E5FF]"></i>
+                <span class="font-orbitron text-xl font-bold tracking-tighter text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-orbitron text-[10px] tracking-[0.2em]">
+                <a href="index.html#inicio" class="hover:text-[#00E5FF] transition">INICIO</a>
+                <a href="index.html#avata" class="hover:text-[#00E5FF] transition">EL AVATA 2</a>
+                <a href="index.html#servicios" class="hover:text-[#00E5FF] transition">SERVICIOS</a>
+                <a href="#" class="text-[#FF5E00] transition">PRECIOS</a>
+            </div>
+            <a href="https://wa.me/56987491964" target="_blank" class="bg-[#FF5E00] text-white px-6 py-2 rounded-sm font-bold text-xs btn-neon font-orbitron tracking-widest">
+                COTIZAR
+            </a>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto reveal">
+            <h1 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-6">TARIFAS <span class="text-[#00E5FF]">2026</span></h1>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Videos publicitarios pensados 100% para **Instagram, TikTok y Reels**. 
+                Calidad cinematográfica para que tu marca se destaque en el scroll.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 bg-[#080808]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center reveal">
+            <div class="bg-[#111111] p-8 rounded-2xl border border-white/5">
+                <h2 class="font-orbitron text-[#00E5FF] text-xl mb-6">NOS ENCARGAMOS DE TODO</h2>
+                <ul class="space-y-3 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-400">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Pre-producción & Guion</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Grabación 4K / 60 fps</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Edición Profesional</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Textos Animados</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Música Libre de Derechos</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Voz en Off (opcional)</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-[#FF5E00] w-4"></i> Formato Vertical/Horizontal</li>
+                </ul>
+            </div>
+            <div class="text-left">
+                <h3 class="font-orbitron text-2xl text-white mb-4 italic">¿Tu marca necesita destacarse?</h3>
+                <p class="text-gray-500">Ideal para lanzamiento de productos, promociones, ferias y contenido disruptivo en redes sociales. 🚀</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="price-card p-8 rounded-3xl reveal">
+                    <div class="mb-6"><i data-lucide="camera" class="text-[#00E5FF] w-10 h-10"></i></div>
+                    <h4 class="font-orbitron text-lg text-white mb-2 italic">GRABADO POR AUSTRAL DRONES</h4>
+                    <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">Servicio Completo</p>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">15 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$34.990</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">30 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$41.990</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">60 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$49.990</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-card p-8 rounded-3xl reveal">
+                    <div class="mb-6"><i data-lucide="scissors" class="text-[#00E5FF] w-10 h-10"></i></div>
+                    <h4 class="font-orbitron text-lg text-white mb-2 italic">TU MATERIAL / EDICIÓN</h4>
+                    <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">Envíanos tus tomas</p>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">15 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$14.990</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">30 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$22.990</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-gray-300">60 Segundos</span>
+                            <span class="text-[#00E5FF] font-bold font-orbitron">$34.990</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-gray-600 mt-4 italic">Mínimo Full HD recomendado.</p>
+                </div>
+
+                <div class="price-card p-8 rounded-3xl border-2 border-[#FF5E00] relative reveal">
+                    <div class="absolute -top-4 right-8 bg-[#FF5E00] text-white text-[10px] font-bold px-3 py-1 rounded-full font-orbitron uppercase">Mejor Valor</div>
+                    <div class="mb-6"><i data-lucide="clapperboard" class="text-[#FF5E00] w-10 h-10"></i></div>
+                    <h4 class="font-orbitron text-lg text-white mb-2 italic">OFERTA PACKS</h4>
+                    <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">1 Día de Grabación</p>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-white font-bold text-sm">PACK MINI</span>
+                                <span class="text-[#FF5E00] font-bold font-orbitron">$49.990</span>
+                            </div>
+                            <p class="text-[10px] text-gray-500 italic">4 Videos de 15 seg. Ideal para Ads.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-white font-bold text-sm">PACK ESTÁNDAR</span>
+                                <span class="text-[#FF5E00] font-bold font-orbitron">$69.990</span>
+                            </div>
+                            <p class="text-[10px] text-gray-500 italic">4 Videos de 30 seg. Perfecto para productos.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
+            <div>
+                <span class="font-orbitron text-2xl font-bold text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+                <p class="mt-6 text-gray-500 text-sm leading-relaxed">Marketing publicitario FPV. Transformamos tu presencia digital en Puerto Montt.</p>
+            </div>
+            <div>
+                <h5 class="font-orbitron text-white text-xs tracking-widest mb-8 uppercase">Puerto Montt</h5>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li class="flex items-center space-x-3"><i data-lucide="instagram" class="w-4 h-4 text-[#FF5E00]"></i><a href="https://instagram.com/austral_ecommerce" target="_blank">@austral_ecommerce</a></li>
+                    <li class="flex items-center space-x-3"><i data-lucide="facebook" class="w-4 h-4 text-[#FF5E00]"></i><span>Austral E-Commerce</span></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-orbitron text-white text-xs tracking-widest mb-8 uppercase">Hablemos</h5>
+                <a href="https://wa.me/56987491964" class="text-[#00E5FF] font-bold text-xl hover:underline">+56 9 8749 1964</a>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-white/5 text-center text-[10px] text-gray-700 font-orbitron tracking-widest uppercase italic">
+            &copy; 2026 Austral Drones - Elevando el estándar visual.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                var windowHeight = window.innerHeight;
+                var elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    el.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
