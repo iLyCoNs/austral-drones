@@ -118,31 +118,20 @@
             transform: translateX(0);
         }
 
-        /* ESTILOS ICONOS INTERACTIVOS PIE DE PAGINA */
+        /* DISEÑO DE ICONOS LLAMATIVOS */
         .social-link {
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
         .social-link:hover {
-            transform: scale(1.05);
+            transform: translateX(8px);
         }
-
-        .icon-insta-bg {
-            transition: all 0.3s ease;
-        }
-        .social-link:hover .icon-insta-bg {
+        .icon-box-insta {
             background: var(--insta-grad);
-            color: white !important;
-            filter: drop-shadow(0 0 10px rgba(220, 39, 67, 0.6));
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
         }
-
-        .icon-ws-bg {
-            transition: all 0.3s ease;
-        }
-        .social-link:hover .icon-ws-bg {
+        .icon-box-ws {
             background-color: var(--whatsapp-green);
-            color: white !important;
-            filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.6));
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
     </style>
 </head>
@@ -199,14 +188,14 @@
             <div class="mb-6 inline-block border border-[#00E5FF] px-4 py-1 rounded-full">
                 <p class="text-[#00E5FF] font-orbitron text-[10px] tracking-[0.4em] uppercase">Publicidad y Propaganda Drone en Puerto Montt</p>
             </div>
-            <h1 class="font-orbitron text-5xl md:text-8xl font-bold text-white mb-6 leading-none uppercase">
+            <h1 class="font-orbitron text-5xl md:text-8xl font-bold text-white mb-6 leading-none">
                 MARKETING <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-600">DISRUPTIVO</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Elevamos la publicidad de tu negocio en Puerto Montt con el mejor servicio de drones FPV. 
                 <span class="text-white font-medium block mt-2 underline decoration-[#FF5E00] underline-offset-8 leading-loose">Líderes en propaganda aérea cinematográfica.</span>
             </p>
-            <a href="#portfolio" class="bg-white text-black px-10 py-4 font-orbitron font-bold hover:bg-[#00E5FF] hover:text-white transition duration-500">
+            <a href="#portfolio" class="bg-white text-black px-10 py-4 font-orbitron font-bold hover:bg-[#00E5FF] hover:text-white transition duration-500 text-xs md:text-base">
                 VER PORTAFOLIO LOCAL
             </a>
         </div>
@@ -217,14 +206,14 @@
             <div class="reveal">
                 <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 font-orbitron leading-tight uppercase">Drones FPV:<br><span class="text-[#00E5FF]">El Futuro del Marketing</span></h3>
                 <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                    Nuestro DJI Avata 2 es la herramienta definitiva para **publicidad drone** en interiores y exteriores. No grabamos tomas aéreas comunes; creamos propaganda inmersiva.
+                    Nuestro DJI Avata 2 es la herramienta definitiva para **publicidad drone**. No grabamos tomas aéreas comunes; creamos propaganda inmersiva.
                 </p>
                 <div class="grid grid-cols-1 gap-6">
                     <div class="flex items-start space-x-4">
                         <div class="bg-blue-900/20 p-3 rounded-lg"><i data-lucide="shield-check" class="text-[#00E5FF]"></i></div>
                         <div>
                             <h4 class="text-white font-bold font-orbitron text-sm uppercase tracking-widest">Seguridad Total</h4>
-                            <p class="text-gray-500 text-sm">Propaganda segura cerca de personas y productos en Puerto Montt.</p>
+                            <p class="text-gray-500 text-sm italic">Propaganda segura cerca de personas y productos en Puerto Montt.</p>
                         </div>
                     </div>
                 </div>
@@ -255,17 +244,17 @@
             <div class="card-service p-12 border border-white/5 reveal text-center">
                 <i data-lucide="building-2" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
                 <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Marketing Inmobiliario</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">Publicidad dron para ventas rápidas de terrenos y propiedades en el sur.</p>
+                <p class="text-gray-500 text-sm leading-relaxed italic">Publicidad dron para ventas rápidas de terrenos.</p>
             </div>
             <div class="card-service p-12 border border-white/5 reveal text-center">
                 <i data-lucide="clapperboard" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
                 <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Propaganda Viral</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">Contenido FPV para Instagram y TikTok. Marketing drones de alto impacto.</p>
+                <p class="text-gray-500 text-sm leading-relaxed italic">Contenido FPV para Instagram y TikTok.</p>
             </div>
             <div class="card-service p-12 border border-white/5 reveal text-center">
                 <i data-lucide="rocket" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
                 <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Publicidad PYMES</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">Marketing especializado para locales comerciales en Puerto Montt.</p>
+                <p class="text-gray-500 text-sm leading-relaxed italic">Marketing especializado para locales.</p>
             </div>
         </div>
     </section>
@@ -273,35 +262,35 @@
     <footer class="bg-black py-20 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start">
             <div>
-                <span class="font-orbitron text-2xl font-bold text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
-                <p class="mt-6 text-gray-500 text-sm leading-relaxed italic">Marketing drone y Publicidad Aérea en Puerto Montt. Somos el estándar de propaganda con drones en Chile.</p>
+                <span class="font-orbitron text-2xl font-bold text-white italic tracking-tighter">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+                <p class="mt-6 text-gray-500 text-sm leading-relaxed italic">Marketing y Publicidad Aérea en Puerto Montt. Somos el estándar de propaganda con drones en Chile.</p>
             </div>
             
             <div class="flex flex-col space-y-6">
-                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase italic">Síguenos en Redes</h5>
+                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase italic mb-2">Canales Oficiales</h5>
                 
                 <a href="https://instagram.com/austral_ecommerce" target="_blank" class="social-link group flex items-center space-x-4">
-                    <div class="icon-insta-bg p-2 rounded-lg bg-white/5 text-gray-400 group-hover:text-white transition-all">
-                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    <div class="icon-box-insta p-2.5 rounded-xl text-white flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
                     </div>
-                    <span class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors tracking-wide">@austral_ecommerce</span>
+                    <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors tracking-wide font-orbitron">@austral_ecommerce</span>
                 </a>
 
                 <a href="https://wa.me/56987491964" target="_blank" class="social-link group flex items-center space-x-4">
-                    <div class="icon-ws-bg p-2 rounded-lg bg-white/5 text-gray-400 group-hover:text-white transition-all">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    <div class="icon-box-ws p-2.5 rounded-xl text-white flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
                     </div>
-                    <span class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors tracking-wide">+56 9 8749 1964</span>
+                    <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors tracking-wide font-orbitron">+56 9 8749 1964</span>
                 </a>
             </div>
 
             <div>
-                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase italic mb-6">Ubicación Actual</h5>
+                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase italic mb-6">Ubicación</h5>
                 <div class="flex items-center space-x-3 text-gray-400 mb-4">
                     <i data-lucide="map-pin" class="text-[#FF5E00] w-5 h-5"></i>
-                    <span class="text-sm">Puerto Montt, Los Lagos, Chile</span>
+                    <span class="text-sm font-orbitron tracking-tighter">Puerto Montt, Los Lagos, Chile</span>
                 </div>
-                <p class="text-gray-600 text-[10px] uppercase tracking-tighter italic">Respuesta inmediata vía canales digitales</p>
+                <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em] italic">Disponibilidad inmediata para toda la región</p>
             </div>
         </div>
         
