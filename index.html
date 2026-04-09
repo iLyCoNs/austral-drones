@@ -9,7 +9,6 @@
     <meta name="keywords" content="marketing drone, publicidad dron puerto montt, propaganda con drones, filmación aérea, dji avata 2">
     <meta name="geo.region" content="CL-LL" />
     <meta name="geo.placename" content="Puerto Montt" />
-    <meta name="geo.position" content="-41.4689;-72.9411" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
@@ -33,44 +32,94 @@
             background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%);
         }
 
-        /* HEADER CORREGIDO PARA WINDOWS Y MOBILE */
         .glass {
-            background: #0A0A0A; /* Fondo sólido para evitar que el contenido pase por detrás */
+            background: #0A0A0A;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             z-index: 100 !important;
         }
 
-        /* MENÚ MÓVIL CON PRIORIDAD MÁXIMA */
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
             background: #0A0A0A; 
             z-index: 9999 !important;
         }
-        #mobile-menu.active {
-            transform: translateX(0);
-        }
+        #mobile-menu.active { transform: translateX(0); }
 
         .btn-neon { transition: all 0.3s ease; }
         .btn-neon:hover { box-shadow: 0 0 20px var(--neon-orange); transform: translateY(-1px); }
-        .card-service { transition: all 0.4s ease; background: #111111; }
-        .card-service:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
+        
+        .card-service { 
+            transition: all 0.5s ease; 
+            background: #111111; 
+            perspective: 1000px;
+        }
+        .card-service:hover { 
+            border-color: var(--neon-blue); 
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
+        }
+
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
+        .radar-ping {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #25D366;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 8px;
+        }
+        .radar-ping::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #25D366;
+            border-radius: 50%;
+            animation: ping 1.5s infinite;
+        }
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
         .video-container { position: relative; width: 100%; max-width: 315px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 2rem; overflow: hidden; border: 4px solid #1A1A1B; background-color: #000; }
-        
         .social-link:hover .icon-insta-bg { background: var(--insta-grad); color: white !important; }
         .social-link:hover .icon-ws-bg { background-color: var(--whatsapp-green); color: white !important; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 90;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-float lg:flex hidden">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
 
     <nav class="fixed w-full glass">
         <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="zap" class="text-[#00E5FF] fill-[#00E5FF] w-5 h-5"></i>
-                <span class="font-orbitron text-lg font-bold tracking-tighter text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
+                <span class="font-orbitron text-lg font-bold tracking-tighter text-white italic text-shadow-glow">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
             </div>
             
             <div class="hidden lg:flex space-x-8 font-orbitron text-[10px] tracking-[0.2em]">
@@ -78,7 +127,7 @@
                 <a href="#avata" class="hover:text-[#00E5FF] transition text-white">TECNOLOGÍA</a>
                 <a href="#portfolio" class="hover:text-[#00E5FF] transition text-white">PORTAFOLIO</a>
                 <a href="#servicios" class="hover:text-[#00E5FF] transition text-white">SERVICIOS</a>
-                <a href="precios.html" class="hover:text-[#FF5E00] transition text-white font-bold">PRECIOS</a>
+                <a href="precios.html" class="hover:text-[#FF5E00] transition text-white font-bold tracking-widest">PRECIOS</a>
             </div>
 
             <div class="flex items-center space-x-4">
@@ -94,7 +143,7 @@
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
         <div class="flex justify-between items-center p-6 border-b border-white/5">
-            <span class="font-orbitron text-sm font-bold text-[#00E5FF]">MENÚ</span>
+            <span class="font-orbitron text-sm font-bold text-[#00E5FF]">AUSTRAL DRONES</span>
             <button id="menu-close" class="text-white p-2">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
@@ -105,11 +154,11 @@
             <a href="#avata" class="mobile-link text-white">TECNOLOGÍA</a>
             <a href="#portfolio" class="mobile-link text-white">PORTAFOLIO</a>
             <a href="#servicios" class="mobile-link text-white">SERVICIOS</a>
-            <a href="precios.html" class="text-[#FF5E00] font-bold border-b border-[#FF5E00]/20 pb-2">VER PRECIOS</a>
+            <a href="precios.html" class="text-[#FF5E00] font-bold border-b border-[#FF5E00]/20 pb-2 uppercase tracking-widest">VER PRECIOS</a>
         </div>
 
         <div class="mt-auto p-10">
-            <a href="https://wa.me/56987491964" target="_blank" class="block w-full bg-[#FF5E00] text-white py-4 rounded-sm font-bold text-center font-orbitron text-xs">COTIZAR POR WHATSAPP</a>
+            <a href="https://wa.me/56987491964" target="_blank" class="block w-full bg-[#FF5E00] text-white py-4 rounded-sm font-bold text-center font-orbitron text-xs tracking-widest">COTIZAR AHORA</a>
         </div>
     </div>
 
@@ -119,17 +168,19 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-10 text-center px-6 max-w-5xl pt-20">
-            <div class="mb-6 inline-block border border-[#00E5FF] px-4 py-1 rounded-full">
-                <p class="text-[#00E5FF] font-orbitron text-[9px] tracking-[0.3em] uppercase">Propaganda Drone Puerto Montt</p>
+            <div class="mb-6 inline-block border border-[#25D366] px-5 py-2 rounded-full bg-black/40 backdrop-blur-sm">
+                <p class="text-[#25D366] font-orbitron text-[9px] tracking-[0.3em] uppercase font-bold flex items-center justify-center">
+                    <span class="radar-ping"></span> DISPONIBILIDAD INMEDIATA
+                </p>
             </div>
-            <h1 class="font-orbitron text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-6 leading-tight uppercase">
+            <h1 class="font-orbitron text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-6 leading-tight uppercase tracking-tighter">
                 MARKETING <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-600">DISRUPTIVO</span>
             </h1>
             <p class="text-sm md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Elevamos la publicidad de tu negocio con el mejor servicio de drones FPV del sur. <br>
-                <span class="text-white block mt-2 underline decoration-[#FF5E00] underline-offset-8">Líderes en propaganda aérea.</span>
+                <span class="text-white block mt-2 underline decoration-[#FF5E00] underline-offset-8 font-bold">Líderes en propaganda aérea cinematográfica.</span>
             </p>
-            <a href="#portfolio" class="bg-white text-black px-10 py-4 font-orbitron font-bold hover:bg-[#00E5FF] hover:text-white transition duration-500 text-xs sm:text-base">
+            <a href="#portfolio" class="bg-white text-black px-10 py-4 font-orbitron font-bold hover:bg-[#00E5FF] hover:text-white transition duration-500 text-xs sm:text-base border-2 border-white">
                 VER PORTAFOLIO LOCAL
             </a>
         </div>
@@ -149,8 +200,8 @@
 
     <section id="portfolio" class="py-32 px-6 bg-[#0A0A0A]">
         <div class="max-w-7xl mx-auto text-center reveal">
-            <h2 class="font-orbitron text-4xl font-bold text-white mb-10 uppercase tracking-tighter">FPV en Acción</h2>
-            <div class="video-container mx-auto shadow-2xl">
+            <h2 class="font-orbitron text-4xl font-bold text-white mb-10 uppercase tracking-tighter italic">FPV en Acción</h2>
+            <div class="video-container mx-auto shadow-2xl shadow-blue-500/10">
                 <iframe class="w-full h-full" src="https://drive.google.com/file/d/14ZguHEYxSDztS99CSSRvJeKLum5mNXal/preview" allow="autoplay" frameborder="0"></iframe>
             </div>
         </div>
@@ -158,24 +209,24 @@
 
     <section id="servicios" class="py-32 px-6 bg-[#080808]">
         <div class="max-w-7xl mx-auto text-center mb-20 reveal">
-            <h2 class="font-orbitron text-4xl font-bold text-white mb-4 uppercase">Servicios Pro</h2>
-            <p class="text-[#FF5E00] font-orbitron text-[10px] tracking-[0.5em]">LÍDERES EN PUERTO MONTT</p>
+            <h2 class="font-orbitron text-4xl font-bold text-white mb-4 uppercase tracking-widest">Servicios Pro</h2>
+            <p class="text-[#FF5E00] font-orbitron text-[10px] tracking-[0.5em]">MARKETING AÉREO SIN LÍMITES</p>
         </div>
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
-            <div class="card-service p-12 border border-white/5 reveal text-center">
-                <i data-lucide="building-2" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
-                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Inmobiliaria</h4>
-                <p class="text-gray-500 text-sm">Vende terrenos y propiedades rápido con tomas disruptivas.</p>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="card-service p-12 border border-white/5 reveal text-center rounded-2xl">
+                <i data-lucide="rocket" class="w-12 h-12 mb-8 text-[#00E5FF] mx-auto"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase tracking-wide">Publicidad PYMES</h4>
+                <p class="text-gray-500 text-sm">Marketing especializado para locales en Puerto Montt.</p>
             </div>
-            <div class="card-service p-12 border border-white/5 reveal text-center">
-                <i data-lucide="clapperboard" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
-                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Reels Virales</h4>
-                <p class="text-gray-500 text-sm">Contenido vertical de alto impacto para Instagram y TikTok.</p>
+            <div class="card-service p-12 border border-white/5 reveal text-center rounded-2xl">
+                <i data-lucide="clapperboard" class="w-12 h-12 mb-8 text-[#00E5FF] mx-auto"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase tracking-wide">Reels Virales</h4>
+                <p class="text-gray-500 text-sm">Contenido de alto impacto para Instagram y TikTok.</p>
             </div>
-            <div class="card-service p-12 border border-white/5 reveal text-center">
-                <i data-lucide="rocket" class="w-10 h-10 mb-8 text-[#00E5FF] mx-auto"></i>
-                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase">Publicidad PYMES</h4>
-                <p class="text-gray-500 text-sm">Marketing especializado para locales comerciales en el sur.</p>
+            <div class="card-service p-12 border border-white/5 reveal text-center rounded-2xl">
+                <i data-lucide="building-2" class="w-12 h-12 mb-8 text-[#00E5FF] mx-auto"></i>
+                <h4 class="font-orbitron text-lg mb-4 text-white font-bold uppercase tracking-wide">Inmobiliaria</h4>
+                <p class="text-gray-500 text-sm">Filmación de terrenos y propiedades de lujo.</p>
             </div>
         </div>
     </section>
@@ -184,28 +235,31 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start text-center md:text-left">
             <div>
                 <span class="font-orbitron text-2xl font-bold text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONES</span></span>
-                <p class="mt-6 text-gray-500 text-sm italic">Especialistas en propaganda con drones en Chile.</p>
+                <p class="mt-6 text-gray-500 text-sm italic">Expertos en propaganda con drones FPV. Transformamos tu visión en contenido viral.</p>
             </div>
             
             <div class="flex flex-col items-center md:items-start space-y-6">
-                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase">Redes</h5>
+                <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase">Conéctate</h5>
                 <a href="https://instagram.com/austral_ecommerce" target="_blank" class="social-link flex items-center space-x-4">
-                    <div class="icon-insta-bg p-2 rounded-lg bg-white/5 text-gray-400 transition-all"><i data-lucide="instagram" class="w-6 h-6"></i></div>
-                    <span class="text-sm font-medium text-gray-400 hover:text-white transition-colors">@austral_ecommerce</span>
+                    <div class="icon-insta-bg p-3 rounded-xl bg-white/5 text-gray-400 transition-all"><i data-lucide="instagram" class="w-6 h-6"></i></div>
+                    <span class="text-xs font-bold text-gray-400 hover:text-white transition-colors tracking-widest font-orbitron">@AUSTRAL_DRONES</span>
                 </a>
                 <a href="https://wa.me/56987491964" target="_blank" class="social-link flex items-center space-x-4">
-                    <div class="icon-ws-bg p-2 rounded-lg bg-white/5 text-gray-400 transition-all"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
-                    <span class="text-sm font-medium text-gray-400 hover:text-white transition-colors">+56 9 8749 1964</span>
+                    <div class="icon-ws-bg p-3 rounded-xl bg-white/5 text-gray-400 transition-all"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+                    <span class="text-xs font-bold text-gray-400 hover:text-white transition-colors tracking-widest font-orbitron">+56 9 8749 1964</span>
                 </a>
             </div>
 
-            <div>
-                <h5 class="font-orbitron text-white text-xs tracking-widest uppercase mb-6 italic">Puerto Montt</h5>
-                <p class="text-gray-400 text-sm">Región de Los Lagos, Chile</p>
+            <div class="flex flex-col space-y-4">
+                <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase italic">Operación Sur</h5>
+                <p class="text-[#25D366] text-sm font-bold flex items-center justify-center md:justify-start">
+                    <span class="radar-ping"></span> DISPONIBILIDAD PARA AGENDAR
+                </p>
+                <p class="text-gray-500 text-[10px] uppercase tracking-tighter">Puerto Montt, Región de Los Lagos</p>
             </div>
         </div>
-        <div class="mt-20 pt-8 border-t border-white/5 text-center text-[10px] text-gray-700 font-orbitron tracking-widest uppercase">
-            &copy; 2026 Austral Drones - El mejor servicio de publicidad drone.
+        <div class="mt-20 pt-8 border-t border-white/5 text-center text-[9px] text-gray-700 font-orbitron tracking-[0.4em] uppercase">
+            &copy; 2026 Austral Drones - El mejor servicio de publicidad drone de Chile.
         </div>
     </footer>
 
