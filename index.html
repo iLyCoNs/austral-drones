@@ -9,6 +9,8 @@
     <meta name="keywords" content="marketing drone, publicidad dron puerto montt, propaganda con drones, filmación aérea, dji avata 2">
     <meta name="geo.region" content="CL-LL" />
     <meta name="geo.placename" content="Puerto Montt" />
+    
+    <link rel="canonical" href="https://australdrone.cl/">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
@@ -93,7 +95,7 @@
         }
         .price-card:hover::before { opacity: 1; }
 
-        /* --- Efecto Escáner Tecnológico Rediseñado --- */
+        /* --- Efecto Escáner Tecnológico --- */
         .scanner-container { position: relative; overflow: hidden; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.05); background: #050505; }
         .scanner-line {
             position: absolute;
@@ -123,7 +125,7 @@
             100% { transform: scale(2.5); opacity: 0; }
         }
 
-        /* --- Animaciones de Entrada --- */
+        /* --- Animaciones --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
@@ -145,11 +147,15 @@
         }
         
         .animate-shimmer {
+            background: linear-gradient(to right, #00E5FF, #3b82f6, #FF5E00, #3b82f6, #00E5FF);
             background-size: 200% auto;
-            animation: text-shimmer 4s linear infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer-flow 5s linear infinite;
         }
-        @keyframes text-shimmer {
-            0% { background-position: -200% center; }
+
+        @keyframes shimmer-flow {
+            0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
 
@@ -163,7 +169,6 @@
         }
         .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
 
-        /* --- Estilos Portafolio Pro --- */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -192,35 +197,19 @@
             text-align: center;
         }
 
-        /* --- Estilos FAQ --- */
-        .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        .faq-item { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .faq-question {
-            width: 100%;
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
-            transition: color 0.3s ease;
+            width: 100%; padding: 1.5rem 0;
+            display: flex; justify-content: space-between; align-items: center;
+            text-align: left; transition: color 0.3s ease;
         }
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
+            max-height: 0; overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: #94A3B8;
-            font-size: 0.875rem;
-            line-height: 1.6;
+            color: #94A3B8; font-size: 0.875rem; line-height: 1.6;
         }
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-bottom: 1.5rem;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-            color: var(--neon-blue);
-        }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 1.5rem; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--neon-blue); }
 
         @media (max-width: 1024px) {
             .bento-grid { grid-template-columns: repeat(2, 1fr); }
@@ -289,20 +278,13 @@
         </div>
 
         <div class="relative z-10 text-center px-6 max-w-5xl pt-20">
-            <div class="mb-8 inline-block border border-[#25D366]/30 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md">
-                <p class="text-[#25D366] font-orbitron text-[10px] tracking-[0.4em] uppercase font-bold flex items-center justify-center">
-                    <span class="radar-ping"></span> <span id="availability-text">AGENDANDO: PUERTO MONTT</span>
-                </p>
-            </div>
-
-            <h1 class="font-orbitron text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-6 leading-[0.9] uppercase tracking-tighter">
-                MARKETING <span class="block">DRON <span class="text-[#00E5FF] italic">FPV</span></span>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-blue-500 to-[#FF5E00] animate-shimmer">DISRUPTIVO</span>
+            <h1 class="font-orbitron text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1] uppercase tracking-tighter">
+                EL IMPULSO QUE <span class="text-transparent bg-clip-text animate-shimmer">TU EMPRESA NECESITA</span><br>EN REDES SOCIALES
             </h1>
 
-            <p class="text-sm md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
-                Creamos experiencias inmersivas que <span class="text-white font-bold">detienen el scroll</span>. 
-                Contenido de alto impacto nacido en el sur de Chile.
+            <p class="text-sm md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+                Contenido de alta sofisticación para redes sociales que convierte la atención en resultados. 
+                Soluciones de marketing aéreo de impacto nacidas en el sur de Chile.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -361,7 +343,6 @@
                         <div class="scanner-line"></div>
                         <div class="tech-dot" style="top: 30%; left: 50%;"></div>
                         <div class="tech-dot" style="bottom: 20%; right: 30%;"></div>
-                        
                         <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" 
                              alt="Dron DJI Avata 2" 
                              class="w-full h-auto grayscale-[0.2] hover:grayscale-0 transition duration-1000 p-8">
@@ -597,15 +578,19 @@
                     <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors tracking-widest font-orbitron uppercase">@AUSTRAL.DRONE</span>
                 </a>
                 <a href="https://wa.me/56987491964" target="_blank" class="flex items-center space-x-4 group">
-                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/pngegg.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="WA">
+                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/pngegg.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="WA">
                     <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors tracking-widest font-orbitron uppercase">+56 9 8749 1964</span>
                 </a>
             </div>
             <div class="flex flex-col space-y-4">
                 <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase italic">Operación Sur</h5>
-                <p class="text-[#25D366] text-sm font-bold flex items-center justify-center md:justify-start">
-                    <span class="radar-ping"></span> ESTADO: ACTIVO
-                </p>
+                
+                <div class="inline-block border border-[#25D366]/30 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md w-fit mx-auto md:mx-0">
+                    <p class="text-[#25D366] font-orbitron text-[10px] tracking-[0.4em] uppercase font-bold flex items-center justify-center">
+                        <span class="radar-ping"></span> AGENDA DISPONIBLE
+                    </p>
+                </div>
+
                 <p class="text-gray-500 text-[10px] uppercase tracking-tighter">Puerto Montt - Los Lagos</p>
             </div>
         </div>
@@ -617,7 +602,6 @@
     <script>
         lucide.createIcons();
 
-        // Control de FAQ
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
@@ -662,14 +646,6 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        const availabilityText = document.getElementById('availability-text');
-        const hour = new Date().getHours();
-        if (hour >= 0 && hour < 8) {
-            availabilityText.innerText = "PRÓXIMOS VUELOS: AM - PUERTO MONTT";
-        }
     </script>
-</body>
-</html>
 </body>
 </html>
