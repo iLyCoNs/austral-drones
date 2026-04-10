@@ -13,33 +13,53 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         :root {
             --neon-blue: #00E5FF;
             --neon-orange: #FF5E00;
             --whatsapp-green: #25D366;
-            --insta-grad: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
         }
+
+        /* --- Estética Global --- */
+        ::selection { background: var(--neon-blue); color: #000; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { 
+            background: #1A1A1B; 
+            border-radius: 10px; 
+            border: 2px solid #0A0A0A; 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0A0A0A;
             color: #E2E8F0;
             overflow-x: hidden;
         }
+
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
-        .hero-overlay {
-            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,1) 100%);
+        /* --- Componentes --- */
+        .glass {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-blur: 0px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000 !important;
         }
 
-        .glass {
-            background: #0A0A0A;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 100 !important;
+        .glass.scrolled {
+            backdrop-blur: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
 
         #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             transform: translateX(100%);
             background: #0A0A0A; 
             z-index: 9999 !important;
@@ -47,84 +67,164 @@
         #mobile-menu.active { transform: translateX(0); }
 
         .btn-neon { transition: all 0.3s ease; }
-        .btn-neon:hover { box-shadow: 0 0 20px var(--neon-orange); transform: translateY(-1px); }
+        .btn-neon:hover { 
+            box-shadow: 0 0 25px var(--neon-orange); 
+            transform: translateY(-2px); 
+        }
         
-        .card-service, .price-card { 
+        /* --- Cards e Interacción --- */
+        .price-card { 
             transition: all 0.5s ease; 
             background: #111111; 
-            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
         }
-        .card-service:hover, .price-card:hover { 
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.04) 0%, transparent 70%);
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+        }
+        .price-card:hover { 
             border-color: var(--neon-blue); 
-            transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 229, 255, 0.05);
         }
+        .price-card:hover::before { opacity: 1; }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        /* --- Efecto Escáner Tecnológico Rediseñado --- */
+        .scanner-container { position: relative; overflow: hidden; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.05); background: #050505; }
+        .scanner-line {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(180deg, transparent, var(--neon-blue), transparent);
+            box-shadow: 0 0 20px var(--neon-blue);
+            animation: scan 4s ease-in-out infinite;
+            z-index: 20;
+        }
+        
+        @keyframes scan {
+            0%, 100% { top: 0%; opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { top: 100%; }
+        }
+
+        .tech-dot {
+            position: absolute; width: 12px; height: 12px;
+            background: var(--neon-blue); border-radius: 50%;
+            box-shadow: 0 0 15px var(--neon-blue);
+            cursor: pointer; z-index: 30;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* --- Animaciones de Entrada --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
         .radar-ping {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #25D366;
-            border-radius: 50%;
-            position: relative;
-            margin-right: 10px;
+            display: inline-block; width: 10px; height: 10px;
+            background-color: var(--whatsapp-green);
+            border-radius: 50%; position: relative; margin-right: 10px;
         }
         .radar-ping::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #25D366;
-            border-radius: 50%;
-            animation: ping 1.5s infinite;
+            content: ''; position: absolute; width: 100%; height: 100%;
+            background-color: var(--whatsapp-green);
+            border-radius: 50%; animation: ping 1.5s infinite;
         }
-        @keyframes ping {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
+        @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
 
-        .video-container { position: relative; width: 100%; max-width: 315px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 2rem; overflow: hidden; border: 4px solid #1A1A1B; background-color: #000; }
-        
-        .spec-card {
-            background: linear-gradient(145deg, #111111 0%, #050505 100%);
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .video-container { 
+            position: relative; width: 100%; height: 100%; 
+            background-color: #000; 
         }
-        .spec-card:hover {
-            border-color: var(--neon-blue);
-            background: linear-gradient(145deg, #161616 0%, #0a0a0a 100%);
+        
+        .animate-shimmer {
+            background-size: 200% auto;
+            animation: text-shimmer 4s linear infinite;
+        }
+        @keyframes text-shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
         }
 
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25D366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 90;
-            transition: all 0.3s ease;
+            z-index: 900; transition: all 0.3s ease;
         }
         .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
 
-        .social-logo {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* --- Estilos Portafolio Pro --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 1rem;
         }
-        .social-link:hover .social-logo {
-            transform: scale(1.2) rotate(-5deg);
-            filter: brightness(1.2);
+        .bento-item {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .bento-video-main { grid-column: span 2; grid-row: span 3; }
+        .bento-card-sm { grid-column: span 1; grid-row: span 1; }
+        .bento-card-md { grid-column: span 2; grid-row: span 1; }
+
+        .future-project {
+            background: linear-gradient(145deg, #0d0d0d 0%, #151515 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* --- Estilos FAQ --- */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #94A3B8;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--neon-blue);
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-video-main { grid-column: span 2; grid-row: span 2; }
         }
     </style>
 </head>
@@ -134,8 +234,8 @@
         <i data-lucide="message-circle" class="w-8 h-8"></i>
     </a>
 
-    <nav class="fixed w-full glass">
-        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+    <nav class="fixed w-full py-4 glass">
+        <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i data-lucide="zap" class="text-[#00E5FF] fill-[#00E5FF] w-5 h-5"></i>
                 <span class="font-orbitron text-lg font-bold tracking-tighter text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONE.CL</span></span>
@@ -145,6 +245,7 @@
                 <a href="#inicio" class="hover:text-[#00E5FF] transition text-white">INICIO</a>
                 <a href="#tecnologia" class="hover:text-[#00E5FF] transition text-white">TECNOLOGÍA</a>
                 <a href="#portfolio" class="hover:text-[#00E5FF] transition text-white">PORTAFOLIO</a>
+                <a href="#faq" class="hover:text-[#00E5FF] transition text-white">FAQ</a>
                 <a href="#precios" class="hover:text-[#FF5E00] transition text-[#FF5E00] font-bold tracking-widest uppercase">SERVICIO Y PRECIOS</a>
             </div>
 
@@ -170,6 +271,7 @@
             <a href="#inicio" class="mobile-link text-white">INICIO</a>
             <a href="#tecnologia" class="mobile-link text-white">TECNOLOGÍA</a>
             <a href="#portfolio" class="mobile-link text-white">PORTAFOLIO</a>
+            <a href="#faq" class="mobile-link text-white">FAQ</a>
             <a href="#precios" class="mobile-link text-[#FF5E00] font-bold uppercase tracking-widest">SERVICIOS Y PRECIOS</a>
         </div>
         <div class="mt-auto p-10">
@@ -183,24 +285,24 @@
                  class="w-full h-full object-cover opacity-40 grayscale scale-105" 
                  style="filter: contrast(1.1) brightness(0.8);"
                  alt="Austral Drones">
-            <div class="absolute inset-0 hero-overlay bg-gradient-to-b from-transparent via-black/60 to-[#0A0A0A]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-[#0A0A0A]"></div>
         </div>
 
         <div class="relative z-10 text-center px-6 max-w-5xl pt-20">
-            <div class="mb-8 inline-block border border-[#25D366]/50 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md">
+            <div class="mb-8 inline-block border border-[#25D366]/30 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md">
                 <p class="text-[#25D366] font-orbitron text-[10px] tracking-[0.4em] uppercase font-bold flex items-center justify-center">
-                    <span class="radar-ping"></span> AGENDA DISPONIBLE: PUERTO MONTT
+                    <span class="radar-ping"></span> <span id="availability-text">AGENDANDO: PUERTO MONTT</span>
                 </p>
             </div>
 
             <h1 class="font-orbitron text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-6 leading-[0.9] uppercase tracking-tighter">
                 MARKETING <span class="block">DRON <span class="text-[#00E5FF] italic">FPV</span></span>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-blue-500 to-[#FF5E00] animate-pulse">DISRUPTIVO</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-blue-500 to-[#FF5E00] animate-shimmer">DISRUPTIVO</span>
             </h1>
 
             <p class="text-sm md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
                 Creamos experiencias inmersivas que <span class="text-white font-bold">detienen el scroll</span>. 
-                Contenido de alto impacto para tus redes sociales nacido en el sur de Chile.
+                Contenido de alto impacto nacido en el sur de Chile.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -210,303 +312,299 @@
                         DESCUBRE EL IMPACTO
                     </span>
                 </a>
-                
                 <a href="#portfolio" class="font-orbitron text-[10px] text-gray-500 hover:text-white transition-colors tracking-[0.3em] flex items-center gap-2">
                     VER DEMO REEL <i data-lucide="play-circle" class="w-4 h-4 text-[#FF5E00]"></i>
                 </a>
             </div>
         </div>
-
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="text-white/20 w-6 h-6"></i>
-        </div>
     </section>
 
-    <section id="tecnologia" class="py-32 px-6 bg-[#080808] border-y border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h3 class="text-3xl md:text-5xl font-bold text-white mb-8 font-orbitron uppercase tracking-tighter italic">DJI AVATA 2:<br><span class="text-[#00E5FF]">PODER FPV REAL</span></h3>
-                <p class="text-gray-400 mb-8 leading-relaxed text-sm md:text-lg">
-                    No es un dron común de fotografía. Es una cámara voladora inmersiva que permite **maniobras quirúrgicas** imposibles para equipos tradicionales.
-                </p>
-                <div class="grid grid-cols-1 gap-8">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-[#00E5FF]/10 p-3 rounded-lg"><i data-lucide="home" class="text-[#00E5FF]"></i></div>
-                        <div>
-                            <h4 class="font-orbitron text-white text-sm font-bold uppercase">Maestro de Interiores</h4>
-                            <p class="text-gray-500 text-sm">Su tamaño compacto y hélices protegidas nos permiten volar por pasillos, ventanas y cerca de personas con total seguridad.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="bg-[#FF5E00]/10 p-3 rounded-lg"><i data-lucide="wind" class="text-[#FF5E00]"></i></div>
-                        <div>
-                            <h4 class="font-orbitron text-white text-sm font-bold uppercase">Agilidad Extrema</h4>
-                            <p class="text-gray-500 text-sm">Gira, desciende y acelera a ritmos cinemáticos, creando una sensación de "vuelo de pájaro" que atrapa al espectador.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="relative reveal text-center">
-                <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" alt="Dron DJI Avata 2" class="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full h-auto grayscale hover:grayscale-0 transition duration-700">
-            </div>
-        </div>
-    </section>
+    <section id="tecnologia" class="py-32 px-6 bg-[#080808] border-y border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none font-orbitron text-[10vw] font-bold select-none leading-none -rotate-12 translate-y-20">HARDWARE</div>
 
-    <section id="portfolio" class="py-32 px-6 bg-[#0A0A0A] relative">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-4 uppercase tracking-tighter italic">MISIÓN: IMPACTO VISUAL</h2>
-                <div class="h-1 w-24 bg-[#00E5FF] mx-auto mb-6"></div>
-                <p class="text-gray-500 font-orbitron text-[10px] tracking-[0.6em] uppercase">Status: 4K HDR / Ultra Wide FOV</p>
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-4 uppercase tracking-tighter italic">VANGUARDIA <span class="text-[#00E5FF]">TÁCTICA</span></h2>
+                <div class="h-1 w-24 bg-[#FF5E00] mx-auto mb-6"></div>
+                <p class="text-gray-500 font-orbitron text-[10px] tracking-[0.5em] uppercase">Unidad: DJI AVATA 2 / Incursión Total</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-                <div class="spec-card p-6 text-center reveal">
-                    <i data-lucide="Zap" class="text-[#00E5FF] w-6 h-6 mx-auto mb-4"></i>
-                    <h5 class="text-white font-orbitron text-[10px] font-bold uppercase tracking-widest">Velocidad</h5>
-                    <p class="text-gray-500 text-[9px] mt-2 italic">Aceleración instantánea para tomas dinámicas.</p>
-                </div>
-                <div class="spec-card p-6 text-center reveal" style="transition-delay: 100ms;">
-                    <i data-lucide="Maximize" class="text-[#00E5FF] w-6 h-6 mx-auto mb-4"></i>
-                    <h5 class="text-white font-orbitron text-[10px] font-bold uppercase tracking-widest">Ultra Gran Angular</h5>
-                    <p class="text-gray-500 text-[9px] mt-2 italic">Campo de visión de 155° para máxima inmersión.</p>
-                </div>
-                <div class="spec-card p-6 text-center reveal" style="transition-delay: 200ms;">
-                    <i data-lucide="Shield-Check" class="text-[#00E5FF] w-6 h-6 mx-auto mb-4"></i>
-                    <h5 class="text-white font-orbitron text-[10px] font-bold uppercase tracking-widest">Vuelo Seguro</h5>
-                    <p class="text-gray-500 text-[9px] mt-2 italic">Protección 360° para vuelos en interiores complejos.</p>
-                </div>
-                <div class="spec-card p-6 text-center reveal" style="transition-delay: 300ms;">
-                    <i data-lucide="Layers" class="text-[#00E5FF] w-6 h-6 mx-auto mb-4"></i>
-                    <h5 class="text-white font-orbitron text-[10px] font-bold uppercase tracking-widest">Estabilización</h5>
-                    <p class="text-gray-500 text-[9px] mt-2 italic">RockSteady 3.0+ para fluidez absoluta.</p>
-                </div>
-            </div>
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-4 space-y-6 order-2 lg:order-1">
+                    <div class="reveal group bg-[#111] p-6 rounded-2xl border-l-4 border-[#00E5FF] hover:bg-[#161616] transition-all">
+                        <div class="flex items-center gap-4 mb-2">
+                            <i data-lucide="camera" class="text-[#00E5FF] w-5 h-5"></i>
+                            <h4 class="font-orbitron text-white text-xs font-bold uppercase tracking-widest">Sensor Pro 1/1.3"</h4>
+                        </div>
+                        <p class="text-gray-500 text-xs leading-relaxed italic">Captura impecable en interiores de locales con iluminación tenue. Colores vibrantes que resaltan tus productos.</p>
+                    </div>
 
-            <div class="relative reveal group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-[#00E5FF] to-blue-600 rounded-[2.5rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                <div class="video-container relative shadow-2xl border-[#1e1e1e]">
-                    <div class="absolute inset-0 pointer-events-none z-10 p-6 flex flex-col justify-between opacity-50 group-hover:opacity-100 transition-opacity">
-                        <div class="flex justify-between font-orbitron text-[8px] text-[#00E5FF]">
-                            <span>REC ● 4K 60FPS</span>
-                            <span>BAT: 98%</span>
+                    <div class="reveal group bg-[#111] p-6 rounded-2xl border-l-4 border-[#FF5E00] hover:bg-[#161616] transition-all" style="transition-delay: 100ms;">
+                        <div class="flex items-center gap-4 mb-2">
+                            <i data-lucide="shield-check" class="text-[#FF5E00] w-5 h-5"></i>
+                            <h4 class="font-orbitron text-white text-xs font-bold uppercase tracking-widest">Protección Total</h4>
                         </div>
-                        <div class="flex justify-center">
-                            <div class="w-16 h-16 border border-[#00E5FF]/30 rounded-full flex items-center justify-center">
-                                <div class="w-1 h-1 bg-[#FF5E00] rounded-full"></div>
-                            </div>
+                        <p class="text-gray-500 text-xs leading-relaxed italic">Hélices integradas para vuelos ultra-cercanos. Entramos por ventanas y pasillos de minimarkets sin riesgo.</p>
+                    </div>
+
+                    <div class="reveal group bg-[#111] p-6 rounded-2xl border-l-4 border-[#00E5FF] hover:bg-[#161616] transition-all" style="transition-delay: 200ms;">
+                        <div class="flex items-center gap-4 mb-2">
+                            <i data-lucide="cpu" class="text-[#00E5FF] w-5 h-5"></i>
+                            <h4 class="font-orbitron text-white text-xs font-bold uppercase tracking-widest">Estabilización AI</h4>
                         </div>
-                        <div class="flex justify-between font-orbitron text-[8px] text-[#00E5FF]">
-                            <span>ALT: 12.5M</span>
-                            <span>DIST: 450M</span>
+                        <p class="text-gray-500 text-xs leading-relaxed italic">RockSteady 3.0+ garantiza que el video sea fluido como seda, eliminando cualquier vibración de vuelo.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 order-1 lg:order-2">
+                    <div class="scanner-container reveal shadow-[0_0_50px_rgba(0,229,255,0.1)]">
+                        <div class="scanner-line"></div>
+                        <div class="tech-dot" style="top: 30%; left: 50%;"></div>
+                        <div class="tech-dot" style="bottom: 20%; right: 30%;"></div>
+                        
+                        <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" 
+                             alt="Dron DJI Avata 2" 
+                             class="w-full h-auto grayscale-[0.2] hover:grayscale-0 transition duration-1000 p-8">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 space-y-8 order-3">
+                    <div class="reveal">
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="font-orbitron text-[10px] text-white uppercase tracking-widest">Agilidad de Vuelo</span>
+                            <span class="font-orbitron text-[10px] text-[#00E5FF]">100%</span>
+                        </div>
+                        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-[#00E5FF] to-blue-600 w-full"></div>
                         </div>
                     </div>
-                    
-                    <iframe class="w-full h-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700" 
-                            src="https://drive.google.com/file/d/14ZguHEYxSDztS99CSSRvJeKLum5mNXal/preview" 
-                            allow="autoplay" 
-                            frameborder="0"></iframe>
-                </div>
-            </div>
 
-            <div class="mt-16 text-center reveal">
-                <p class="text-gray-500 font-light italic text-sm mb-6">"No grabamos lugares, contamos historias desde el aire."</p>
-                <a href="https://instagram.com/austral.drone" target="_blank" class="inline-flex items-center gap-3 font-orbitron text-[10px] text-[#00E5FF] border-b border-[#00E5FF]/20 pb-2 hover:border-[#00E5FF] transition-all tracking-[0.3em]">
-                    VER MÁS PROYECTOS EN INSTAGRAM <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="font-orbitron text-[10px] text-white uppercase tracking-widest">Calidad de Video (4K HDR)</span>
+                            <span class="font-orbitron text-[10px] text-[#FF5E00]">MAX</span>
+                        </div>
+                        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-[#FF5E00] to-orange-600 w-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="reveal mt-12 bg-black/40 p-6 border border-white/5 rounded-3xl">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#00E5FF]/10 flex items-center justify-center">
+                                <i data-lucide="zap" class="text-[#00E5FF] w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-orbitron text-white text-xs font-bold uppercase tracking-widest">Ready for Social</h4>
+                        </div>
+                        <p class="text-gray-400 text-[11px] leading-relaxed italic">
+                            Grabamos de forma nativa en formatos optimizados para **Reels y TikTok**, listos para que tu local sea tendencia en Puerto Montt.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="precios" class="py-32 px-6 bg-[#080808] border-y border-white/5 relative overflow-hidden">
+    <section id="portfolio" class="py-32 px-6 bg-[#0A0A0A] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-4 uppercase tracking-tighter italic">EXPEDIENTES <span class="text-[#00E5FF]">VISUALES</span></h2>
+                    <p class="text-gray-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Status: Operativo 4K / Puerto Montt</p>
+                </div>
+                <div class="h-[1px] flex-grow mx-10 mb-5 bg-white/10 hidden md:block"></div>
+                <div class="text-right hidden md:block">
+                    <p class="text-[#FF5E00] font-orbitron text-xs font-bold uppercase tracking-widest">Soluciones FPV</p>
+                </div>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-video-main reveal shadow-2xl group border border-white/10">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none opacity-90"></div>
+                    <div class="absolute bottom-8 left-8 z-20 max-w-[80%] pointer-events-none">
+                        <span class="bg-[#FF5E00] text-white text-[8px] font-bold px-3 py-1 rounded-full font-orbitron mb-3 inline-block uppercase tracking-widest">Video Demostrativo</span>
+                        <h4 class="text-white font-orbitron text-xl font-bold uppercase italic leading-tight mb-2">Showreel <span class="text-[#00E5FF]">FPV Inmersivo</span></h4>
+                        <p class="text-gray-400 text-[10px] font-light leading-relaxed font-inter uppercase tracking-widest opacity-80">
+                            Ejemplo real de transiciones cinemáticas para potenciar el valor visual de cualquier local o marca.
+                        </p>
+                    </div>
+                    <div class="video-container">
+                        <iframe class="w-full h-full object-cover" src="https://drive.google.com/file/d/14ZguHEYxSDztS99CSSRvJeKLum5mNXal/preview" allow="autoplay" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <div class="bento-item bento-card-md reveal group future-project border border-white/5 hover:border-[#00E5FF]/30 transition-all duration-500" style="transition-delay: 100ms;">
+                    <div class="flex flex-col items-center justify-center p-6 text-center">
+                        <div class="bg-[#00E5FF]/5 p-4 rounded-full mb-4 border border-[#00E5FF]/10 group-hover:border-[#00E5FF]/30 transition-all">
+                            <i data-lucide="store" class="w-10 h-10 opacity-40 group-hover:opacity-100 group-hover:text-[#00E5FF] transition-all"></i>
+                        </div>
+                        <h5 class="text-white font-orbitron text-[10px] font-bold uppercase tracking-widest">Futuros Proyectos de Marketing</h5>
+                        <p class="text-gray-600 text-[8px] mt-2 font-orbitron tracking-[0.2em] uppercase">[ Soluciones para Minimarkets y Locales ]</p>
+                    </div>
+                </div>
+
+                <div class="bento-item bento-card-sm reveal group future-project border border-white/5 hover:border-[#00E5FF]/30 transition-all duration-500" style="transition-delay: 200ms;">
+                    <i data-lucide="layout-template" class="w-8 h-8 mb-3 opacity-20 group-hover:opacity-100 group-hover:text-[#00E5FF]"></i>
+                    <h5 class="text-white font-orbitron text-[9px] font-bold uppercase tracking-widest">Trabajos en Interiores</h5>
+                    <p class="text-gray-600 text-[7px] mt-1 italic uppercase tracking-widest">Incursión Táctica</p>
+                </div>
+
+                <div class="bento-item bento-card-sm reveal group future-project border border-white/5 hover:border-[#00E5FF]/30 transition-all duration-500" style="transition-delay: 300ms;">
+                    <i data-lucide="compass" class="w-8 h-8 mb-3 opacity-20 group-hover:opacity-100 group-hover:text-[#00E5FF]"></i>
+                    <h5 class="text-white font-orbitron text-[9px] font-bold uppercase tracking-widest">Trabajos en Exteriores</h5>
+                    <p class="text-gray-600 text-[7px] mt-1 italic uppercase tracking-widest">Vuelo Cinematográfico</p>
+                </div>
+
+                <div class="bento-item bento-card-md reveal flex items-center justify-around bg-[#0a0a0a] p-6 border border-white/5" style="transition-delay: 400ms;">
+                    <div class="text-center">
+                        <p class="text-[#00E5FF] font-orbitron text-2xl font-bold tracking-tighter">00</p>
+                        <p class="text-gray-500 font-orbitron text-[8px] uppercase tracking-widest">Vuelos</p>
+                    </div>
+                    <div class="w-[1px] h-10 bg-white/10"></div>
+                    <div class="text-center">
+                        <p class="text-[#FF5E00] font-orbitron text-2xl font-bold tracking-tighter">4K</p>
+                        <p class="text-gray-500 font-orbitron text-[8px] uppercase tracking-widest">Resolución</p>
+                    </div>
+                    <div class="w-[1px] h-10 bg-white/10"></div>
+                    <div class="text-center">
+                        <p class="text-white font-orbitron text-2xl font-bold tracking-tighter uppercase">Init</p>
+                        <p class="text-gray-500 font-orbitron text-[8px] uppercase tracking-widest">Status</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-32 px-6 bg-[#080808] border-y border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-white mb-4 uppercase italic tracking-tighter">CONSULTAS <span class="text-[#00E5FF]">TÁCTICAS</span></h2>
+                <p class="text-gray-500 font-orbitron text-[10px] tracking-[0.4em] uppercase text-center mx-auto">Resolviendo dudas para tu negocio</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="faq-item reveal bg-[#0A0A0A] rounded-2xl px-8 border border-white/5 transition-all">
+                    <button class="faq-question font-orbitron text-xs md:text-sm font-bold text-white uppercase tracking-widest">
+                        ¿Es seguro volar dentro de mi local o minimarket?
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutamente. Utilizamos el DJI Avata 2, un dron diseñado específicamente para interiores con hélices protegidas y sensores infrarrojos. Esto nos permite volar por pasillos estrechos y cerca de productos con total seguridad, sin riesgo para tus instalaciones o clientes.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal bg-[#0A0A0A] rounded-2xl px-8 border border-white/5 transition-all" style="transition-delay: 100ms;">
+                    <button class="faq-question font-orbitron text-xs md:text-sm font-bold text-white uppercase tracking-widest">
+                        ¿Qué pasa si el clima en Puerto Montt no acompaña?
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Conocemos nuestra zona. Para tomas interiores, operamos sin problemas bajo cualquier clima. Para vuelos exteriores, si la lluvia es muy intensa, reagendamos la misión de inmediato sin costo adicional para asegurar la máxima calidad cinematográfica de tu local.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal bg-[#0A0A0A] rounded-2xl px-8 border border-white/5 transition-all" style="transition-delay: 200ms;">
+                    <button class="faq-question font-orbitron text-xs md:text-sm font-bold text-white uppercase tracking-widest">
+                        ¿En cuánto tiempo tendré mi video listo para redes sociales?
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Entendemos la velocidad del marketing digital. Tras la captura, entregamos el material editado (Reels/TikTok) en un plazo de 24 a 48 horas hábiles, optimizado con música tendencia para que empieces a atraer clientes de inmediato.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal bg-[#0A0A0A] rounded-2xl px-8 border border-white/5 transition-all" style="transition-delay: 300ms;">
+                    <button class="faq-question font-orbitron text-xs md:text-sm font-bold text-white uppercase tracking-widest">
+                        ¿Debo cerrar mi negocio para realizar la grabación?
+                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        No es necesario. Nuestra incursión es rápida y no invasiva. Podemos coordinar para grabar en horarios de baja afluencia o incluso capturar la vitalidad de tu local con clientes, lo cual aporta realismo y confianza a tu futura audiencia.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="py-32 px-6 bg-[#0A0A0A] relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none font-orbitron text-[15vw] font-bold select-none leading-none">PRICING</div>
-        
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-24 reveal">
                 <h2 class="font-orbitron text-4xl md:text-5xl font-bold text-white mb-6 uppercase italic tracking-tighter">Inversión <span class="text-[#FF5E00]">Estratégica</span></h2>
-                <div class="flex justify-center items-center gap-4">
-                    <div class="h-[1px] w-12 bg-gray-800"></div>
-                    <p class="text-gray-400 font-orbitron text-[10px] tracking-[0.4em] uppercase">Contenido viral para la era digital</p>
-                    <div class="h-[1px] w-12 bg-gray-800"></div>
-                </div>
+                <p class="text-gray-400 font-orbitron text-[10px] tracking-[0.4em] uppercase text-center mx-auto">Contenido viral para la era digital</p>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8 items-stretch">
-                
-                <div class="price-card p-10 border border-white/5 rounded-3xl reveal flex flex-col bg-gradient-to-b from-[#111111] to-[#0D0D0D]">
+                <div class="price-card p-10 border border-white/5 rounded-3xl reveal flex flex-col">
                     <div class="mb-8 flex items-center gap-4">
-                        <div class="bg-[#00E5FF]/10 p-4 rounded-2xl">
-                            <i data-lucide="video" class="text-[#00E5FF] w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase">Full Service<br><span class="text-[#00E5FF]">Producción Austral</span></h4>
+                        <div class="bg-[#00E5FF]/10 p-4 rounded-2xl"><i data-lucide="video" class="text-[#00E5FF] w-6 h-6"></i></div>
+                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase">Full Service</h4>
                     </div>
-                    
                     <div class="space-y-6 mb-10 flex-grow">
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">15 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$34.990</span>
-                        </div>
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">30 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$41.990</span>
-                        </div>
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">60 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$49.990</span>
-                        </div>
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">15s</span><span class="text-white font-bold font-orbitron">$34.990</span></div>
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">30s</span><span class="text-white font-bold font-orbitron">$41.990</span></div>
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">60s</span><span class="text-white font-bold font-orbitron">$49.990</span></div>
                     </div>
-                    <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-6 italic">*Incluye edición básica y música libre de autor.</p>
+                    <p class="text-[9px] text-gray-600 uppercase tracking-widest italic">*Incluye edición básica.</p>
                 </div>
-
-                <div class="price-card p-10 border border-white/5 rounded-3xl reveal flex flex-col bg-gradient-to-b from-[#111111] to-[#0D0D0D]">
+                <div class="price-card p-10 border border-white/5 rounded-3xl reveal flex flex-col">
                     <div class="mb-8 flex items-center gap-4">
-                        <div class="bg-[#00E5FF]/10 p-4 rounded-2xl">
-                            <i data-lucide="scissors" class="text-[#00E5FF] w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase">Edición Pro<br><span class="text-[#00E5FF]">Tu material, nuestra magia</span></h4>
+                        <div class="bg-[#00E5FF]/10 p-4 rounded-2xl"><i data-lucide="scissors" class="text-[#00E5FF] w-6 h-6"></i></div>
+                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase">Edición Pro</h4>
                     </div>
-                    
-                    <div class="space-y-6 mb-10 flex-grow text-gray-300">
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">15 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$14.990</span>
-                        </div>
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">30 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$22.990</span>
-                        </div>
-                        <div class="group flex justify-between items-end border-b border-white/5 pb-4 hover:border-[#00E5FF]/30 transition-colors">
-                            <span class="text-gray-400 text-sm font-light italic">60 Segundos</span>
-                            <span class="text-white font-bold font-orbitron text-lg">$34.990</span>
-                        </div>
+                    <div class="space-y-6 mb-10 flex-grow">
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">15s</span><span class="text-white font-bold font-orbitron">$14.990</span></div>
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">30s</span><span class="text-white font-bold font-orbitron">$22.990</span></div>
+                        <div class="flex justify-between border-b border-white/5 pb-4"><span class="text-gray-400 italic">60s</span><span class="text-white font-bold font-orbitron">$34.990</span></div>
                     </div>
-                    <p class="text-[9px] text-[#FF5E00] uppercase tracking-widest font-bold mb-6 italic">Requisito: Mínimo Full HD</p>
+                    <p class="text-[9px] text-[#FF5E00] uppercase tracking-widest font-bold italic">Tu material, nuestra magia.</p>
                 </div>
-
-                <div class="price-card p-10 border-2 border-[#FF5E00] rounded-3xl relative reveal flex flex-col bg-[#161617] shadow-[0_0_50px_rgba(255,94,0,0.05)]">
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FF5E00] text-white text-[10px] px-6 py-2 rounded-full font-bold font-orbitron uppercase tracking-[0.2em] shadow-lg shadow-[#FF5E00]/20">OFERTA</div>
-                    
+                <div class="price-card p-10 border-2 border-[#FF5E00] rounded-3xl relative reveal flex flex-col bg-[#161617]">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#FF5E00] text-white text-[10px] px-6 py-2 rounded-full font-bold font-orbitron uppercase tracking-[0.2em]">OFERTA</div>
                     <div class="mb-8 flex items-center gap-4">
-                        <div class="bg-[#FF5E00]/10 p-4 rounded-2xl">
-                            <i data-lucide="zap" class="text-[#FF5E00] w-6 h-6"></i>
-                        </div>
-                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase italic">Jornada Intensiva<br><span class="text-[#FF5E00]">Packs de Contenido</span></h4>
+                        <div class="bg-[#FF5E00]/10 p-4 rounded-2xl"><i data-lucide="zap" class="text-[#FF5E00] w-6 h-6"></i></div>
+                        <h4 class="font-orbitron text-xs text-white font-bold tracking-widest uppercase">Packs Virales</h4>
                     </div>
-                    
-                    <div class="space-y-8 mb-12 flex-grow">
-                        <div class="bg-black/40 p-5 rounded-2xl border border-white/5 hover:border-[#FF5E00]/30 transition-all">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-bold text-sm font-orbitron">PACK MINI</span>
-                                <span class="text-[#FF5E00] font-bold font-orbitron text-xl">$49.990</span>
-                            </div>
-                            <p class="text-[11px] text-gray-500 italic leading-relaxed">4 videos x 15 seg. Optimizado para alto impacto en Reels y TikTok 📲</p>
+                    <div class="space-y-6 mb-12 flex-grow">
+                        <div class="bg-black/40 p-5 rounded-2xl border border-white/5">
+                            <div class="flex justify-between items-center mb-1"><span class="text-white font-bold text-sm">PACK MINI</span><span class="text-[#FF5E00] font-bold font-orbitron text-xl">$49.990</span></div>
+                            <p class="text-[11px] text-gray-500 italic">4 videos x 15 seg. Reels/TikTok.</p>
                         </div>
-                        
-                        <div class="bg-black/40 p-5 rounded-2xl border border-white/5 hover:border-[#FF5E00]/30 transition-all">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-white font-bold text-sm font-orbitron tracking-tight">PACK ESTÁNDAR</span>
-                                <span class="text-[#FF5E00] font-bold font-orbitron text-xl">$69.990</span>
-                            </div>
-                            <p class="text-[11px] text-gray-500 italic leading-relaxed">4 videos x 30 seg. El balance perfecto para mostrar cada detalle.</p>
+                        <div class="bg-black/40 p-5 rounded-2xl border border-white/5">
+                            <div class="flex justify-between items-center mb-1"><span class="text-white font-bold text-sm">ESTÁNDAR</span><span class="text-[#FF5E00] font-bold font-orbitron text-xl">$69.990</span></div>
+                            <p class="text-[11px] text-gray-500 italic">4 videos x 30 seg. Full detalle.</p>
                         </div>
                     </div>
-
-                    <a href="https://wa.me/56987491964" target="_blank" class="group relative block w-full text-center py-5 bg-[#FF5E00] text-white font-bold text-[11px] font-orbitron overflow-hidden transition-all uppercase tracking-[0.3em]">
+                    <a href="https://wa.me/56987491964" target="_blank" class="group relative block w-full text-center py-5 bg-[#FF5E00] text-white font-bold text-[11px] font-orbitron overflow-hidden uppercase tracking-[0.3em]">
                         <span class="relative z-10">RESERVAR PACK</span>
                         <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                         <span class="absolute inset-0 z-20 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity font-bold">RESERVAR AHORA</span>
                     </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="proceso" class="py-32 px-6 bg-[#0A0A0A] relative overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                
-                <div class="reveal">
-                    <h3 class="font-orbitron text-3xl font-bold text-white mb-8 uppercase italic">Preguntas <span class="text-[#00E5FF]">Frecuentes</span></h3>
-                    <div class="space-y-6">
-                        <div class="border-l-2 border-[#00E5FF] pl-6 py-2">
-                            <h4 class="text-white font-bold text-sm uppercase font-orbitron mb-2 tracking-widest">¿Es seguro volar en interiores?</h4>
-                            <p class="text-gray-500 text-sm">Absolutamente. El DJI Avata 2 posee hélices protegidas y sensores infrarrojos. Podemos volar a centímetros de objetos sin riesgo alguno.</p>
-                        </div>
-                        <div class="border-l-2 border-[#FF5E00] pl-6 py-2">
-                            <h4 class="text-white font-bold text-sm uppercase font-orbitron mb-2 tracking-widest">¿En cuánto tiempo recibo mi video?</h4>
-                            <p class="text-gray-500 text-sm">El material en bruto se entrega el mismo día. La edición final (si se solicita) toma entre 24 a 48 horas hábiles.</p>
-                        </div>
-                        <div class="border-l-2 border-[#00E5FF] pl-6 py-2">
-                            <h4 class="text-white font-bold text-sm uppercase font-orbitron mb-2 tracking-widest">¿Vuelan con lluvia?</h4>
-                            <p class="text-gray-500 text-sm">Como operamos en Puerto Montt, conocemos el clima. No volamos bajo lluvia intensa por seguridad electrónica, pero reagendamos de inmediato sin costo extra.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal">
-                    <div class="bg-[#111111] p-10 rounded-3xl border border-white/5 relative">
-                        <div class="absolute -top-4 -right-4 bg-[#FF5E00] p-4 rounded-2xl rotate-12">
-                            <i data-lucide="send" class="text-white w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-orbitron text-xl font-bold text-white mb-10 uppercase tracking-tighter">Tu video en 3 pasos</h3>
-                        
-                        <div class="space-y-10">
-                            <div class="flex gap-6 items-start">
-                                <span class="font-orbitron text-3xl font-bold text-gray-800">01</span>
-                                <div>
-                                    <h5 class="text-white font-bold text-xs uppercase tracking-widest mb-1">Briefing Táctico</h5>
-                                    <p class="text-gray-500 text-[11px]">Agendamos vía WhatsApp y definimos el estilo de tomas que necesita tu marca.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-6 items-start">
-                                <span class="font-orbitron text-3xl font-bold text-[#00E5FF]">02</span>
-                                <div>
-                                    <h5 class="text-white font-bold text-xs uppercase tracking-widest mb-1">Incursión FPV</h5>
-                                    <p class="text-gray-500 text-[11px]">Realizamos el despliegue en terreno y capturamos las perspectivas disruptivas.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-6 items-start">
-                                <span class="font-orbitron text-3xl font-bold text-gray-800">03</span>
-                                <div>
-                                    <h5 class="text-white font-bold text-xs uppercase tracking-widest mb-1">Despegue Digital</h5>
-                                    <p class="text-gray-500 text-[11px]">Recibes tu contenido listo para publicar y romper el algoritmo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="bg-black py-20 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 text-center md:text-left">
             <div>
                 <span class="font-orbitron text-2xl font-bold text-white italic">AUSTRAL<span class="text-[#00E5FF]">DRONE.CL</span></span>
-                <p class="mt-6 text-gray-500 text-sm italic">Expertos en propaganda con drones FPV. Transformamos tu visión en contenido viral para tus redes sociales.</p>
+                <p class="mt-6 text-gray-500 text-sm italic">Expertos en propaganda con drones FPV. Transformamos tu visión en contenido viral.</p>
             </div>
-            
             <div class="flex flex-col items-center md:items-start space-y-6">
-                <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase">Conéctate con nosotros</h5>
-                <a href="https://instagram.com/austral.drone" target="_blank" class="social-link flex items-center space-x-4">
-                    <div class="p-2 rounded-xl bg-white/5 transition-all">
-                        <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/insta.png" alt="Instagram" class="social-logo">
-                    </div>
-                    <span class="text-xs font-bold text-gray-400 hover:text-white transition-colors tracking-widest font-orbitron uppercase">@AUSTRAL.DRONE</span>
+                <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase">Conexión Táctica</h5>
+                <a href="https://instagram.com/austral.drone" target="_blank" class="flex items-center space-x-4 group">
+                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/insta.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="Insta">
+                    <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors tracking-widest font-orbitron uppercase">@AUSTRAL.DRONE</span>
                 </a>
-                <a href="https://wa.me/56987491964" target="_blank" class="social-link flex items-center space-x-4">
-                    <div class="p-2 rounded-xl bg-white/5 transition-all">
-                        <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/pngegg.png" alt="WhatsApp" class="social-logo">
-                    </div>
-                    <span class="text-xs font-bold text-gray-400 hover:text-white transition-colors tracking-widest font-orbitron uppercase">+56 9 8749 1964</span>
+                <a href="https://wa.me/56987491964" target="_blank" class="flex items-center space-x-4 group">
+                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/pngegg.png" class="w-6 h-6 group-hover:scale-110 transition-transform" alt="WA">
+                    <span class="text-xs font-bold text-gray-400 group-hover:text-white transition-colors tracking-widest font-orbitron uppercase">+56 9 8749 1964</span>
                 </a>
             </div>
-
             <div class="flex flex-col space-y-4">
                 <h5 class="font-orbitron text-white text-[10px] tracking-[0.4em] uppercase italic">Operación Sur</h5>
                 <p class="text-[#25D366] text-sm font-bold flex items-center justify-center md:justify-start">
-                    <span class="radar-ping"></span> DISPONIBILIDAD PARA AGENDAR
+                    <span class="radar-ping"></span> ESTADO: ACTIVO
                 </p>
                 <p class="text-gray-500 text-[10px] uppercase tracking-tighter">Puerto Montt - Los Lagos</p>
             </div>
@@ -519,10 +617,26 @@
     <script>
         lucide.createIcons();
 
+        // Control de FAQ
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        const nav = document.querySelector('nav');
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
 
         menuToggle.addEventListener('click', () => { 
             mobileMenu.classList.add('active');
@@ -537,16 +651,25 @@
         menuClose.addEventListener('click', closeMenu);
         mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(el => {
-                var windowHeight = window.innerHeight;
-                var elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { el.classList.add("active"); }
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const availabilityText = document.getElementById('availability-text');
+        const hour = new Date().getHours();
+        if (hour >= 0 && hour < 8) {
+            availabilityText.innerText = "PRÓXIMOS VUELOS: AM - PUERTO MONTT";
         }
-        window.addEventListener("scroll", reveal);
-        reveal();
     </script>
+</body>
+</html>
 </body>
 </html>
