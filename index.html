@@ -9,7 +9,6 @@
     <title>Austral Drone | Marketing con Drone Inmobiliario y Publicidad FPV en Puerto Montt</title>
     
     <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/favicon.png">
-    
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/favicon.png">
 
     <meta name="description" content="Servicios de Drone, cinematografía aérea y marketing inmobiliario premium en Puerto Montt. Elevamos la imagen de tu negocio con recorridos FPV.">
@@ -30,6 +29,7 @@
             --text-dark: #1F2937;
             --bg-light: #FAFAF9;
             --whatsapp-green: #25D366;
+            --premium-gold: #FFD700;
         }
 
         /* --- Estética Global --- */
@@ -107,37 +107,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        /* --- Efecto Escáner Tecnológico (Suavizado) --- */
-        .scanner-container { position: relative; overflow: hidden; border-radius: 2rem; background: #FFFFFF; border: 1px solid rgba(0,0,0,0.05); }
-        .scanner-line {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(180deg, transparent, var(--pastel-blue), transparent);
-            box-shadow: 0 0 15px var(--pastel-blue);
-            animation: scan 5s ease-in-out infinite;
-            z-index: 20;
-            opacity: 0.5;
-        }
-        
-        @keyframes scan {
-            0%, 100% { top: 0%; opacity: 0; }
-            10%, 90% { opacity: 0.5; }
-            50% { top: 100%; }
-        }
-
-        .tech-dot {
-            position: absolute; width: 10px; height: 10px;
-            background: var(--pastel-blue); border-radius: 50%;
-            box-shadow: 0 0 10px var(--pastel-blue);
-            cursor: pointer; z-index: 30;
-            animation: pulse-dot 3s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0% { transform: scale(1); opacity: 0.6; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-
         /* --- Animaciones --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -153,11 +122,6 @@
             border-radius: 50%; animation: ping 2s infinite;
         }
         @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
-
-        .video-container { 
-            position: relative; width: 100%; height: 100%; 
-            background-color: #F3F4F6; 
-        }
         
         .animate-shimmer {
             background: linear-gradient(to right, #8CA3B0, #DCCBAE, #8CA3B0);
@@ -182,36 +146,6 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 200px;
-            gap: 1.5rem;
-        }
-        .bento-item {
-            position: relative;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.04);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .bento-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.06); transform: translateY(-5px); }
-        
-        .bento-video-main { grid-column: span 2; grid-row: span 3; }
-        .bento-card-sm { grid-column: span 1; grid-row: span 1; }
-        .bento-card-md { grid-column: span 2; grid-row: span 1; }
-
-        .future-project {
-            background: #FAFAF9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
         .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
         .faq-question {
             width: 100%; padding: 1.5rem 0;
@@ -226,163 +160,67 @@
         .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--pastel-blue); }
 
-        @media (max-width: 1024px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .bento-video-main { grid-column: span 2; grid-row: span 2; }
-        }
-
-        /* --- VANGUARDIA: TICKER TICKER TIPOGRÁFICO EDITORIAL --- */
+        /* --- TICKER TIPOGRÁFICO --- */
         .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background-color: #111827; /* Barra oscura elegante */
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            width: 100%; overflow: hidden; background-color: #111827; 
+            border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 0.75rem 0;
         }
-        .ticker-track {
-            display: flex;
-            width: max-content;
-            animation: ticker-scroll 45s linear infinite; /* Animación ligeramente más lenta para leer todo */
-        }
+        .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
         .ticker-item {
-            white-space: nowrap;
-            padding: 0 2rem;
-            color: #9CA3AF;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            white-space: nowrap; padding: 0 2rem; color: #9CA3AF;
+            font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500;
+            letter-spacing: 0.2em; text-transform: uppercase;
         }
         .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
         
-        @keyframes ticker-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- CSS PARA EL SIMULADOR DE REDES --- */
+        /* --- CSS SIMULADOR REDES --- */
         .social-simulator {
-            position: relative;
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-            aspect-ratio: 9/16;
-            background: #000;
-            border-radius: 40px;
-            border: 12px solid #1F2937;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
+            position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9/16;
+            background: #000; border-radius: 40px; border: 12px solid #1F2937;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden;
         }
-        
         .social-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
+            position: absolute; inset: 0; z-index: 10; pointer-events: none;
+            display: flex; flex-direction: column; justify-content: space-between; padding: 20px;
             background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 60%, rgba(0,0,0,0.9) 100%);
         }
+        .social-metrics { position: absolute; right: 15px; bottom: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+        .metric-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        .social-metrics {
-            position: absolute;
-            right: 15px;
-            bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .metric-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* Animación de "Me Gusta" falsos para impresionar */
         @keyframes floatUpHeart {
             0% { transform: translateY(0) scale(1); opacity: 0; }
             20% { opacity: 1; transform: scale(1.2); }
             100% { transform: translateY(-100px) scale(1); opacity: 0; }
         }
-
-        .floating-heart {
-            position: absolute;
-            bottom: 120px;
-            right: 20px;
-            color: #ff2a5f;
-            opacity: 0;
-            animation: floatUpHeart 3s ease-in-out infinite;
-        }
+        .floating-heart { position: absolute; bottom: 120px; right: 20px; color: #ff2a5f; opacity: 0; animation: floatUpHeart 3s ease-in-out infinite; }
         .fh-2 { animation-delay: 1.2s; right: 30px; font-size: 0.8rem; }
         .fh-3 { animation-delay: 2.5s; right: 10px; font-size: 1.2rem; }
 
-        /* Efecto de Flotación para insignias */
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-        .floating-element {
-            animation: floating 4s ease-in-out infinite;
-        }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .floating-element { animation: floating 4s ease-in-out infinite; }
         
         /* --- ESTILOS DEL SIMULADOR ROI --- */
-        .roi-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 12px;
-            border-radius: 6px;
-            background: #e5e7eb;
-            outline: none;
-            transition: background 0.1s;
-        }
-
+        .roi-slider { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 6px; background: #e5e7eb; outline: none; transition: background 0.1s; }
         .roi-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--text-dark);
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
-            border: 3px solid white;
+            -webkit-appearance: none; appearance: none; width: 32px; height: 32px; border-radius: 50%;
+            background: var(--text-dark); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; border: 3px solid white;
         }
-
-        .roi-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            background: var(--pastel-blue);
-        }
-
+        .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); background: var(--pastel-blue); }
         .roi-slider::-moz-range-thumb {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--text-dark);
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 3px solid white;
+            width: 32px; height: 32px; border-radius: 50%; background: var(--text-dark); cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 3px solid white;
             transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
         }
-        
-        .roi-slider::-moz-range-thumb:hover {
-            transform: scale(1.2);
-            background: var(--pastel-blue);
-        }
+        .roi-slider::-moz-range-thumb:hover { transform: scale(1.2); background: var(--pastel-blue); }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
         <i data-lucide="message-circle" class="w-8 h-8"></i>
     </a>
 
@@ -402,9 +240,10 @@
             <div class="hidden lg:flex space-x-8 font-orbitron text-[11px] tracking-[0.15em] font-medium items-center">
                 <a href="#inicio" class="hover:text-[#8CA3B0] transition text-gray-600">INICIO</a>
                 
-                <a href="#masterplan" class="relative flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#CCFF00]/10 border border-[#CCFF00] hover:bg-[#CCFF00] transition-all duration-400 group shadow-[0_0_10px_rgba(204,255,0,0.15)] hover:shadow-[0_0_20px_rgba(204,255,0,0.4)]">
-                    <i data-lucide="sparkles" class="w-3 h-3 text-[#99CC00] group-hover:text-black animate-pulse transition-colors"></i>
-                    <span class="font-bold text-gray-600 group-hover:text-black tracking-[0.2em] transition-colors">MASTERPLAN 360°</span>
+                <a href="#masterplan" class="relative flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-black to-[#111827] border border-[#FFD700] hover:from-[#FFD700] hover:to-[#FBBF24] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.25)] hover:shadow-[0_0_30px_rgba(255,215,0,0.6)] overflow-hidden">
+                    <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFD700] group-hover:text-black transition-colors relative z-10"></i>
+                    <span class="font-bold text-[#FFD700] group-hover:text-black tracking-[0.2em] transition-colors relative z-10">MASTERPLAN 360°</span>
                 </a>
                 
                 <a href="#precios" class="hover:text-[#DCCBAE] transition text-[#CBB99C] font-bold uppercase">SERVICIOS</a>
@@ -417,7 +256,7 @@
                 <a href="https://wa.me/56987491964" target="_blank" class="btn-luxury px-6 py-2.5 rounded-full font-bold text-[11px] font-orbitron tracking-widest hidden sm:block">
                     CONVERSAR
                 </a>
-                <button id="menu-toggle" class="lg:hidden flex items-center gap-2 p-2 rounded-lg bg-[#8CA3B0]/10 border border-[#8CA3B0]/20 animate-pulse shadow-[0_0_10px_rgba(140,163,176,0.2)]">
+                <button id="menu-toggle" aria-label="Abrir menú de navegación" class="lg:hidden flex items-center gap-2 p-2 rounded-lg bg-[#8CA3B0]/10 border border-[#8CA3B0]/20 animate-pulse shadow-[0_0_10px_rgba(140,163,176,0.2)]">
                     <span class="font-orbitron text-[9px] font-bold text-gray-700 tracking-widest uppercase">Menú</span>
                     <i data-lucide="menu" class="w-6 h-6 text-gray-900"></i>
                 </button>
@@ -428,16 +267,17 @@
     <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
         <div class="flex justify-between items-center p-6 border-b border-gray-100">
             <span class="font-orbitron text-sm font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
-            <button id="menu-close" class="text-gray-900 p-2">
+            <button id="menu-close" aria-label="Cerrar menú de navegación" class="text-gray-900 p-2">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
         </div>
         <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em]">
             <a href="#inicio" class="mobile-link text-gray-600">INICIO</a>
             
-            <a href="#masterplan" class="mobile-link flex items-center gap-3 w-fit px-5 py-2.5 rounded-full bg-[#CCFF00]/10 border border-[#CCFF00] hover:bg-[#CCFF00] transition-all duration-300 group shadow-[0_0_15px_rgba(204,255,0,0.1)]">
-                <i data-lucide="sparkles" class="w-4 h-4 text-[#99CC00] group-hover:text-black animate-pulse transition-colors"></i>
-                <span class="font-bold text-gray-600 group-hover:text-black transition-colors">MASTERPLAN 360°</span>
+            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#111827] border border-[#FFD700] hover:from-[#FFD700] hover:to-[#FBBF24] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.25)] overflow-hidden">
+                <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700] group-hover:text-black transition-colors relative z-10"></i>
+                <span class="font-bold text-[#FFD700] group-hover:text-black transition-colors relative z-10">MASTERPLAN 360°</span>
             </a>
             
             <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase">SERVICIOS</a>
@@ -467,13 +307,13 @@
             </div>
 
             <h1 class="font-orbitron font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
-                <span class="block text-4xl sm:text-5xl md:text-6xl">ELEVAMOS LA IMAGEN</span>
-                <span class="block text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">DE TU MARCA</span>
-                <span class="block text-4xl sm:text-5xl md:text-6xl">AL SIGUIENTE NIVEL</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl">MARKETING CON DRONES</span>
+                <span class="block text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">Y CINEMATOGRAFÍA FPV</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl">EN PUERTO MONTT</span>
             </h1>
 
             <p class="text-sm md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
-                Aplicamos <strong class="font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">ciencia visual a los bienes raíces</strong>. Mediante planos aéreos cinematográficos y <strong class="font-semibold text-gray-800">trayectorias FPV en una sola toma</strong>, generamos un impacto inmersivo que aumenta hasta en un <span class="text-[#8CA3B0] font-bold">80% el recuerdo de marca</span>. El contenido perfecto para redes sociales, diseñado estratégicamente para <strong class="font-semibold text-gray-800">filtrar curiosos y acelerar la venta</strong> de parcelas y propiedades exclusivas.
+                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="font-semibold text-gray-800">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para <strong class="text-[#8CA3B0] font-bold">redes sociales (Instagram y TikTok)</strong>, ayudando a las <strong class="font-semibold text-gray-800">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 300ms;">
@@ -533,14 +373,14 @@
         <div class="max-w-7xl mx-auto flex flex-col items-center">
             
             <div class="text-center reveal max-w-4xl mx-auto">
-                <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">¿POR QUÉ <span class="text-[#8CA3B0] font-light">ELEGIRNOS?</span></h2>
+                <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PUBLICIDAD AÉREA PARA <span class="text-[#8CA3B0] font-light">CORREDORAS Y MARCAS</span></h2>
                 <div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto mb-8"></div>
                 
                 <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">
                     Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0]">TikTok, Instagram y Facebook</strong>.
                 </p>
                 <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">
-                    Entendemos el ADN de tu negocio para transformarlo en una experience visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva. 
+                    Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva. 
                 </p>
                 <p class="text-sm md:text-base font-medium text-[#1F2937] bg-[#DCCBAE]/10 p-6 rounded-2xl border border-[#DCCBAE]/30 mt-8 shadow-sm">
                     No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <mark class="bg-transparent text-[#8CA3B0] font-bold">aumenta un 80% el recuerdo de la marca o propiedad</mark> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <mark class="bg-transparent text-[#8CA3B0] font-bold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</mark>, mediante la tecnología que domina los algoritmos de 2026.
@@ -810,6 +650,7 @@
                     
                     <div class="relative bg-black rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl aspect-video w-full">
                         <iframe 
+                            loading="lazy"
                             class="absolute inset-0 w-full h-full z-10" 
                             src="https://www.youtube.com/embed/jWwg7QaQqoI?rel=0&modestbranding=1" 
                             title="Video en colaboración con Terragestion.cl" 
@@ -1149,7 +990,7 @@
                         <i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer">
-                        Absolutamente. Utilizamos tecnología diseñada específicamente para interiores, con protecciones integrales y sensores de precisión. Operamos con total sutileza, garantizando la seguridad de sus espacios and clientes mientras capturamos imágenes espectaculares.
+                        Absolutamente. Utilizamos tecnología diseñada específicamente para interiores, con protecciones integrales y sensores de precisión. Operamos con total sutileza, garantizando la seguridad de sus espacios y clientes mientras capturamos imágenes espectaculares.
                     </div>
                 </div>
 
