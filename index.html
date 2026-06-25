@@ -41,15 +41,11 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
         .font-orbitron { font-family: 'Montserrat', sans-serif; }
         
-        /* ======================================================== */
-        /* 🍏 DOCK: CRISTAL GRIS AHUMADO (MÁS TRANSPARENTE)         */
-        /* ======================================================== */
         .mac-dock-wrapper {
             position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .mac-dock {
             display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem; border-radius: 9999px;
-            /* Cristal ultratransparente para efecto lujoso */
             background: rgba(45, 50, 56, 0.35); 
             backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -80,9 +76,6 @@
         .btn-luxury-sand { background: linear-gradient(135deg, #DCCBAE 0%, #CBB99C 100%); color: #111827; box-shadow: 0 4px 15px rgba(220, 203, 174, 0.3), inset 0 1px 1px rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.4); transition: all 0.4s ease; }
         .btn-luxury-sand:hover { box-shadow: 0 10px 25px rgba(220, 203, 174, 0.6), inset 0 1px 1px rgba(255,255,255,0.8); }
 
-        /* ======================================================== */
-        /* MENÚ MÓVIL macOS STYLE Y RESTO DE ESTILOS                */
-        /* ======================================================== */
         #mobile-menu {
             transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); 
             background: rgba(45, 50, 56, 0.9); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -115,10 +108,18 @@
         .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--pastel-blue); }
 
-        /* TICKER TIPOGRÁFICO FINO */
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111827; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 0; }
+        /* ======================================================== */
+        /* 💎 TICKER: AHORA ES CRISTAL TRANSPARENTE ELEGANTE        */
+        /* ======================================================== */
+        .ticker-wrap { 
+            width: 100%; overflow: hidden; 
+            background: rgba(17, 24, 39, 0.65); /* Cristal Oscuro */
+            backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); 
+            padding: 0.75rem 0; 
+        }
         .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
-        .ticker-item { white-space: nowrap; padding: 0 2rem; color: rgba(255,255,255,0.4); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; -webkit-text-stroke: 0; }
+        .ticker-item { white-space: nowrap; padding: 0 2rem; color: rgba(255,255,255,0.7); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; -webkit-text-stroke: 0; }
         .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
         @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -144,11 +145,10 @@
         <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md"><path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/></svg>
     </a>
 
-    <!-- MAC OS DOCK: GRIS AHUMADO 50% MÁS TRANSPARENTE -->
+    <!-- MAC OS DOCK -->
     <div class="mac-dock-wrapper" id="dock-wrapper">
         <nav class="mac-dock">
             
-            <!-- Logo encapsulado en píldora blanca (Estático) -->
             <div class="dock-logo-static">
                 <a href="#inicio" class="flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(255,255,255,1),_0_4px_10px_rgba(0,0,0,0.15)] border border-gray-100 transition-opacity hover:opacity-90">
                     <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-6 w-auto object-contain">
@@ -158,7 +158,6 @@
                 </a>
             </div>
             
-            <!-- Enlaces centrales -->
             <div class="hidden lg:flex items-center gap-1 px-4">
                 <div class="dock-item">
                     <a href="#inicio" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">INICIO</a>
@@ -180,7 +179,7 @@
 
                 <div class="dock-item">
                     <a href="#tecnologia" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">ENFOQUE</a>
-                    <div class="mac-tooltip">Nuestra Metodología</div><div class="dock-indicator"></div>
+                    <div class="mac-tooltip">Nuestra Tecnología</div><div class="dock-indicator"></div>
                 </div>
 
                 <div class="dock-item">
@@ -189,7 +188,6 @@
                 </div>
             </div>
 
-            <!-- Botones (Derecha) -->
             <div class="flex items-center gap-3 pl-3 border-l border-white/10">
                 <div class="dock-item hidden sm:flex">
                     <a href="https://wa.me/56987491964" target="_blank" class="btn-luxury-sand px-5 py-2 rounded-full font-bold text-[10px] font-orbitron tracking-widest">CONVERSAR</a>
@@ -203,8 +201,8 @@
         </nav>
     </div>
 
-    <!-- MENÚ MÓVIL (Estilo macOS Transparente Oscuro) -->
-    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
+    <!-- MENÚ MÓVIL DARK MAC -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden border-l border-white/10">
         <div class="flex justify-between items-center p-6 border-b border-white/10">
             <span class="font-orbitron text-sm font-bold text-white">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
             <button id="menu-close" aria-label="Cerrar menú de navegación" class="text-white p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
@@ -225,7 +223,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (Light Mode Original con Cards Centradas & Visibles en Móvil) -->
+    <!-- HERO SECTION (Light Mode Original con Tarjetas Centradas Móvil) -->
     <section id="inicio" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-white pb-10">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 grayscale scale-105 pointer-events-none">
@@ -240,7 +238,6 @@
                 <span class="text-gray-100 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Imágenes Aéreas con Drone y FPV</span>
             </div>
 
-            <!-- Slogan con tamaño armónico para móvil y escritorio -->
             <h1 class="font-orbitron font-bold text-[#111827] mb-6 leading-[1.1] tracking-tighter text-center reveal w-full max-w-4xl mx-auto" style="transition-delay: 100ms;">
                 <span class="block text-3xl sm:text-5xl md:text-6xl">MARKETING CON DRONES</span>
                 <span class="block text-3xl sm:text-5xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">Y CINEMATOGRAFÍA FPV</span>
@@ -265,7 +262,6 @@
             </div>
         </div>
 
-        <!-- Tarjetas DJI / Formatos Visibles y Centradas (Se apilan en móvil, 3 columnas en PC) -->
         <div class="relative z-20 w-full max-w-6xl px-4 lg:px-6 reveal mt-auto" style="transition-delay: 400ms;">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="bg-white/60 backdrop-blur-xl border border-white/50 shadow-[0_10px_40px_rgba(0,0,0,0.04)] rounded-[1.5rem] p-6 flex flex-col sm:flex-row items-center text-center sm:text-left gap-4 group transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:bg-white/80">
@@ -296,28 +292,77 @@
         </div>
     </section>
     
-    <!-- TICKER BAR (Línea Fina y Elegante) -->
-    <div class="ticker-wrap">
+    <!-- ======================================================== -->
+    <!-- 💎 TICKER: CRISTAL TRANSPARENTE EN SECCIÓN ENFOQUE     -->
+    <!-- ======================================================== -->
+    <div class="ticker-wrap relative z-20">
         <div class="ticker-track">
             <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
             <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
         </div>
     </div>
 
-    <!-- SECCIÓN ENFOQUE (Original) -->
-    <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-y border-gray-100">
-        <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <div class="text-center reveal max-w-4xl mx-auto">
-                <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PUBLICIDAD AÉREA PARA <span class="text-[#8CA3B0] font-light">CORREDORAS Y MARCAS</span></h2>
-                <div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto mb-8"></div>
-                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0]">TikTok, Instagram y Facebook</strong>.</p>
-                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva. </p>
-                <p class="text-sm md:text-base font-medium text-[#1F2937] bg-[#DCCBAE]/10 p-6 rounded-2xl border border-[#DCCBAE]/30 mt-8 shadow-sm">No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <mark class="bg-transparent text-[#8CA3B0] font-bold">aumenta un 80% el recuerdo de la marca o propiedad</mark> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <mark class="bg-transparent text-[#8CA3B0] font-bold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</mark>, mediante la tecnología que domina los algoritmos de 2026.</p>
+    <!-- ======================================================== -->
+    <!-- 🚀 NUEVA SECCIÓN ENFOQUE (DISEÑO macOS TARJETAS)         -->
+    <!-- ======================================================== -->
+    <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-y border-gray-200">
+        <!-- Fondos abstractos macOS style -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#8CA3B0]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#DCCBAE]/15 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Título Central -->
+            <div class="text-center reveal mb-16">
+                <span class="text-[#8CA3B0] font-orbitron text-[10px] tracking-[0.4em] uppercase mb-4 block font-bold">Nuestra Metodología</span>
+                <h2 class="font-orbitron text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tighter">
+                    PUBLICIDAD AÉREA PARA <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8CA3B0] to-[#CBB99C]">CORREDORAS Y MARCAS</span>
+                </h2>
+            </div>
+
+            <!-- Grid de Tarjetas macOS Style -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Tarjeta 1: El Objetivo (Ancha) -->
+                <div class="lg:col-span-2 reveal p-8 md:p-10 bg-white/70 backdrop-blur-2xl rounded-3xl border border-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500">
+                    <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FAFAF9] to-gray-100 border border-gray-200 flex items-center justify-center shrink-0 shadow-sm">
+                            <i data-lucide="compass" class="w-7 h-7 text-[#8CA3B0]"></i>
+                        </div>
+                        <div>
+                            <p class="text-base md:text-lg text-gray-600 font-light leading-relaxed text-center md:text-left">
+                                Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-900">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0] font-medium">TikTok, Instagram y Facebook</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: El ADN del Negocio -->
+                <div class="reveal p-8 bg-white/70 backdrop-blur-2xl rounded-3xl border border-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col h-full items-center text-center md:items-start md:text-left" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FAFAF9] to-gray-100 border border-gray-200 flex items-center justify-center mb-6 shadow-sm">
+                        <i data-lucide="dna" class="w-6 h-6 text-[#CBB99C]"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed flex-grow">
+                        Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-900">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-900">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-900">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3: La Ciencia (Destacada Oscura/Cristal) -->
+                <div class="reveal p-8 bg-gradient-to-br from-[#111827] to-[#1F2937] rounded-3xl border border-gray-800 shadow-[0_15px_40px_rgba(17,24,39,0.2)] hover:shadow-[0_20px_50px_rgba(17,24,39,0.3)] transition-all duration-500 flex flex-col h-full relative overflow-hidden items-center text-center md:items-start md:text-left" style="transition-delay: 200ms;">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-[#DCCBAE]/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center mb-6 backdrop-blur-md">
+                        <i data-lucide="flask-conical" class="w-6 h-6 text-[#DCCBAE]"></i>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed flex-grow relative z-10">
+                        No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <span class="text-white font-semibold border-b border-[#DCCBAE]/50">aumenta un 80% el recuerdo de la marca o propiedad</span> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <span class="text-[#8CA3B0] font-semibold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</span>, mediante la tecnología que domina los algoritmos de 2026.
+                    </p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- PORTAFOLIO: TARJETAS CON FÍSICA 3D (SOCIAL MEDIA SIMULATOR) -->
+    <!-- PORTAFOLIO -->
     <section id="portfolio" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-gradient-to-b from-[#8CA3B0]/10 to-transparent blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DCCBAE]/5 rounded-full blur-[120px] pointer-events-none"></div>
@@ -396,7 +441,7 @@
         </div>
     </section>
 
-    <!-- INMOBILIARIAS (Original) -->
+    <!-- INMOBILIARIAS -->
     <section id="inmobiliarias" class="py-32 px-6 bg-[#111827] relative overflow-hidden border-y border-white/5">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"><div class="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-[#DCCBAE]/10 rounded-full blur-[120px]"></div><div class="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-[#8CA3B0]/10 rounded-full blur-[100px]"></div></div>
         <div class="max-w-7xl mx-auto relative z-10">
@@ -407,7 +452,7 @@
         </div>
     </section>
 
-    <!-- 🌟 MASTERPLAN 360 (DISEÑO macOS PRO) -->
+    <!-- MASTERPLAN 360 (DISEÑO macOS PRO) -->
     <section id="masterplan" class="py-32 px-6 bg-[#050505] relative overflow-hidden border-t border-white/5">
         <div class="absolute top-1/2 left-1/4 w-[800px] h-[800px] bg-[#8CA3B0]/10 rounded-full blur-[150px] -translate-y-1/2 pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#FFD700]/5 rounded-full blur-[120px] pointer-events-none"></div>
@@ -460,11 +505,7 @@
                         <div class="absolute -inset-1 bg-gradient-to-tr from-[#FFD700]/30 via-[#DCCBAE]/10 to-[#8CA3B0]/30 rounded-[2.2rem] blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
                         <div class="relative w-full h-full bg-[#050505] rounded-[2rem] overflow-hidden border border-black flex flex-col">
                             <div class="h-8 bg-[#111827] flex items-center px-4 border-b border-white/5">
-                                <div class="flex gap-1.5">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-                                </div>
+                                <div class="flex gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div><div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div><div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div></div>
                                 <div class="mx-auto text-[9px] text-gray-500 font-medium tracking-widest font-orbitron">AUSTRAL DRONE ENGINE v2.0</div>
                             </div>
                             <div class="relative flex-1 w-full bg-black">
@@ -477,7 +518,7 @@
         </div>
     </section>
 
-    <!-- PRECIOS Y COTIZADOR ROI (Original) -->
+    <!-- PRECIOS Y COTIZADOR ROI -->
     <section id="precios" class="py-32 px-6 bg-[#F3F4F6] relative overflow-hidden border-t border-gray-200">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal"><h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">TARIFAS Y <span class="text-[#DCCBAE] font-light">PLANES DE INVERSIÓN</span></h2><div class="h-[2px] w-16 bg-[#8CA3B0] mx-auto mb-6"></div><p class="text-gray-500 font-orbitron text-[11px] tracking-[0.2em] uppercase text-center mx-auto">Propuestas de marketing de alto impacto para el Sur de Chile</p></div>
@@ -525,7 +566,6 @@
         </div>
     </section>
 
-    <!-- FAQ Original -->
     <section id="faq" class="py-32 px-6 bg-[#FAFAF9]">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-20 reveal"><h2 class="font-orbitron text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PREGUNTAS <span class="text-[#8CA3B0] font-light">FRECUENTES</span></h2><div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto"></div></div>
@@ -538,7 +578,6 @@
         </div>
     </section>
 
-    <!-- FOOTER ORIGINAL -->
     <footer class="bg-white py-20 px-6 border-t border-gray-200 relative overflow-hidden">
         <div class="absolute inset-0 z-0 pointer-events-none"><img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" class="w-full h-full object-cover opacity-[0.07] grayscale" alt="Background Austral Drone"></div>
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 text-center md:text-left relative z-10">
@@ -552,7 +591,6 @@
     <script>
         lucide.createIcons();
 
-        /* Vanilla Tilt (Portafolio 3D Social Media) */
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
             max: 12, speed: 400, perspective: 1000,
         });
@@ -566,7 +604,6 @@
             });
         });
 
-        // LÓGICA DEL MAC OS DOCK
         const navWrapper = document.getElementById('dock-wrapper');
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
