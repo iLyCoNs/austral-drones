@@ -17,12 +17,11 @@
     
     <link class="canonical" href="https://australdrone.cl/">
 
-    <!-- Tailwind & Fuentes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Librería Física 3D (El Secreto del video de YouTube) -->
+    <!-- Librería para la Física 3D del Portafolio -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <style>
@@ -36,101 +35,97 @@
         }
 
         ::selection { background: var(--luxury-sand); color: #fff; }
+        
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111827; }
-        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 10px; border: 2px solid #111827; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 10px; border: 2px solid #F3F4F6; }
         ::-webkit-scrollbar-thumb:hover { background: var(--pastel-blue); }
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
         .font-orbitron { font-family: 'Montserrat', sans-serif; }
         
         /* ======================================================== */
-        /* 🍎 MAC OS "AQUA GLASS" DOCK */
+        /* 🍏 NUEVO DOCK: CRISTAL GRIS AHUMADO (SMOKY GRAY GLASS)   */
         /* ======================================================== */
-        .mac-dock-wrapper { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        .mac-dock { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem; border-radius: 9999px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.75) 0%, rgba(140, 163, 176, 0.25) 50%, rgba(17, 24, 39, 0.75) 100%); backdrop-filter: blur(28px) saturate(200%); -webkit-backdrop-filter: blur(28px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.5); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .mac-dock-wrapper.scrolled .mac-dock { background: linear-gradient(90deg, rgba(10, 15, 25, 0.85) 0%, rgba(140, 163, 176, 0.35) 50%, rgba(10, 15, 25, 0.85) 100%); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3); border-color: rgba(255, 255, 255, 0.1); }
+        .mac-dock-wrapper {
+            position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .mac-dock {
+            display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem; border-radius: 9999px;
+            /* Cristal Gris Transparente inspirado en la píldora */
+            background: rgba(45, 50, 56, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mac-dock-wrapper.scrolled .mac-dock {
+            background: rgba(30, 34, 40, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
         
+        /* Física de los botones del Dock */
         .dock-item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
         .dock-item:hover { transform: scale(1.15) translateY(-4px); z-index: 10; }
+        
         .dock-indicator { position: absolute; bottom: -6px; width: 4px; height: 4px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.8); box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
         .dock-item:hover .dock-indicator { opacity: 1; transform: scale(1); }
 
+        /* Burbuja Tooltip */
         .mac-tooltip { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(-10px) scale(0.9); opacity: 0; pointer-events: none; background: rgba(25, 25, 28, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); color: #E5E7EB; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.05em; white-space: nowrap; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .mac-tooltip::before { content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border-width: 6px; border-style: solid; border-color: transparent transparent rgba(25, 25, 28, 0.95) transparent; }
         .dock-item:hover .mac-tooltip { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-        .dock-text { color: rgba(255, 255, 255, 0.6); transition: color 0.3s ease, text-shadow 0.3s ease; }
+        
+        /* Textos del Dock en Gris Claro para contrastar con el fondo oscuro */
+        .dock-text { color: rgba(255, 255, 255, 0.7); transition: color 0.3s ease, text-shadow 0.3s ease; }
         .dock-item:hover .dock-text { color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
 
         .btn-luxury-sand { background: linear-gradient(135deg, #DCCBAE 0%, #CBB99C 100%); color: #111827; box-shadow: 0 4px 15px rgba(220, 203, 174, 0.3), inset 0 1px 1px rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.4); transition: all 0.4s ease; }
         .btn-luxury-sand:hover { box-shadow: 0 10px 25px rgba(220, 203, 174, 0.6), inset 0 1px 1px rgba(255,255,255,0.8); }
 
         /* ======================================================== */
-        /* 🚀 LÓGICA DE CAPAS 3D (TILT PARALLAX) */
+        /* RESTO DE ESTILOS (MODO CLARO ORIGINAL)                   */
         /* ======================================================== */
-        .drone-3d-card {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: box-shadow 0.5s ease;
-        }
-        
-        /* El fondo de la tarjeta */
-        .drone-bg-layer {
-            transform: translateZ(0px); /* Nivel 0 */
-            transition: all 0.5s ease;
-        }
-
-        /* Los textos flotan un poco (Nivel 1) */
-        .drone-text-layer {
-            transform: translateZ(50px);
-            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        /* EL DRONE FLOTA FUERA DE LA PANTALLA (Nivel 2) */
-        .drone-model-layer {
-            transform: translateZ(120px) scale(1.05);
-            filter: drop-shadow(0 30px 25px rgba(0,0,0,0.6));
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        
-        .drone-3d-card:hover .drone-model-layer {
-            transform: translateZ(160px) scale(1.1); /* Efecto pop-out al hover */
-        }
-        
-        /* Brillo de reflejo */
-        .drone-glow {
-            position: absolute; width: 150px; height: 150px; background: var(--pastel-blue); border-radius: 50%;
-            filter: blur(80px); opacity: 0; transition: opacity 0.5s; transform: translateZ(-10px);
-        }
-        .drone-3d-card:hover .drone-glow { opacity: 0.4; }
-
-        /* Resto de estilos */
-        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: #111827; z-index: 9999 !important; }
+        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: #FFFFFF; z-index: 9999 !important; }
         #mobile-menu.active { transform: translateX(0); }
         
         .whatsapp-glass { position: fixed; bottom: 30px; right: 30px; background: rgba(37, 211, 102, 0.35); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2); z-index: 900; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .whatsapp-glass:hover { transform: scale(1.15) translateY(-5px); background: rgba(37, 211, 102, 0.6); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4); border: 1px solid rgba(255, 255, 255, 0.6); }
 
-        .mac-widget { background: rgba(30, 30, 35, 0.4); backdrop-filter: blur(24px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-        .mac-widget:hover { background: rgba(45, 45, 50, 0.6); border: 1px solid rgba(255, 255, 255, 0.25); transform: translateY(-5px) scale(1.02); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
-
         .price-card { transition: all 0.5s ease; background: #FFFFFF; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; height: 100%; }
         .price-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .animate-shimmer { background: linear-gradient(to right, #8CA3B0, #DCCBAE, #8CA3B0); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: shimmer-flow 6s linear infinite; }
+        
+        .radar-ping { display: inline-block; width: 8px; height: 8px; background-color: var(--whatsapp-green); border-radius: 50%; position: relative; margin-right: 10px; }
+        .radar-ping::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: var(--whatsapp-green); border-radius: 50%; animation: ping 2s infinite; }
+        @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+        
+        .animate-shimmer { background: linear-gradient(to right, #1F2937, #8CA3B0, #1F2937); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: shimmer-flow 6s linear infinite; }
         @keyframes shimmer-flow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #050505; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 0; }
-        .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
-        .ticker-item { white-space: nowrap; padding: 0 2rem; color: rgba(255,255,255,0.3); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
-        .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
-        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
         .faq-question { width: 100%; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; text-align: left; transition: color 0.3s ease; color: var(--text-dark); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); color: #4B5563; font-size: 0.95rem; line-height: 1.7; }
         .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--pastel-blue); }
+
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111827; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 0; }
+        .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
+        .ticker-item { white-space: nowrap; padding: 0 2rem; color: #9CA3AF; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+        .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .social-simulator { position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9/16; background: #000; border-radius: 40px; border: 12px solid #1F2937; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden; transform-style: preserve-3d; }
+        .social-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 60%, rgba(0,0,0,0.9) 100%); transform: translateZ(30px); }
+        .social-metrics { position: absolute; right: 15px; bottom: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center; transform: translateZ(40px); }
+        .metric-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        @keyframes floatUpHeart { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: 1; transform: scale(1.2); } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
+        .floating-heart { position: absolute; bottom: 120px; right: 20px; color: #ff2a5f; opacity: 0; animation: floatUpHeart 3s ease-in-out infinite; }
+        .fh-2 { animation-delay: 1.2s; right: 30px; font-size: 0.8rem; }
+        .fh-3 { animation-delay: 2.5s; right: 10px; font-size: 1.2rem; }
 
         .roi-slider { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 6px; background: #e5e7eb; outline: none; transition: background 0.1s; }
         .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 32px; height: 32px; border-radius: 50%; background: var(--text-dark); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; border: 3px solid white; }
@@ -139,16 +134,18 @@
 </head>
 <body>
 
-    <!-- BOTÓN WHATSAPP -->
+    <!-- BOTÓN WHATSAPP CRISTAL -->
     <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-glass" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md"><path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/></svg>
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md">
+            <path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/>
+        </svg>
     </a>
 
-    <!-- MAC OS DOCK NAVBAR MAESTRO -->
+    <!-- MAC OS DOCK: GRIS AHUMADO TRANSPARENTE -->
     <div class="mac-dock-wrapper" id="dock-wrapper">
         <nav class="mac-dock">
             
-            <!-- EL LOGO REDISEÑADO: CÁPSULA DE LUZ (Pill inside a Pill) -->
+            <!-- Logo encapsulado en píldora blanca para contraste total -->
             <div class="dock-item group pl-1.5 pr-4 py-1 border-r border-white/10">
                 <a href="#inicio" class="flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(255,255,255,1),_0_4px_10px_rgba(0,0,0,0.15)] border border-gray-100 transition-transform duration-300">
                     <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-6 w-auto object-contain">
@@ -160,28 +157,31 @@
                 <div class="dock-indicator" style="background: #ffffff; box-shadow: 0 0 8px #ffffff;"></div>
             </div>
             
-            <!-- Enlaces (Centro) -->
+            <!-- Enlaces centrales en gris claro -->
             <div class="hidden lg:flex items-center gap-1 px-4">
                 <div class="dock-item">
                     <a href="#inicio" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">INICIO</a>
                     <div class="mac-tooltip">Volver arriba</div><div class="dock-indicator"></div>
                 </div>
+                
                 <div class="dock-item mx-2">
-                    <a href="#masterplan" class="px-4 py-1.5 rounded-full flex items-center gap-1.5 bg-gradient-to-r from-[#111827] to-black border border-[#FFD700]/40 shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:border-[#FFD700] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all">
+                    <a href="#masterplan" class="px-4 py-1.5 rounded-full flex items-center gap-1.5 bg-gradient-to-r from-black/80 to-[#111827] border border-[#FFD700]/40 shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:border-[#FFD700] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFD700]"></i>
                         <span class="font-bold text-[#FFD700] text-[10px] font-orbitron tracking-[0.1em]">MASTERPLAN</span>
                     </a>
                     <div class="mac-tooltip">Interactuar 360°</div><div class="dock-indicator" style="background: #FFD700; box-shadow: 0 0 8px #FFD700;"></div>
                 </div>
-                <!-- Nuevo Enlace para la Flota -->
-                <div class="dock-item">
-                    <a href="#flota-hangar" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em] text-white">FLOTA 3D</a>
-                    <div class="mac-tooltip">Ver Simulador de Vuelo</div><div class="dock-indicator"></div>
-                </div>
+
                 <div class="dock-item">
                     <a href="#precios" class="px-3 py-2 font-orbitron text-[10px] font-semibold text-[#DCCBAE] tracking-[0.1em] hover:text-white transition-colors">SERVICIOS</a>
                     <div class="mac-tooltip">Ver Tarifas</div><div class="dock-indicator" style="background: #DCCBAE; box-shadow: 0 0 8px #DCCBAE;"></div>
                 </div>
+
+                <div class="dock-item">
+                    <a href="#tecnologia" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">ENFOQUE</a>
+                    <div class="mac-tooltip">Nuestra Tecnología</div><div class="dock-indicator"></div>
+                </div>
+
                 <div class="dock-item">
                     <a href="#portfolio" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">PORTAFOLIO</a>
                     <div class="mac-tooltip">Ver Casos de Éxito</div><div class="dock-indicator"></div>
@@ -202,201 +202,118 @@
         </nav>
     </div>
 
-    <!-- MENÚ MÓVIL DARK -->
-    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden border-l border-white/10">
-        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-[#111827]">
-            <span class="font-orbitron text-sm font-bold text-white">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
-            <button id="menu-close" aria-label="Cerrar menú" class="text-white p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
+    <!-- MENÚ MÓVIL CLÁSICO -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100">
+            <span class="font-orbitron text-sm font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
+            <button id="menu-close" aria-label="Cerrar menú de navegación" class="text-gray-900 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
         </div>
-        <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em] bg-[#111827] flex-grow">
-            <a href="#inicio" class="mobile-link text-gray-400 hover:text-white">INICIO</a>
-            <a href="#flota-hangar" class="mobile-link text-white font-bold">FLOTA 3D</a>
-            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#1F2937] border border-[#FFD700]/50 hover:border-[#FFD700] transition-all shadow-[0_0_15px_rgba(255,215,0,0.15)]"><i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700]"></i><span class="font-bold text-[#FFD700]">MASTERPLAN 360°</span></a>
-            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase hover:text-white">SERVICIOS</a>
-            <a href="#tecnologia" class="mobile-link text-gray-400 hover:text-white">ENFOQUE</a>
-            <a href="#portfolio" class="mobile-link text-gray-400 hover:text-white">PORTAFOLIO</a>
+        <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em]">
+            <a href="#inicio" class="mobile-link text-gray-600">INICIO</a>
+            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#111827] border border-[#FFD700] hover:from-[#FFD700] hover:to-[#FBBF24] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.25)] overflow-hidden">
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700] group-hover:text-black transition-colors relative z-10"></i>
+                <span class="font-bold text-[#FFD700] group-hover:text-black transition-colors relative z-10">MASTERPLAN 360°</span>
+            </a>
+            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase">SERVICIOS</a>
+            <a href="#tecnologia" class="mobile-link text-gray-600">ENFOQUE</a>
+            <a href="#portfolio" class="mobile-link text-gray-600">PORTAFOLIO</a>
+            <a href="#faq" class="mobile-link text-gray-600">FAQ</a>
         </div>
-        <div class="mt-auto p-10 bg-[#111827]">
-            <a href="https://wa.me/56987491964" target="_blank" class="block w-full btn-luxury-sand py-4 rounded-full font-bold text-center font-orbitron text-xs tracking-widest">AGENDAR REUNIÓN</a>
+        <div class="mt-auto p-10">
+            <a href="https://wa.me/56987491964" target="_blank" class="block w-full bg-[#DCCBAE] text-white py-4 rounded-full font-bold text-center font-orbitron text-xs">AGENDAR REUNIÓN</a>
         </div>
     </div>
 
-    <!-- HERO SECTION CINEMATIC -->
-    <section id="inicio" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-black">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 scale-105 pointer-events-none mix-blend-luminosity"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4"></video>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/50 via-transparent to-[#050505]"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#8CA3B0]/10 via-transparent to-transparent"></div>
+    <!-- HERO SECTION (Light Mode Original) -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 bg-white">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-[0.35] grayscale scale-105 pointer-events-none">
+                <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-white/70 to-[#FAFAF9]"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 max-w-5xl pt-32 pb-16 flex-1 flex flex-col justify-center items-center w-full">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-[0_0_30px_rgba(255,255,255,0.05)] reveal">
-                <span class="w-2 h-2 rounded-full bg-[#DCCBAE] animate-pulse shadow-[0_0_10px_#DCCBAE]"></span>
-                <span class="text-gray-300 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Imágenes Aéreas con Drone y FPV</span>
+        <div class="relative z-10 text-center px-6 max-w-5xl pt-16">
+            <!-- La Pila gris oscuro con texto claro inspirada en tu captura -->
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-gray-800/80 backdrop-blur-md mb-6 shadow-sm reveal">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#DCCBAE] animate-pulse"></span>
+                <span class="text-gray-100 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Imágenes Aéreas con Drone y FPV</span>
             </div>
 
-            <h1 class="font-orbitron font-extrabold text-white mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
-                <span class="block text-4xl sm:text-5xl md:text-6xl text-gray-200">MARKETING CON DRONES</span>
+            <h1 class="font-orbitron font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
+                <span class="block text-4xl sm:text-5xl md:text-6xl">MARKETING CON DRONES</span>
                 <span class="block text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">Y CINEMATOGRAFÍA FPV</span>
-                <span class="block text-4xl sm:text-5xl md:text-6xl text-[#8CA3B0]">EN PUERTO MONTT</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl">EN PUERTO MONTT</span>
             </h1>
 
-            <p class="text-sm md:text-lg text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
-                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="text-white font-medium">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="text-[#DCCBAE] font-medium">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para redes sociales (Instagram y TikTok), ayudando a las <strong class="text-white font-medium">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
+            <p class="text-sm md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
+                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="font-bold text-gray-900">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="font-semibold text-gray-800">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para <strong class="text-[#8CA3B0] font-bold">redes sociales (Instagram y TikTok)</strong>, ayudando a las <strong class="font-semibold text-gray-800">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 300ms;">
-                <a href="#flota-hangar" class="group relative px-8 py-3.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all hover:bg-white/20 hover:scale-105 hover:border-white/40">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#8CA3B0]/0 via-[#8CA3B0]/30 to-[#8CA3B0]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                    <span class="relative font-orbitron font-bold text-white text-xs tracking-[0.2em] flex items-center gap-2">VER FLOTA 3D <i data-lucide="box" class="w-3.5 h-3.5"></i></span>
+                <a href="#tecnologia" class="group relative px-10 py-4 bg-transparent overflow-hidden border border-[#8CA3B0] transition-all duration-300 rounded-full">
+                    <div class="absolute inset-0 bg-[#8CA3B0] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span class="relative font-orbitron font-semibold text-[#8CA3B0] group-hover:text-white transition-colors duration-300 text-xs tracking-[0.2em]">NUESTRO ENFOQUE</span>
                 </a>
-                <a href="#portfolio" class="font-orbitron text-[11px] text-gray-400 hover:text-white transition-colors tracking-[0.2em] flex items-center gap-2 font-medium group">
-                    <div class="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center group-hover:border-[#8CA3B0] group-hover:bg-[#8CA3B0]/10 transition-all"><i data-lucide="play" class="w-3.5 h-3.5 text-gray-300 group-hover:text-[#8CA3B0] ml-0.5"></i></div> VER SHOWREEL
+                <a href="#portfolio" class="font-orbitron text-[11px] text-gray-500 hover:text-gray-900 transition-colors tracking-[0.2em] flex items-center gap-2 font-medium">
+                    VER SHOWREEL <i data-lucide="play-circle" class="w-5 h-5 text-[#DCCBAE]"></i>
                 </a>
             </div>
         </div>
-    </section>
 
-    <!-- ======================================================== -->
-    <!-- 🚁 NUEVA SECCIÓN: HANGAR FLOTA 3D (EFECTO CLAUDE/YOUTUBE)-->
-    <!-- ======================================================== -->
-    <section id="flota-hangar" class="py-32 px-6 bg-[#050505] relative overflow-hidden">
-        
-        <!-- Luces de fondo del Hangar -->
-        <div class="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-[#8CA3B0]/5 rounded-full blur-[150px] -translate-y-1/2 pointer-events-none"></div>
-        <div class="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-[#DCCBAE]/5 rounded-full blur-[150px] -translate-y-1/2 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-20 reveal">
-                <span class="text-[#8CA3B0] font-orbitron text-[10px] tracking-[0.4em] uppercase mb-4 block">Física Interactiva</span>
-                <h2 class="font-orbitron text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-tighter">SIMULADOR DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#DCCBAE] to-white">FLOTA 3D</span></h2>
-                <p class="text-gray-400 text-sm max-w-2xl mx-auto font-light">Interactúa con nuestro equipo. Pasa el ratón sobre las tarjetas para activar el motor de renderizado CSS 3D.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                
-                <!-- TARJETA 1: DJI MINI 5 PRO -->
-                <div class="drone-3d-card reveal" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.3">
-                    <div class="drone-bg-layer relative w-full aspect-[4/5] rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#111827] to-black shadow-2xl overflow-hidden flex flex-col items-center justify-center p-8 group">
-                        
-                        <!-- Glow radial trasero -->
-                        <div class="drone-glow"></div>
-                        
-                        <!-- Textos (Capa Intermedia) -->
-                        <div class="drone-text-layer text-center absolute top-10 w-full px-8 z-10">
-                            <span class="px-3 py-1 rounded-full border border-[#8CA3B0]/30 bg-[#8CA3B0]/10 text-[#8CA3B0] font-orbitron text-[9px] uppercase tracking-widest font-bold">Exteriores 4K HDR</span>
-                            <h3 class="font-orbitron text-3xl font-extrabold text-white mt-4 tracking-tight">DJI MINI <span class="text-[#8CA3B0]">5 PRO</span></h3>
-                            <p class="text-xs text-gray-400 mt-2">Cinematografía Inmobiliaria Estabilizada</p>
-                        </div>
-
-                        <!-- IMAGEN DEL DRONE (Capa Superior Holográfica) -->
-                        <!-- REEMPLAZAR SRC CON LA IMAGEN PNG REAL -->
-                        <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?q=80&w=600&auto=format&fit=crop" 
-                             alt="DJI Mini 5 Pro Placeholder" 
-                             class="drone-model-layer w-3/4 object-contain mt-16 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/5">
-                        
-                        <!-- Botón Base -->
-                        <div class="drone-text-layer absolute bottom-10 z-10">
-                            <div class="flex gap-4">
-                                <div class="text-center"><p class="text-white font-bold font-orbitron text-lg">16:9</p><p class="text-[9px] text-gray-500 uppercase tracking-widest">Horizontal</p></div>
-                                <div class="w-px bg-white/20"></div>
-                                <div class="text-center"><p class="text-white font-bold font-orbitron text-lg">D-Log</p><p class="text-[9px] text-gray-500 uppercase tracking-widest">Color</p></div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 hidden md:block reveal" style="transition-delay: 500ms;">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl p-5 flex justify-between items-center border border-white shadow-lg">
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#DCCBAE]/20 p-2.5 rounded-xl"><i data-lucide="store" class="text-[#CBB99C] w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Vuelos en Interiores</p><p class="text-[10px] text-gray-500">Navegación de alta precisión</p></div>
                 </div>
-
-                <!-- TARJETA 2: DJI AVATA 2 -->
-                <div class="drone-3d-card reveal" style="transition-delay: 200ms;" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-glare="true" data-tilt-max-glare="0.3">
-                    <div class="drone-bg-layer relative w-full aspect-[4/5] rounded-[2rem] border border-[#DCCBAE]/20 bg-gradient-to-br from-[#1F2937] to-[#0A0A0A] shadow-2xl overflow-hidden flex flex-col items-center justify-center p-8 group">
-                        
-                        <!-- Glow radial trasero color Sand -->
-                        <div class="drone-glow" style="background: var(--luxury-sand);"></div>
-                        
-                        <!-- Textos (Capa Intermedia) -->
-                        <div class="drone-text-layer text-center absolute top-10 w-full px-8 z-10">
-                            <span class="px-3 py-1 rounded-full border border-[#DCCBAE]/30 bg-[#DCCBAE]/10 text-[#DCCBAE] font-orbitron text-[9px] uppercase tracking-widest font-bold">Interiores Inmersivos</span>
-                            <h3 class="font-orbitron text-3xl font-extrabold text-white mt-4 tracking-tight">DJI AVATA <span class="text-[#DCCBAE]">2</span></h3>
-                            <p class="text-xs text-gray-400 mt-2">Recorridos FPV One-Shot</p>
-                        </div>
-
-                        <!-- IMAGEN DEL DRONE (Capa Superior Holográfica) -->
-                        <!-- REEMPLAZAR SRC CON LA IMAGEN PNG REAL -->
-                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=600&auto=format&fit=crop" 
-                             alt="DJI Avata 2 Placeholder" 
-                             class="drone-model-layer w-3/4 object-contain mt-16 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/5">
-                        
-                        <!-- Botón Base -->
-                        <div class="drone-text-layer absolute bottom-10 z-10">
-                            <div class="flex gap-4">
-                                <div class="text-center"><p class="text-white font-bold font-orbitron text-lg">9:16</p><p class="text-[9px] text-gray-500 uppercase tracking-widest">Vertical</p></div>
-                                <div class="w-px bg-white/20"></div>
-                                <div class="text-center"><p class="text-white font-bold font-orbitron text-lg">Gyrow</p><p class="text-[9px] text-gray-500 uppercase tracking-widest">Estabilidad</p></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#8CA3B0]/20 p-2.5 rounded-xl"><i data-lucide="smartphone" class="text-[#8CA3B0] w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Formato Vertical</p><p class="text-[10px] text-gray-500">Optimizado TikTok/Reels</p></div>
                 </div>
-
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-gray-100 p-2.5 rounded-xl"><i data-lucide="trending-up" class="text-gray-600 w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Enfoque Comercial</p><p class="text-[10px] text-gray-500">Diseñado para vender</p></div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- TICKER BAR ORIGINAL -->
     <div class="ticker-wrap">
         <div class="ticker-track">
-            <div class="ticker-item">
-                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K HDR <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
-            </div>
-            <div class="ticker-item">
-                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K HDR <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
-            </div>
+            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
+            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
         </div>
     </div>
 
-    <!-- SECCIÓN ENFOQUE (Info de formatos pasada aquí) -->
     <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-y border-gray-100">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
-            
-            <div class="grid md:grid-cols-3 gap-6 w-full max-w-5xl mb-20 reveal">
-                <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform">
-                    <div class="w-12 h-12 bg-[#8CA3B0]/10 rounded-xl flex items-center justify-center mb-4"><i data-lucide="smartphone" class="text-[#8CA3B0] w-6 h-6"></i></div>
-                    <h4 class="font-orbitron font-bold text-gray-900 text-sm uppercase mb-2">9:16 Vertical (RRSS)</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Vuelos FPV optimizados para retener la atención y dominar el algoritmo en TikTok e Instagram Reels.</p>
-                </div>
-                <div class="bg-[#111827] p-8 rounded-3xl border border-gray-800 shadow-xl flex flex-col items-center text-center transform md:-translate-y-4">
-                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4"><i data-lucide="monitor-play" class="text-white w-6 h-6"></i></div>
-                    <h4 class="font-orbitron font-bold text-white text-sm uppercase mb-2">16:9 4K HDR (YouTube)</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">Cinematografía inmersiva de alto rango dinámico diseñada para web y presentaciones en pantallas grandes.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-[#DCCBAE]/50 shadow-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform">
-                    <div class="w-12 h-12 bg-[#DCCBAE]/20 rounded-xl flex items-center justify-center mb-4"><i data-lucide="brain-circuit" class="text-[#CBB99C] w-6 h-6"></i></div>
-                    <h4 class="font-orbitron font-bold text-gray-900 text-sm uppercase mb-2">Neuromarketing Visual</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Diseñamos cada milisegundo para activar el "Efecto Memoria" y acelerar la conversión y ventas comerciales.</p>
-                </div>
-            </div>
-
             <div class="text-center reveal max-w-4xl mx-auto">
                 <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PUBLICIDAD AÉREA PARA <span class="text-[#8CA3B0] font-light">CORREDORAS Y MARCAS</span></h2>
                 <div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto mb-8"></div>
-                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo.</p>
-                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el scroll y generar interacción masiva. </p>
+                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0]">TikTok, Instagram y Facebook</strong>.</p>
+                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva. </p>
+                <p class="text-sm md:text-base font-medium text-[#1F2937] bg-[#DCCBAE]/10 p-6 rounded-2xl border border-[#DCCBAE]/30 mt-8 shadow-sm">No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <mark class="bg-transparent text-[#8CA3B0] font-bold">aumenta un 80% el recuerdo de la marca o propiedad</mark> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <mark class="bg-transparent text-[#8CA3B0] font-bold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</mark>, mediante la tecnología que domina los algoritmos de 2026.</p>
             </div>
         </div>
     </section>
 
-    <!-- PORTAFOLIO -->
+    <!-- PORTAFOLIO: TARJETAS CON FÍSICA 3D TILT -->
     <section id="portfolio" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-gradient-to-b from-[#8CA3B0]/10 to-transparent blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DCCBAE]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="flex flex-col items-center text-center mb-20 reveal">
                 <p class="text-[#DCCBAE] font-orbitron text-[10px] tracking-[0.4em] uppercase mb-4">El Siguiente Nivel</p>
                 <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tighter">EL <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">PORTAFOLIO</span></h2>
                 <p class="text-gray-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">Un espacio diseñado exclusivamente para las marcas que redefinirán su industria. La expectativa es máxima. ¿Será tu negocio el primero en aparecer aquí?</p>
             </div>
+
             <div class="grid md:grid-cols-3 gap-6 lg:gap-10 max-w-5xl mx-auto">
-                <!-- Simuladores Originales intactos -->
-                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(220,203,174,0.15)]">
+                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000">
                     <div class="social-simulator w-full max-w-[300px] transition-colors duration-500 group-hover:border-[#DCCBAE]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1776309532/2026-04-15-224925038_asopuw.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -416,7 +333,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" style="transition-delay: 100ms;">
+
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000" style="transition-delay: 100ms;">
                     <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779934484/2026-05-27-214849595_jssvuw.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -425,7 +343,7 @@
                             <div class="flex justify-between items-end w-full">
                                 <div class="text-white drop-shadow-lg w-[85%]">
                                     <div class="flex items-center gap-2 mb-2"><div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="trees" class="w-4 h-4 text-white"></i></div><span class="font-bold text-sm">Terragestion</span><span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span></div>
-                                    <p class="text-xs font-light mb-3">Geolocalización espacial y deslindes dinámicos de terrenos. 🚀🏔️</p>
+                                    <p class="text-xs font-light mb-3">Geolocalización espacial y deslindes dinámicos de terrenos en alta definición. 🚀🏔️ #RealEstate</p>
                                     <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[shimmer-flow_3s_infinite]"></div>
                                         <div class="flex items-center gap-3 relative z-10"><div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div><div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div></div>
@@ -436,7 +354,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" style="transition-delay: 200ms;">
+
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000" style="transition-delay: 200ms;">
                     <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779935388/2026-05-27-222528210_wi2fpr.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -445,7 +364,7 @@
                             <div class="flex justify-between items-end w-full">
                                 <div class="text-white drop-shadow-lg w-[85%]">
                                     <div class="flex items-center gap-2 mb-2"><div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="map" class="w-4 h-4 text-white"></i></div><span class="font-bold text-sm">Terragestion_Lotes</span><span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span></div>
-                                    <p class="text-xs font-light mb-3">Perspectiva inmersiva y mapeo de lotes. 🏞️✨ #Inmobiliaria</p>
+                                    <p class="text-xs font-light mb-3">Perspectiva inmersiva y mapeo de lotes. Maximizando el valor visual de parcelas en el sur. 🏞️✨ #Inmobiliaria</p>
                                     <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[shimmer-flow_3s_infinite]"></div>
                                         <div class="flex items-center gap-3 relative z-10"><div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div><div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div></div>
@@ -460,7 +379,7 @@
         </div>
     </section>
 
-    <!-- INMOBILIARIAS Y MASTERPLAN -->
+    <!-- INMOBILIARIAS -->
     <section id="inmobiliarias" class="py-32 px-6 bg-[#111827] relative overflow-hidden border-y border-white/5">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"><div class="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-[#DCCBAE]/10 rounded-full blur-[120px]"></div><div class="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-[#8CA3B0]/10 rounded-full blur-[100px]"></div></div>
         <div class="max-w-7xl mx-auto relative z-10">
@@ -471,6 +390,7 @@
         </div>
     </section>
 
+    <!-- MASTERPLAN -->
     <section id="masterplan" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden border-t border-white/5">
         <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#8CA3B0]/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#DCCBAE]/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -555,13 +475,9 @@
     <script>
         lucide.createIcons();
 
-        /* Iniciar librería Vanilla Tilt para las Tarjetas 3D */
-        VanillaTilt.init(document.querySelectorAll(".drone-3d-card"), {
-            max: 15,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.3,
-            perspective: 1000,
+        /* Iniciar Vanilla Tilt en Portafolio */
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 12, speed: 400, perspective: 1000,
         });
 
         document.querySelectorAll('.faq-question').forEach(button => {
