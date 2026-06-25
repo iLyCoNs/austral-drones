@@ -33,40 +33,36 @@
         }
 
         ::selection { background: var(--luxury-sand); color: #fff; }
+        
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111827; }
-        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 10px; border: 2px solid #111827; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 10px; border: 2px solid #F3F4F6; }
         ::-webkit-scrollbar-thumb:hover { background: var(--pastel-blue); }
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); overflow-x: hidden; }
         .font-orbitron { font-family: 'Montserrat', sans-serif; }
         
         /* ======================================================== */
-        /* 🍏 DOCK: CRISTAL GRIS OSCURO macOS (LOGO ESTABLE)        */
+        /* 🍏 DOCK: CRISTAL GRIS AHUMADO (SMOKY GRAY GLASS)         */
         /* ======================================================== */
         .mac-dock-wrapper {
             position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 1100px; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .mac-dock {
             display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.75rem; border-radius: 9999px;
-            background: rgba(35, 40, 45, 0.85); /* Gris Ahumado macOS */
-            backdrop-filter: blur(28px) saturate(200%); -webkit-backdrop-filter: blur(28px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            background: rgba(45, 50, 56, 0.75); 
+            backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .mac-dock-wrapper.scrolled .mac-dock {
-            background: rgba(20, 24, 28, 0.95);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            background: rgba(30, 34, 40, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
         }
         
-        /* Botones estándar interactivos */
         .dock-item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
         .dock-item:hover { transform: scale(1.15) translateY(-4px); z-index: 10; }
-        
-        /* Píldora del Logo Estática (Sin escala, sin tooltip) */
-        .dock-logo-static { display: flex; align-items: center; padding-right: 1rem; border-right: 1px solid rgba(255, 255, 255, 0.1); transition: opacity 0.3s; }
-        .dock-logo-static:hover { opacity: 0.9; }
         
         .dock-indicator { position: absolute; bottom: -6px; width: 4px; height: 4px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.8); box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
         .dock-item:hover .dock-indicator { opacity: 1; transform: scale(1); }
@@ -81,14 +77,7 @@
         .btn-luxury-sand { background: linear-gradient(135deg, #DCCBAE 0%, #CBB99C 100%); color: #111827; box-shadow: 0 4px 15px rgba(220, 203, 174, 0.3), inset 0 1px 1px rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.4); transition: all 0.4s ease; }
         .btn-luxury-sand:hover { box-shadow: 0 10px 25px rgba(220, 203, 174, 0.6), inset 0 1px 1px rgba(255,255,255,0.8); }
 
-        /* --- MAC OS WIDGETS (HERO SECTION INFO) --- */
-        .mac-widget { background: rgba(30, 30, 35, 0.4); backdrop-filter: blur(24px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-        .mac-widget:hover { background: rgba(45, 45, 50, 0.6); border: 1px solid rgba(255, 255, 255, 0.25); transform: translateY(-5px) scale(1.02); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
-
-        /* ======================================================== */
-        /* RESTO DE ESTILOS                                         */
-        /* ======================================================== */
-        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: #111827; z-index: 9999 !important; }
+        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: #FFFFFF; z-index: 9999 !important; }
         #mobile-menu.active { transform: translateX(0); }
         
         .whatsapp-glass { position: fixed; bottom: 30px; right: 30px; background: rgba(37, 211, 102, 0.35); backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.3); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2); z-index: 900; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
@@ -104,8 +93,12 @@
         .radar-ping::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: var(--whatsapp-green); border-radius: 50%; animation: ping 2s infinite; }
         @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
         
-        .animate-shimmer { background: linear-gradient(to right, #8CA3B0, #DCCBAE, #8CA3B0); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: shimmer-flow 6s linear infinite; }
+        .animate-shimmer { background: linear-gradient(to right, #1F2937, #8CA3B0, #1F2937); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: shimmer-flow 6s linear infinite; }
         @keyframes shimmer-flow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        
+        /* Masterplan specific shimmer */
+        .animate-shimmer-gold { background: linear-gradient(to right, #FFD700, #DCCBAE, #8CA3B0, #FFD700); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; animation: shimmer-flow-gold 8s linear infinite; }
+        @keyframes shimmer-flow-gold { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
 
         .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
         .faq-question { width: 100%; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; text-align: left; transition: color 0.3s ease; color: var(--text-dark); }
@@ -113,21 +106,11 @@
         .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--pastel-blue); }
 
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #050505; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 0; }
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111827; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0.75rem 0; }
         .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
-        .ticker-item { white-space: nowrap; padding: 0 2rem; color: rgba(255,255,255,0.3); font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+        .ticker-item { white-space: nowrap; padding: 0 2rem; color: #9CA3AF; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
         .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
         @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .social-simulator { position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9/16; background: #000; border-radius: 40px; border: 12px solid #1F2937; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden; transform-style: preserve-3d;}
-        .social-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 60%, rgba(0,0,0,0.9) 100%); transform: translateZ(30px); }
-        .social-metrics { position: absolute; right: 15px; bottom: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center; transform: translateZ(40px);}
-        .metric-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
-        @keyframes floatUpHeart { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: 1; transform: scale(1.2); } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
-        .floating-heart { position: absolute; bottom: 120px; right: 20px; color: #ff2a5f; opacity: 0; animation: floatUpHeart 3s ease-in-out infinite; }
-        .fh-2 { animation-delay: 1.2s; right: 30px; font-size: 0.8rem; }
-        .fh-3 { animation-delay: 2.5s; right: 10px; font-size: 1.2rem; }
 
         .roi-slider { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 6px; background: #e5e7eb; outline: none; transition: background 0.1s; }
         .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 32px; height: 32px; border-radius: 50%; background: var(--text-dark); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; border: 3px solid white; }
@@ -136,20 +119,18 @@
 </head>
 <body>
 
-    <!-- BOTÓN WHATSAPP CRISTAL -->
+    <!-- BOTÓN WHATSAPP -->
     <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-glass" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md">
-            <path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md"><path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/></svg>
     </a>
 
     <!-- MAC OS DOCK: GRIS AHUMADO TRANSPARENTE -->
     <div class="mac-dock-wrapper" id="dock-wrapper">
         <nav class="mac-dock">
             
-            <!-- LOGO ESTÁTICO (Píldora blanca fija, sin tooltips ni hover scale) -->
-            <div class="dock-logo-static">
-                <a href="#inicio" class="flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(255,255,255,1),_0_4px_10px_rgba(0,0,0,0.15)] border border-gray-100">
+            <!-- Logo encapsulado en píldora blanca (Totalmente Estático, sin hover scale, sin tooltip) -->
+            <div class="flex items-center pl-1.5 pr-4 py-1 border-r border-white/10">
+                <a href="#inicio" class="flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(255,255,255,1),_0_4px_10px_rgba(0,0,0,0.15)] border border-gray-100 transition-opacity hover:opacity-90">
                     <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-6 w-auto object-contain">
                     <span class="hidden md:block font-orbitron text-xs font-bold tracking-tight text-gray-900 pl-3 border-l border-gray-300">
                         AUSTRAL<span class="text-[#8CA3B0] font-light">DRONE.CL</span>
@@ -157,7 +138,7 @@
                 </a>
             </div>
             
-            <!-- Enlaces centrales en gris claro (Con animaciones tipo macOS) -->
+            <!-- Enlaces centrales en gris claro -->
             <div class="hidden lg:flex items-center gap-1 px-4">
                 <div class="dock-item">
                     <a href="#inicio" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">INICIO</a>
@@ -165,7 +146,7 @@
                 </div>
                 
                 <div class="dock-item mx-2">
-                    <a href="#masterplan" class="px-4 py-1.5 rounded-full flex items-center gap-1.5 bg-gradient-to-r from-[#111827] to-black border border-[#FFD700]/40 shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:border-[#FFD700] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all">
+                    <a href="#masterplan" class="px-4 py-1.5 rounded-full flex items-center gap-1.5 bg-gradient-to-r from-black/80 to-[#111827] border border-[#FFD700]/40 shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:border-[#FFD700] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFD700]"></i>
                         <span class="font-bold text-[#FFD700] text-[10px] font-orbitron tracking-[0.1em]">MASTERPLAN</span>
                     </a>
@@ -179,7 +160,7 @@
 
                 <div class="dock-item">
                     <a href="#tecnologia" class="px-3 py-2 font-orbitron text-[10px] font-semibold dock-text tracking-[0.1em]">ENFOQUE</a>
-                    <div class="mac-tooltip">Nuestra Metodología</div><div class="dock-indicator"></div>
+                    <div class="mac-tooltip">Nuestra Tecnología</div><div class="dock-indicator"></div>
                 </div>
 
                 <div class="dock-item">
@@ -202,129 +183,117 @@
         </nav>
     </div>
 
-    <!-- MENÚ MÓVIL DARK -->
-    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden border-l border-white/10">
-        <div class="flex justify-between items-center p-6 border-b border-white/10 bg-[#111827]">
-            <span class="font-orbitron text-sm font-bold text-white">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
-            <button id="menu-close" aria-label="Cerrar menú" class="text-white p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
+    <!-- MENÚ MÓVIL CLÁSICO -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100">
+            <span class="font-orbitron text-sm font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
+            <button id="menu-close" aria-label="Cerrar menú de navegación" class="text-gray-900 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
         </div>
-        <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em] bg-[#111827] flex-grow">
-            <a href="#inicio" class="mobile-link text-gray-400 hover:text-white">INICIO</a>
-            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#1F2937] border border-[#FFD700]/50 hover:border-[#FFD700] transition-all shadow-[0_0_15px_rgba(255,215,0,0.15)]"><i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700]"></i><span class="font-bold text-[#FFD700]">MASTERPLAN 360°</span></a>
-            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase hover:text-white">SERVICIOS</a>
-            <a href="#tecnologia" class="mobile-link text-gray-400 hover:text-white">ENFOQUE</a>
-            <a href="#portfolio" class="mobile-link text-gray-400 hover:text-white">PORTAFOLIO</a>
-            <a href="#faq" class="mobile-link text-gray-400 hover:text-white">FAQ</a>
+        <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em]">
+            <a href="#inicio" class="mobile-link text-gray-600">INICIO</a>
+            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#111827] border border-[#FFD700] hover:from-[#FFD700] hover:to-[#FBBF24] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.25)] overflow-hidden">
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700] group-hover:text-black transition-colors relative z-10"></i>
+                <span class="font-bold text-[#FFD700] group-hover:text-black transition-colors relative z-10">MASTERPLAN 360°</span>
+            </a>
+            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase">SERVICIOS</a>
+            <a href="#tecnologia" class="mobile-link text-gray-600">ENFOQUE</a>
+            <a href="#portfolio" class="mobile-link text-gray-600">PORTAFOLIO</a>
+            <a href="#faq" class="mobile-link text-gray-600">FAQ</a>
         </div>
-        <div class="mt-auto p-10 bg-[#111827]">
-            <a href="https://wa.me/56987491964" target="_blank" class="block w-full btn-luxury-sand py-4 rounded-full font-bold text-center font-orbitron text-xs tracking-widest">AGENDAR REUNIÓN</a>
+        <div class="mt-auto p-10">
+            <a href="https://wa.me/56987491964" target="_blank" class="block w-full bg-[#DCCBAE] text-white py-4 rounded-full font-bold text-center font-orbitron text-xs">AGENDAR REUNIÓN</a>
         </div>
     </div>
 
-    <!-- HERO SECTION: CINEMATIC DARK MAC OS STYLE -->
-    <section id="inicio" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-black">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 scale-105 pointer-events-none mix-blend-luminosity"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4"></video>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/50 via-transparent to-[#111827]"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#8CA3B0]/10 via-transparent to-transparent"></div>
+    <!-- HERO SECTION (Light Mode Original) -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 bg-white">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-[0.35] grayscale scale-105 pointer-events-none">
+                <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-white/70 to-[#FAFAF9]"></div>
         </div>
 
-        <div class="relative z-10 text-center px-6 max-w-5xl pt-32 pb-16 flex-1 flex flex-col justify-center items-center w-full">
-            
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-[0_0_30px_rgba(255,255,255,0.05)] reveal">
-                <span class="w-2 h-2 rounded-full bg-[#DCCBAE] animate-pulse shadow-[0_0_10px_#DCCBAE]"></span>
-                <span class="text-gray-300 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Imágenes Aéreas con Drone y FPV</span>
+        <div class="relative z-10 text-center px-6 max-w-5xl pt-16">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-gray-800/80 backdrop-blur-md mb-6 shadow-sm reveal">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#DCCBAE] animate-pulse"></span>
+                <span class="text-gray-100 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Imágenes Aéreas con Drone y FPV</span>
             </div>
 
-            <h1 class="font-orbitron font-extrabold text-white mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
-                <span class="block text-4xl sm:text-5xl md:text-6xl text-gray-200">MARKETING CON DRONES</span>
+            <h1 class="font-orbitron font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
+                <span class="block text-4xl sm:text-5xl md:text-6xl">MARKETING CON DRONES</span>
                 <span class="block text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">Y CINEMATOGRAFÍA FPV</span>
-                <span class="block text-4xl sm:text-5xl md:text-6xl text-[#8CA3B0]">EN PUERTO MONTT</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl">EN PUERTO MONTT</span>
             </h1>
 
-            <p class="text-sm md:text-lg text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
-                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="text-white font-medium">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="text-[#DCCBAE] font-medium">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para redes sociales (Instagram y TikTok), ayudando a las <strong class="text-white font-medium">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
+            <p class="text-sm md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
+                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="font-bold text-gray-900">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="font-semibold text-gray-800">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para <strong class="text-[#8CA3B0] font-bold">redes sociales (Instagram y TikTok)</strong>, ayudando a las <strong class="font-semibold text-gray-800">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 300ms;">
-                <a href="#tecnologia" class="group relative px-8 py-3.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all hover:bg-white/20 hover:scale-105 hover:border-white/40">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#DCCBAE]/0 via-[#DCCBAE]/10 to-[#DCCBAE]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                    <span class="relative font-orbitron font-bold text-white text-xs tracking-[0.2em] flex items-center gap-2">NUESTRO ENFOQUE <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i></span>
+                <a href="#tecnologia" class="group relative px-10 py-4 bg-transparent overflow-hidden border border-[#8CA3B0] transition-all duration-300 rounded-full">
+                    <div class="absolute inset-0 bg-[#8CA3B0] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span class="relative font-orbitron font-semibold text-[#8CA3B0] group-hover:text-white transition-colors duration-300 text-xs tracking-[0.2em]">NUESTRO ENFOQUE</span>
                 </a>
-                <a href="#portfolio" class="font-orbitron text-[11px] text-gray-400 hover:text-white transition-colors tracking-[0.2em] flex items-center gap-2 font-medium group">
-                    <div class="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center group-hover:border-[#8CA3B0] group-hover:bg-[#8CA3B0]/10 transition-all"><i data-lucide="play" class="w-3.5 h-3.5 text-gray-300 group-hover:text-[#8CA3B0] ml-0.5"></i></div> VER SHOWREEL
+                <a href="#portfolio" class="font-orbitron text-[11px] text-gray-500 hover:text-gray-900 transition-colors tracking-[0.2em] flex items-center gap-2 font-medium">
+                    VER SHOWREEL <i data-lucide="play-circle" class="w-5 h-5 text-[#DCCBAE]"></i>
                 </a>
             </div>
         </div>
 
-        <!-- WIDGETS INFORMATIVOS MAC OS STYLE (Drones DJI & Formatos) -->
-        <div class="relative z-20 w-full max-w-6xl px-6 pb-12 reveal" style="transition-delay: 400ms;">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="mac-widget p-5 rounded-[2rem] flex items-start gap-4 group">
-                    <div class="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-[#8CA3B0]/40 to-[#8CA3B0]/10 border border-[#8CA3B0]/30 flex items-center justify-center shrink-0 shadow-inner"><i data-lucide="monitor-smartphone" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i></div>
-                    <div class="text-left">
-                        <h4 class="font-orbitron font-bold text-white text-[11px] uppercase tracking-widest mb-1.5">Formatos de Entrega</h4>
-                        <p class="text-[10px] text-gray-400 leading-tight mb-1.5"><strong class="text-[#8CA3B0]">9:16 Vertical:</strong> Diseño nativo para retener la atención en TikTok e Instagram Reels.</p>
-                        <p class="text-[10px] text-gray-400 leading-tight"><strong class="text-[#DCCBAE]">16:9 Horizontal:</strong> Cinematografía inmersiva en 4K HDR para Web y YouTube.</p>
-                    </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 hidden md:block reveal" style="transition-delay: 500ms;">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl p-5 flex justify-between items-center border border-white shadow-lg">
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#DCCBAE]/20 p-2.5 rounded-xl"><i data-lucide="store" class="text-[#CBB99C] w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Vuelos en Interiores</p><p class="text-[10px] text-gray-500">Navegación de alta precisión</p></div>
                 </div>
-                <div class="mac-widget p-5 rounded-[2rem] flex items-start gap-4 group">
-                    <div class="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-white/20 to-white/5 border border-white/20 flex items-center justify-center shrink-0 shadow-inner"><i data-lucide="cpu" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i></div>
-                    <div class="text-left">
-                        <h4 class="font-orbitron font-bold text-white text-[11px] uppercase tracking-widest mb-1.5">Flota Tecnológica Elite</h4>
-                        <p class="text-[10px] text-gray-400 leading-tight mb-1.5"><strong class="text-white">DJI Mini 5 Pro:</strong> Tomas aéreas estabilizadas en exterior con alto rango dinámico.</p>
-                        <p class="text-[10px] text-gray-400 leading-tight"><strong class="text-white">DJI Avata 2:</strong> Recorridos FPV inmersivos de alta precisión para interiores.</p>
-                    </div>
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#8CA3B0]/20 p-2.5 rounded-xl"><i data-lucide="smartphone" class="text-[#8CA3B0] w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Formato Vertical</p><p class="text-[10px] text-gray-500">Optimizado TikTok/Reels</p></div>
                 </div>
-                <div class="mac-widget p-5 rounded-[2rem] flex items-start gap-4 group">
-                    <div class="w-12 h-12 rounded-[1rem] bg-gradient-to-br from-[#DCCBAE]/40 to-[#DCCBAE]/10 border border-[#DCCBAE]/30 flex items-center justify-center shrink-0 shadow-inner"><i data-lucide="target" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i></div>
-                    <div class="text-left">
-                        <h4 class="font-orbitron font-bold text-white text-[11px] uppercase tracking-widest mb-1.5">Arquitectura Visual</h4>
-                        <p class="text-[10px] text-gray-400 leading-tight mb-1.5">Neuromarketing aplicado al rubro de bienes raíces comerciales.</p>
-                        <p class="text-[10px] text-gray-400 leading-tight">Diseñamos cada milisegundo audiovisual para <strong class="text-[#DCCBAE]">acelerar la conversión y ventas</strong>.</p>
-                    </div>
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-gray-100 p-2.5 rounded-xl"><i data-lucide="trending-up" class="text-gray-600 w-5 h-5"></i></div>
+                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Enfoque Comercial</p><p class="text-[10px] text-gray-500">Diseñado para vender</p></div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- TICKER BAR OSCURO -->
     <div class="ticker-wrap">
         <div class="ticker-track">
-            <div class="ticker-item">
-                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K HDR <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
-            </div>
-            <div class="ticker-item">
-                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K HDR <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
-            </div>
+            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
+            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span></div>
         </div>
     </div>
 
-    <!-- SECCIÓN ENFOQUE (Transición Light Mode Original) -->
     <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-y border-gray-100">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
             <div class="text-center reveal max-w-4xl mx-auto">
                 <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PUBLICIDAD AÉREA PARA <span class="text-[#8CA3B0] font-light">CORREDORAS Y MARCAS</span></h2>
                 <div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto mb-8"></div>
                 <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0]">TikTok, Instagram y Facebook</strong>.</p>
-                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el scroll y generar interacción masiva. </p>
+                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el <em>scroll</em> y generar interacción masiva. </p>
                 <p class="text-sm md:text-base font-medium text-[#1F2937] bg-[#DCCBAE]/10 p-6 rounded-2xl border border-[#DCCBAE]/30 mt-8 shadow-sm">No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <mark class="bg-transparent text-[#8CA3B0] font-bold">aumenta un 80% el recuerdo de la marca o propiedad</mark> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <mark class="bg-transparent text-[#8CA3B0] font-bold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</mark>, mediante la tecnología que domina los algoritmos de 2026.</p>
             </div>
         </div>
     </section>
 
-    <!-- PORTAFOLIO OSCURO -->
+    <!-- PORTAFOLIO: TARJETAS CON FÍSICA 3D TILT -->
     <section id="portfolio" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-gradient-to-b from-[#8CA3B0]/10 to-transparent blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DCCBAE]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="flex flex-col items-center text-center mb-20 reveal">
                 <p class="text-[#DCCBAE] font-orbitron text-[10px] tracking-[0.4em] uppercase mb-4">El Siguiente Nivel</p>
                 <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tighter">EL <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">PORTAFOLIO</span></h2>
                 <p class="text-gray-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">Un espacio diseñado exclusivamente para las marcas que redefinirán su industria. La expectativa es máxima. ¿Será tu negocio el primero en aparecer aquí?</p>
             </div>
+
             <div class="grid md:grid-cols-3 gap-6 lg:gap-10 max-w-5xl mx-auto">
-                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(220,203,174,0.15)]" data-tilt data-tilt-max="12" data-tilt-speed="400">
+                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000">
                     <div class="social-simulator w-full max-w-[300px] transition-colors duration-500 group-hover:border-[#DCCBAE]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1776309532/2026-04-15-224925038_asopuw.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -344,7 +313,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" data-tilt data-tilt-max="12" data-tilt-speed="400" style="transition-delay: 100ms;">
+
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000" style="transition-delay: 100ms;">
                     <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779934484/2026-05-27-214849595_jssvuw.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -364,7 +334,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" data-tilt data-tilt-max="12" data-tilt-speed="400" style="transition-delay: 200ms;">
+
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-perspective="1000" style="transition-delay: 200ms;">
                     <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
                         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779935388/2026-05-27-222528210_wi2fpr.mp4" type="video/mp4"></video>
                         <div class="social-overlay">
@@ -388,7 +359,7 @@
         </div>
     </section>
 
-    <!-- INMOBILIARIAS OSCURO -->
+    <!-- INMOBILIARIAS -->
     <section id="inmobiliarias" class="py-32 px-6 bg-[#111827] relative overflow-hidden border-y border-white/5">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"><div class="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-[#DCCBAE]/10 rounded-full blur-[120px]"></div><div class="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-[#8CA3B0]/10 rounded-full blur-[100px]"></div></div>
         <div class="max-w-7xl mx-auto relative z-10">
@@ -399,19 +370,98 @@
         </div>
     </section>
 
-    <!-- MASTERPLAN OSCURO -->
-    <section id="masterplan" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden border-t border-white/5">
-        <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#8CA3B0]/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#DCCBAE]/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-5 reveal"><div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#8CA3B0]/30 bg-[#8CA3B0]/10 mb-6"><span class="w-2 h-2 rounded-full bg-[#8CA3B0] animate-pulse"></span><span class="text-[#8CA3B0] font-orbitron text-[10px] tracking-[0.2em] font-bold uppercase">Exclusivo Inmobiliarias Elite</span></div><h2 class="font-orbitron text-3xl md:text-4xl font-bold text-white mb-6 leading-tight tracking-tighter">INGENIERÍA VISUAL: <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#DCCBAE] to-[#8CA3B0]">MASTERPLAN 360°</span></h2><p class="text-gray-400 text-sm leading-relaxed mb-8 font-light">Vende loteos de parcelas y proyectos inmobiliarios completos meses antes de mover la primera máquina. Fusionamos planos técnicos con entornos aéreos reales en 4K.</p><div class="space-y-5"><div class="flex gap-4"><div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#DCCBAE] shrink-0"><i data-lucide="map-pin" class="w-4 h-4"></i></div><div><h4 class="text-white font-orbitron text-xs font-bold uppercase tracking-wider mb-1">Fusión Aerofotogramétrica</h4><p class="text-[11px] text-gray-500">Subdivisiones de ingeniería montadas directamente sobre el relieve y vegetación real del sur de Chile.</p></div></div><div class="flex gap-4"><div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#8CA3B0] shrink-0"><i data-lucide="pie-chart" class="w-4 h-4"></i></div><div><h4 class="text-white font-orbitron text-xs font-bold uppercase tracking-wider mb-1">Control de Stock Dinámico</h4><p class="text-[11px] text-gray-500">Interfaz interactiva para filtrar el estado de lotes (Disponibles, Reservados, Vendidos) gatillando escasez comercial.</p></div></div></div></div>
-                <div class="lg:col-span-7 reveal lg:pl-6" style="transition-delay: 200ms;"><div class="w-full aspect-[16/10] bg-black rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative"><iframe src="https://ilycons.github.io/panellum/" class="w-full h-full border-0" allowfullscreen></iframe></div></div>
+    <!-- ======================================================== -->
+    <!-- 🌟 SECCIÓN MASTERPLAN 360 (DISEÑO macOS PRO)             -->
+    <!-- ======================================================== -->
+    <section id="masterplan" class="py-32 px-6 bg-[#050505] relative overflow-hidden border-y border-white/5">
+        <!-- Ambient macOS Glows -->
+        <div class="absolute top-1/2 left-1/4 w-[800px] h-[800px] bg-[#8CA3B0]/10 rounded-full blur-[150px] -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#FFD700]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Columna Izquierda: Textos y Cards -->
+                <div class="lg:col-span-5 reveal">
+                    <!-- Badge macOS Style -->
+                    <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl mb-8 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+                        <span class="relative flex h-2.5 w-2.5">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FFD700] shadow-[0_0_8px_#FFD700]"></span>
+                        </span>
+                        <span class="text-gray-200 font-orbitron text-[10px] tracking-[0.2em] font-bold uppercase">Exclusivo Inmobiliarias Elite</span>
+                    </div>
+
+                    <h2 class="font-orbitron text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tighter">
+                        INGENIERÍA VISUAL: <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#DCCBAE] to-[#8CA3B0] animate-shimmer-gold">MASTERPLAN 360°</span>
+                    </h2>
+                    
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-10 font-light">
+                        Vende loteos de parcelas y proyectos inmobiliarios completos meses antes de mover la primera máquina. Fusionamos planos técnicos con entornos aéreos reales en 4K HDR.
+                    </p>
+
+                    <!-- Feature Cards (macOS Widgets) -->
+                    <div class="space-y-4">
+                        <div class="group relative p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 backdrop-blur-md overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#DCCBAE]/0 via-[#DCCBAE]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                            <div class="flex gap-5 relative z-10">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#DCCBAE]/20 to-transparent border border-[#DCCBAE]/20 flex items-center justify-center text-[#DCCBAE] shrink-0 shadow-inner">
+                                    <i data-lucide="map" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-orbitron text-xs font-bold uppercase tracking-wider mb-1.5 group-hover:text-[#DCCBAE] transition-colors">Fusión Aerofotogramétrica</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Subdivisiones de ingeniería montadas directamente sobre el relieve y vegetación real del sur de Chile.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group relative p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 backdrop-blur-md overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#8CA3B0]/0 via-[#8CA3B0]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                            <div class="flex gap-5 relative z-10">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#8CA3B0]/20 to-transparent border border-[#8CA3B0]/20 flex items-center justify-center text-[#8CA3B0] shrink-0 shadow-inner">
+                                    <i data-lucide="layers" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-orbitron text-xs font-bold uppercase tracking-wider mb-1.5 group-hover:text-[#8CA3B0] transition-colors">Control de Stock Dinámico</h4>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">Interfaz interactiva para filtrar el estado de lotes (Disponibles, Reservados, Vendidos) gatillando escasez comercial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: El Iframe Pro -->
+                <div class="lg:col-span-7 reveal" style="transition-delay: 200ms;">
+                    <!-- Contenedor macOS Premium -->
+                    <div class="relative w-full aspect-[16/10] rounded-[2rem] p-[2px] bg-gradient-to-br from-white/20 via-white/5 to-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] group">
+                        <!-- Glow effect that follows the container -->
+                        <div class="absolute -inset-1 bg-gradient-to-tr from-[#FFD700]/30 via-[#DCCBAE]/10 to-[#8CA3B0]/30 rounded-[2.2rem] blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+                        
+                        <!-- Inner Window -->
+                        <div class="relative w-full h-full bg-[#050505] rounded-[2rem] overflow-hidden border border-black flex flex-col">
+                            <!-- macOS Title Bar -->
+                            <div class="h-8 bg-[#111827] flex items-center px-4 border-b border-white/5">
+                                <div class="flex gap-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <div class="mx-auto text-[9px] text-gray-500 font-medium tracking-widest font-orbitron">AUSTRAL DRONE ENGINE v2.0</div>
+                            </div>
+                            <!-- El Iframe -->
+                            <div class="relative flex-1 w-full bg-black">
+                                <iframe src="https://ilycons.github.io/panellum/" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- PRECIOS Y COTIZADOR ROI (Light Mode Original) -->
+    <!-- PRECIOS Y COTIZADOR ROI -->
     <section id="precios" class="py-32 px-6 bg-[#F3F4F6] relative overflow-hidden border-t border-gray-200">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal"><h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">TARIFAS Y <span class="text-[#DCCBAE] font-light">PLANES DE INVERSIÓN</span></h2><div class="h-[2px] w-16 bg-[#8CA3B0] mx-auto mb-6"></div><p class="text-gray-500 font-orbitron text-[11px] tracking-[0.2em] uppercase text-center mx-auto">Propuestas de marketing de alto impacto para el Sur de Chile</p></div>
@@ -484,6 +534,11 @@
     <script>
         lucide.createIcons();
 
+        /* Iniciar Vanilla Tilt en Portafolio */
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 12, speed: 400, perspective: 1000,
+        });
+
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
@@ -493,7 +548,6 @@
             });
         });
 
-        // LÓGICA DEL MAC OS DOCK
         const navWrapper = document.getElementById('dock-wrapper');
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
