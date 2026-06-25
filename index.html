@@ -1,360 +1,535 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta name="google-site-verification" content="AGq1xu6dbUdurv-RqKOYuRWFprQI91zmqoDrL4ZDGlE" />
+    
     <title>Austral Drone | Marketing con Drone Inmobiliario y Publicidad FPV en Puerto Montt</title>
     
     <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/favicon.png">
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/favicon.png">
+
     <meta name="description" content="Servicios de Drone, cinematografía aérea y marketing inmobiliario premium en Puerto Montt. Elevamos la imagen de tu negocio con recorridos FPV.">
     <meta name="geo.region" content="CL-LL" />
     <meta name="geo.placename" content="Puerto Montt" />
+    
     <link class="canonical" href="https://australdrone.cl/">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Iconos Lucide -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Lenis Scroll, GSAP & Vanilla Tilt (Física 3D) -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     
     <style>
         :root {
-            var(--pastel-blue): #8CA3B0; 
-            var(--luxury-sand): #DCCBAE;
-            var(--text-dark): #111827;
-            var(--bg-light): #FAFAF9;
-            var(--whatsapp-green): #25D366;
-            var(--premium-gold): #FFD700;
+            --pastel-blue: #8CA3B0; 
+            --luxury-sand: #DCCBAE;
+            --text-dark: #1F2937;
+            --bg-light: #FAFAF9;
+            --whatsapp-green: #25D366;
+            --premium-gold: #FFD700;
         }
 
-        /* --- Scroll & Global --- */
-        html.lenis, html.lenis body { height: auto; width: 100vw; overflow-x: hidden; }
-        .lenis.lenis-smooth { scroll-behavior: auto !important; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
-        ::selection { background: #DCCBAE; color: #fff; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FAFAF9; }
-        ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8CA3B0; }
+        ::selection { background: var(--luxury-sand); color: #fff; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F3F4F6; }
+        ::-webkit-scrollbar-thumb { 
+            background: #D1D5DB; 
+            border-radius: 10px; 
+            border: 2px solid #F3F4F6; 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--pastel-blue); }
 
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAF9; color: #111827; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
         .font-orbitron { font-family: 'Montserrat', sans-serif; }
         
-        /* --- Glassmorphism Nav --- */
-        .glass-nav {
-            background: rgba(250, 250, 249, 0.6); backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+        /* --- MAC OS DOCK ESTILO PREMIUM --- */
+        .glass-dock {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-nav.scrolled {
-            background: rgba(255, 255, 255, 0.95); padding-top: 0.5rem; padding-bottom: 0.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+
+        .glass-dock.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 255, 255, 0.8);
         }
-        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); transform: translateX(100%); background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); z-index: 9999 !important; }
+
+        /* Efecto de escala de iconos tipo Mac */
+        .dock-link {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center bottom;
+        }
+        .dock-link:hover {
+            transform: scale(1.15) translateY(-2px);
+        }
+
+        #mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateX(100%);
+            background: #FFFFFF; 
+            z-index: 9999 !important;
+        }
         #mobile-menu.active { transform: translateX(0); }
 
-        /* --- Botones Avant-Garde --- */
-        .btn-avant-garde { position: relative; overflow: hidden; background: linear-gradient(135deg, #111827 0%, #1F2937 100%); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 10px 20px rgba(17, 24, 39, 0.15); z-index: 1; }
-        .btn-avant-garde::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transform: skewX(-20deg); transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1); z-index: -1; }
-        .btn-avant-garde:hover { box-shadow: 0 15px 30px rgba(17, 24, 39, 0.3); transform: translateY(-2px); }
-        .btn-avant-garde:hover::before { left: 150%; }
-        .btn-avant-sand { background: linear-gradient(135deg, #DCCBAE 0%, #CBB99C 100%); color: #fff; border: none; box-shadow: 0 10px 20px rgba(220, 203, 174, 0.3); }
-        .btn-avant-blue { background: linear-gradient(135deg, #8CA3B0 0%, #728A97 100%); color: #fff; border: none; box-shadow: 0 10px 20px rgba(140, 163, 176, 0.3); }
+        .btn-luxury { 
+            transition: all 0.4s ease; 
+            background-color: var(--luxury-sand);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(220, 203, 174, 0.3);
+        }
+        .btn-luxury:hover { 
+            background-color: #CBB99C;
+            box-shadow: 0 8px 25px rgba(220, 203, 174, 0.5); 
+        }
+        
+        /* --- BOTÓN WHATSAPP CRISTAL (Glassmorphism Original) --- */
+        .whatsapp-glass {
+            position: fixed; bottom: 30px; right: 30px;
+            background: rgba(37, 211, 102, 0.35); /* Transparente premium */
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
+            z-index: 900; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .whatsapp-glass:hover {
+            transform: scale(1.15) translateY(-5px);
+            background: rgba(37, 211, 102, 0.6);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
 
-        /* --- Efectos Visuales & Ticker --- */
-        .film-grain { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1; }
-        .hero-gradient { background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(250,250,249,0.9) 80%, rgba(250,250,249,1) 100%); }
-        .clip-text { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
-        .ticker-wrap { width: 100%; overflow: hidden; background-color: #111827; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .ticker-track { display: flex; width: max-content; }
-        .ticker-item { white-space: nowrap; padding: 0 2rem; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.4); font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-        .ticker-item span { color: #DCCBAE; -webkit-text-stroke: 0; margin: 0 1rem; }
-        .reveal-word { transition: color 0.3s ease; }
-        .glass-panel { background: rgba(255,255,255,0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.8); }
+        .price-card { 
+            transition: all 0.5s ease; 
+            background: #FFFFFF; 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .price-card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-        /* --- Componentes --- */
-        .price-card { transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); background: #FFFFFF; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; height: 100%; }
-        .price-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .radar-ping { display: inline-block; width: 8px; height: 8px; background-color: #25D366; border-radius: 50%; position: relative; margin-right: 10px; }
-        .radar-ping::after { content: ''; position: absolute; width: 100%; height: 100%; background-color: #25D366; border-radius: 50%; animation: ping 2s infinite; }
-        @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 900; transition: all 0.3s ease; }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
-
-        /* --- FASE 3: CSS SIMULADOR REDES (Tilt & 3D) --- */
-        .social-simulator { 
-            position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9/16; 
-            background: #000; border-radius: 40px; border: 12px solid #1F2937; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden;
-            transform-style: preserve-3d; /* Activa el espacio 3D interno */
+        
+        .radar-ping {
+            display: inline-block; width: 8px; height: 8px;
+            background-color: var(--whatsapp-green);
+            border-radius: 50%; position: relative; margin-right: 10px;
         }
-        .social-overlay { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 60%, rgba(0,0,0,0.9) 100%); transform: translateZ(30px); /* Los textos resaltan hacia afuera */ }
-        .social-metrics { position: absolute; right: 15px; bottom: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center; transform: translateZ(40px); }
+        .radar-ping::after {
+            content: ''; position: absolute; width: 100%; height: 100%;
+            background-color: var(--whatsapp-green);
+            border-radius: 50%; animation: ping 2s infinite;
+        }
+        @keyframes ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
+        
+        .animate-shimmer {
+            background: linear-gradient(to right, #8CA3B0, #DCCBAE, #8CA3B0);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer-flow 6s linear infinite;
+        }
+
+        @keyframes shimmer-flow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .faq-question {
+            width: 100%; padding: 1.5rem 0;
+            display: flex; justify-content: space-between; align-items: center;
+            text-align: left; transition: color 0.3s ease; color: var(--text-dark);
+        }
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #4B5563; font-size: 0.95rem; line-height: 1.7;
+        }
+        .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--pastel-blue); }
+
+        /* --- TICKER TIPOGRÁFICO ORIGINAL RESTAURADO --- */
+        .ticker-wrap {
+            width: 100%; overflow: hidden; background-color: #111827; 
+            border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 0.75rem 0;
+        }
+        .ticker-track { display: flex; width: max-content; animation: ticker-scroll 45s linear infinite; }
+        .ticker-item {
+            white-space: nowrap; padding: 0 2rem; color: #9CA3AF;
+            font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 500;
+            letter-spacing: 0.2em; text-transform: uppercase;
+        }
+        .ticker-item span { color: var(--luxury-sand); margin: 0 1rem; }
+        
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .social-simulator {
+            position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9/16;
+            background: #000; border-radius: 40px; border: 12px solid #1F2937;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden;
+        }
+        .social-overlay {
+            position: absolute; inset: 0; z-index: 10; pointer-events: none;
+            display: flex; flex-direction: column; justify-content: space-between; padding: 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 60%, rgba(0,0,0,0.9) 100%);
+        }
+        .social-metrics { position: absolute; right: 15px; bottom: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
         .metric-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        @keyframes floatUpHeart { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: 1; transform: scale(1.2); } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
+
+        @keyframes floatUpHeart {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 1; transform: scale(1.2); }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
         .floating-heart { position: absolute; bottom: 120px; right: 20px; color: #ff2a5f; opacity: 0; animation: floatUpHeart 3s ease-in-out infinite; }
         .fh-2 { animation-delay: 1.2s; right: 30px; font-size: 0.8rem; }
         .fh-3 { animation-delay: 2.5s; right: 10px; font-size: 1.2rem; }
 
-        /* --- ESTILOS DEL SIMULADOR ROI --- */
-        .roi-slider { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 6px; background: #e5e7eb; outline: none; transition: background 0.1s; }
-        .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 32px; height: 32px; border-radius: 50%; background: #111827; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; border: 3px solid white; }
-        .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); background: #8CA3B0; }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .floating-element { animation: floating 4s ease-in-out infinite; }
         
-        .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-        .faq-question { width: 100%; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; text-align: left; transition: color 0.3s ease; color: #111827; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); color: #4B5563; font-size: 0.95rem; line-height: 1.7; }
-        .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 1.5rem; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); color: #8CA3B0; }
+        .roi-slider { -webkit-appearance: none; width: 100%; height: 12px; border-radius: 6px; background: #e5e7eb; outline: none; transition: background 0.1s; }
+        .roi-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none; width: 32px; height: 32px; border-radius: 50%;
+            background: var(--text-dark); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s; border: 3px solid white;
+        }
+        .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); background: var(--pastel-blue); }
+        .roi-slider::-moz-range-thumb {
+            width: 32px; height: 32px; border-radius: 50%; background: var(--text-dark); cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 3px solid white;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+        }
+        .roi-slider::-moz-range-thumb:hover { transform: scale(1.2); background: var(--pastel-blue); }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    <!-- BOTÓN WHATSAPP PREMIUM GLASSMORPHISM -->
+    <a href="https://wa.me/56987491964" target="_blank" class="whatsapp-glass" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white" class="drop-shadow-md">
+            <path d="M12.031 0C5.398 0 .016 5.383.016 12.016c0 2.12.553 4.195 1.602 6.015L.031 24l6.11-1.602a11.96 11.96 0 0 0 5.89 1.547h.005c6.632 0 12.015-5.383 12.015-12.016C24.05 5.383 18.667 0 12.031 0zm0 21.945h-.004a9.92 9.92 0 0 1-5.06-1.383l-.363-.215-3.763.986.998-3.668-.236-.375a9.947 9.947 0 0 1-1.52-5.275c0-5.498 4.475-9.972 9.973-9.972 5.498 0 9.97 4.474 9.97 9.972 0 5.498-4.472 9.972-9.97 9.972zm5.45-7.447c-.298-.15-1.767-.872-2.04-.972-.272-.1-.47-.15-.67.15-.198.298-.77 1.02-.944 1.22-.174.198-.348.223-.646.074-1.284-.633-2.316-1.408-3.197-2.73-.227-.34.347-.32.92-1.464.074-.15.037-.274-.037-.424-.075-.15-.67-1.62-.92-2.22-.24-.58-.485-.5-.67-.51h-.57c-.2 0-.52.075-.794.375-.274.298-1.045 1.02-1.045 2.49 0 1.47 1.07 2.89 1.22 3.09.15.198 2.095 3.32 5.143 4.542 1.34.54 1.83.613 2.535.518.59-.08 1.767-.72 2.016-1.42.25-.7.25-1.296.175-1.42-.075-.125-.275-.2-.575-.35z"/>
+        </svg>
     </a>
 
-    <!-- Navegación Premium -->
-    <nav class="fixed w-full py-5 glass-nav z-[100]">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="nav-elem flex items-center gap-3 group cursor-pointer">
-                <div class="overflow-hidden rounded-lg">
-                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-10 w-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <span class="hidden sm:block font-orbitron text-lg font-extrabold tracking-tight text-gray-900 border-l-2 border-gray-200 pl-3">
-                    AUSTRAL<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE] font-light">DRONE.CL</span>
+    <!-- MAC OS DOCK NAVBAR -->
+    <div class="fixed top-4 left-1/2 -translate-x-1/2 z-[1000] w-[95%] max-w-5xl">
+        <nav class="glass-dock rounded-full px-6 py-3 flex justify-between items-center transition-all duration-500">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <a href="#inicio" class="flex items-center group dock-link">
+                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" 
+                         alt="Austral Drone Logo" 
+                         class="h-9 w-auto object-contain transition-transform duration-300">
+                </a>
+                <span class="hidden md:block font-orbitron text-sm font-bold tracking-tight text-gray-900 border-l border-gray-300/50 pl-3">
+                    AUSTRAL<span class="text-[#8CA3B0] font-light">DRONE.CL</span>
                 </span>
             </div>
             
-            <div class="nav-elem hidden lg:flex space-x-10 font-orbitron text-[11px] tracking-[0.15em] font-semibold items-center">
-                <a href="#inicio" class="relative text-gray-800 hover:text-[#8CA3B0] transition-colors duration-300 group">INICIO<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8CA3B0] transition-all duration-300 group-hover:w-full"></span></a>
-                <a href="#masterplan" class="relative flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-gray-900 to-black border border-[#FFD700]/50 hover:border-[#FFD700] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.1)]">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFD700]"></i><span class="text-[#FFD700] tracking-[0.2em]">MASTERPLAN</span>
+            <!-- Links Estilo Dock -->
+            <div class="hidden lg:flex space-x-1 font-orbitron text-[10px] tracking-[0.1em] font-medium items-center">
+                <a href="#inicio" class="dock-link px-4 py-2 rounded-full hover:bg-white/40 hover:shadow-sm text-gray-800">INICIO</a>
+                
+                <a href="#masterplan" class="dock-link px-4 py-2 rounded-full flex items-center gap-1.5 bg-gradient-to-r from-black/80 to-[#111827]/80 border border-[#FFD700]/30 hover:border-[#FFD700] shadow-sm">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFD700]"></i>
+                    <span class="font-bold text-[#FFD700]">MASTERPLAN</span>
                 </a>
-                <a href="#precios" class="relative text-[#DCCBAE] hover:text-[#CBB99C] transition-colors duration-300 group">SERVICIOS<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#DCCBAE] transition-all duration-300 group-hover:w-full"></span></a>
-                <a href="#portfolio" class="relative text-gray-800 hover:text-[#8CA3B0] transition-colors duration-300 group">PORTAFOLIO</a>
+                
+                <a href="#precios" class="dock-link px-4 py-2 rounded-full hover:bg-white/40 hover:shadow-sm text-[#CBB99C] font-bold">SERVICIOS</a>
+                <a href="#tecnologia" class="dock-link px-4 py-2 rounded-full hover:bg-white/40 hover:shadow-sm text-gray-800">ENFOQUE</a>
+                <a href="#portfolio" class="dock-link px-4 py-2 rounded-full hover:bg-white/40 hover:shadow-sm text-gray-800">PORTAFOLIO</a>
             </div>
 
-            <div class="nav-elem flex items-center space-x-4">
-                <a href="https://wa.me/56987491964" target="_blank" class="btn-avant-garde px-7 py-3 rounded-full font-bold text-[10px] font-orbitron tracking-[0.2em] uppercase hidden sm:flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>Agendar Vuelo
+            <!-- Botones -->
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/56987491964" target="_blank" class="dock-link btn-luxury px-5 py-2.5 rounded-full font-bold text-[10px] font-orbitron tracking-widest hidden sm:block">
+                    CONVERSAR
                 </a>
-                <button id="menu-toggle" aria-label="Menú" class="lg:hidden flex items-center justify-center p-2 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors">
+                <button id="menu-toggle" aria-label="Abrir menú" class="lg:hidden dock-link flex items-center justify-center w-10 h-10 rounded-full bg-white/30 border border-white/40 shadow-sm backdrop-blur-md">
                     <i data-lucide="menu" class="w-5 h-5 text-gray-900"></i>
                 </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
-    <!-- Menú Móvil -->
+    <!-- MENÚ MÓVIL (Mantenido intacto) -->
     <div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full sm:w-80 flex flex-col shadow-2xl lg:hidden">
         <div class="flex justify-between items-center p-6 border-b border-gray-100">
             <span class="font-orbitron text-sm font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0]">DRONE</span></span>
-            <button id="menu-close" aria-label="Cerrar menú" class="text-gray-900 p-2"><i data-lucide="x" class="w-8 h-8"></i></button>
+            <button id="menu-close" aria-label="Cerrar menú de navegación" class="text-gray-900 p-2">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
         </div>
         <div class="flex flex-col p-10 space-y-8 font-orbitron text-sm tracking-[0.2em]">
             <a href="#inicio" class="mobile-link text-gray-600">INICIO</a>
-            <a href="#masterplan" class="mobile-link text-[#FFD700] font-bold">MASTERPLAN 360°</a>
-            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold">SERVICIOS</a>
+            <a href="#masterplan" class="mobile-link relative flex items-center gap-2 w-fit px-5 py-2.5 rounded-full bg-gradient-to-r from-black to-[#111827] border border-[#FFD700] hover:from-[#FFD700] hover:to-[#FBBF24] transition-all duration-500 group shadow-[0_0_15px_rgba(255,215,0,0.25)] overflow-hidden">
+                <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
+                <i data-lucide="sparkles" class="w-4 h-4 text-[#FFD700] group-hover:text-black transition-colors relative z-10"></i>
+                <span class="font-bold text-[#FFD700] group-hover:text-black transition-colors relative z-10">MASTERPLAN 360°</span>
+            </a>
+            <a href="#precios" class="mobile-link text-[#DCCBAE] font-bold uppercase">SERVICIOS</a>
             <a href="#tecnologia" class="mobile-link text-gray-600">ENFOQUE</a>
             <a href="#portfolio" class="mobile-link text-gray-600">PORTAFOLIO</a>
             <a href="#faq" class="mobile-link text-gray-600">FAQ</a>
         </div>
         <div class="mt-auto p-10">
-            <a href="https://wa.me/56987491964" target="_blank" class="block w-full btn-avant-garde py-4 rounded-full font-bold text-center font-orbitron text-xs tracking-widest">AGENDAR REUNIÓN</a>
+            <a href="https://wa.me/56987491964" target="_blank" class="block w-full btn-luxury py-4 rounded-full font-bold text-center font-orbitron text-xs">AGENDAR REUNIÓN</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-white">
-        <div class="absolute inset-0 z-0 overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 grayscale scale-105" data-lenis-prevent>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-white">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-[0.35] grayscale scale-105 pointer-events-none">
                 <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4">
             </video>
-            <div class="film-grain"></div>
-            <div class="absolute inset-0 hero-gradient z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-white/70 to-[#FAFAF9]"></div>
         </div>
 
-        <div class="relative z-20 text-center px-6 max-w-5xl pt-24 flex flex-col items-center">
-            <div class="hero-badge inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 bg-white/50 backdrop-blur-md mb-8 shadow-sm">
-                <i data-lucide="aperture" class="w-4 h-4 text-[#8CA3B0] animate-[spin_10s_linear_infinite]"></i>
-                <span class="text-gray-800 font-orbitron text-[10px] uppercase tracking-[0.25em] font-bold">Cinematografía Aérea & FPV</span>
+        <div class="relative z-10 text-center px-6 max-w-5xl pt-16">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-[#8CA3B0]/30 bg-[#8CA3B0]/10 mb-6 backdrop-blur-sm reveal">
+                <span class="text-[#8CA3B0] font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-2">
+                    <i data-lucide="video" class="w-3 h-3"></i> Imágenes Aéreas con Drone y FPV
+                </span>
             </div>
 
-            <h1 class="font-orbitron font-extrabold text-[#111827] mb-6 leading-[1.05] tracking-tighter text-center flex flex-col items-center clip-text">
-                <span class="hero-title-line block text-5xl sm:text-6xl md:text-7xl">MARKETING CON <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#111827] to-gray-500">DRONES</span></span>
-                <span class="hero-title-line block text-4xl sm:text-5xl md:text-6xl mt-2">Y CINEMATOGRAFÍA FPV</span>
-                <span class="hero-title-line block text-3xl sm:text-4xl md:text-5xl text-[#8CA3B0] mt-2 font-light">EN PUERTO MONTT</span>
+            <h1 class="font-orbitron font-bold text-gray-900 mb-6 leading-[1.1] tracking-tighter text-center reveal" style="transition-delay: 100ms;">
+                <span class="block text-4xl sm:text-5xl md:text-6xl">MARKETING CON DRONES</span>
+                <span class="block text-5xl sm:text-6xl md:text-7xl text-transparent bg-clip-text animate-shimmer py-2">Y CINEMATOGRAFÍA FPV</span>
+                <span class="block text-4xl sm:text-5xl md:text-6xl">EN PUERTO MONTT</span>
             </h1>
 
-            <p class="hero-desc text-sm md:text-lg text-gray-600 mb-12 max-w-2xl mx-auto font-light leading-relaxed text-center">
-                Aplicamos ciencia visual a los bienes raíces. Nuestro servicio de drone inmobiliario fusiona planos aéreos y recorridos FPV para crear publicidad de lujo. Diseñamos contenido nativo para redes sociales.
+            <p class="text-sm md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-light leading-relaxed text-center reveal" style="transition-delay: 200ms;">
+                Aplicamos ciencia visual a los bienes raíces. Nuestro <strong class="font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">servicio de drone inmobiliario</strong> fusiona planos aéreos y <strong class="font-semibold text-gray-800">recorridos FPV</strong> para crear publicidad de lujo. Diseñamos contenido nativo para <strong class="text-[#8CA3B0] font-bold">redes sociales (Instagram y TikTok)</strong>, ayudando a las <strong class="font-semibold text-gray-800">corredoras de propiedades</strong> a filtrar curiosos y acelerar la venta de parcelas en la Región de Los Lagos.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <a href="#tecnologia" class="hero-btn btn-avant-garde px-10 py-4 rounded-full font-orbitron font-bold text-xs tracking-[0.2em] uppercase flex items-center gap-2">
-                    Nuestro Enfoque <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 300ms;">
+                <a href="#tecnologia" class="group relative px-10 py-4 bg-transparent overflow-hidden border border-[#8CA3B0] transition-all duration-300 rounded-full">
+                    <div class="absolute inset-0 bg-[#8CA3B0] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span class="relative font-orbitron font-semibold text-[#8CA3B0] group-hover:text-white transition-colors duration-300 text-xs tracking-[0.2em]">
+                        NUESTRO ENFOQUE
+                    </span>
                 </a>
-                <a href="#portfolio" class="hero-btn group font-orbitron text-[11px] text-gray-600 hover:text-gray-900 transition-colors tracking-[0.2em] flex items-center gap-3 font-semibold uppercase">
-                    <div class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-[#DCCBAE] group-hover:bg-[#DCCBAE]/10 transition-all duration-300">
-                        <i data-lucide="play" class="w-4 h-4 text-gray-900 group-hover:text-[#DCCBAE] ml-0.5"></i>
-                    </div>
-                    Ver Showreel
+                <a href="#portfolio" class="font-orbitron text-[11px] text-gray-500 hover:text-gray-900 transition-colors tracking-[0.2em] flex items-center gap-2 font-medium">
+                    VER SHOWREEL <i data-lucide="play-circle" class="w-5 h-5 text-[#DCCBAE]"></i>
                 </a>
             </div>
         </div>
 
-        <div class="hero-stats absolute bottom-10 w-full px-6 flex justify-center z-20 hidden md:flex">
-            <div class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 flex justify-between items-center border border-white shadow-[0_20px_40px_rgba(0,0,0,0.05)] w-full max-w-4xl">
-                <div class="flex items-center gap-4 px-6">
-                    <div class="w-10 h-10 rounded-full bg-[#DCCBAE]/20 flex items-center justify-center border border-[#DCCBAE]/30"><i data-lucide="store" class="text-[#CBB99C] w-4 h-4"></i></div>
-                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-[10px] uppercase tracking-widest">Interiores FPV</p><p class="text-[10px] text-gray-500 font-medium">Navegación de alta precisión</p></div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 hidden md:block reveal" style="transition-delay: 500ms;">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl p-5 flex justify-between items-center border border-white shadow-lg">
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#DCCBAE]/20 p-2.5 rounded-xl"><i data-lucide="store" class="text-[#CBB99C] w-5 h-5"></i></div>
+                    <div class="text-left">
+                        <p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Vuelos en Interiores</p>
+                        <p class="text-[10px] text-gray-500">Navegación de alta precisión</p>
+                    </div>
                 </div>
-                <div class="w-px h-8 bg-gray-300"></div>
-                <div class="flex items-center gap-4 px-6">
-                    <div class="w-10 h-10 rounded-full bg-[#8CA3B0]/20 flex items-center justify-center border border-[#8CA3B0]/30"><i data-lucide="smartphone" class="text-[#8CA3B0] w-4 h-4"></i></div>
-                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-[10px] uppercase tracking-widest">Algoritmo RRSS</p><p class="text-[10px] text-gray-500 font-medium">Formatos Verticales</p></div>
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-[#8CA3B0]/20 p-2.5 rounded-xl"><i data-lucide="smartphone" class="text-[#8CA3B0] w-5 h-5"></i></div>
+                    <div class="text-left">
+                        <p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Formato Vertical</p>
+                        <p class="text-[10px] text-gray-500">Optimizado TikTok/Reels</p>
+                    </div>
                 </div>
-                <div class="w-px h-8 bg-gray-300"></div>
-                <div class="flex items-center gap-4 px-6">
-                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200"><i data-lucide="trending-up" class="text-gray-600 w-4 h-4"></i></div>
-                    <div class="text-left"><p class="font-orbitron font-bold text-gray-900 text-[10px] uppercase tracking-widest">Enfoque Comercial</p><p class="text-[10px] text-gray-500 font-medium">Diseñado para vender</p></div>
+                <div class="w-px h-10 bg-gray-200"></div>
+                <div class="flex items-center gap-4">
+                    <div class="bg-gray-100 p-2.5 rounded-xl"><i data-lucide="trending-up" class="text-gray-600 w-5 h-5"></i></div>
+                    <div class="text-left">
+                        <p class="font-orbitron font-bold text-gray-900 text-xs uppercase tracking-wider">Enfoque Comercial</p>
+                        <p class="text-[10px] text-gray-500">Diseñado para vender</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Ticker Brutalista Animado por Scroll -->
-    <div class="ticker-wrap" id="dynamic-ticker">
+    <!-- TICKER BAR ORIGINAL (Tamaño Exacto) -->
+    <div class="ticker-wrap">
         <div class="ticker-track">
-            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span></div>
-            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span></div>
-            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span></div>
-            <div class="ticker-item">CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span></div>
+            <div class="ticker-item">
+                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
+            </div>
+            <div class="ticker-item">
+                CINEMATOGRAFÍA FPV <span>✦</span> INYECCIÓN DE MARCA <span>✦</span> RECORRIDOS INMERSIVOS <span>✦</span> RESOLUCIÓN 4K <span>✦</span> PUERTO MONTT <span>✦</span> PUERTO VARAS <span>✦</span> LLANQUIHUE <span>✦</span> FRUTILLAR <span>✦</span> LOS LAGOS <span>✦</span>
+            </div>
         </div>
     </div>
 
-    <!-- Scrollytelling en Enfoque -->
-    <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-b border-gray-100">
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#DCCBAE]/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#8CA3B0]/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div class="lg:col-span-7 relative z-10">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#8CA3B0]/30 bg-[#8CA3B0]/10 mb-8">
-                    <span class="w-2 h-2 rounded-full bg-[#8CA3B0] animate-pulse"></span><span class="text-[#8CA3B0] font-orbitron text-[10px] tracking-[0.2em] font-bold uppercase">Metodología Comprobada</span>
-                </div>
-                <h2 class="font-orbitron text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 tracking-tighter leading-[1.1]">
-                    PUBLICIDAD AÉREA<br>PARA <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8CA3B0] to-gray-500 font-light">CORREDORAS</span>
-                </h2>
-                <div id="reveal-text-container" class="text-xl md:text-2xl font-inter font-medium leading-relaxed tracking-tight text-gray-300">
-                    Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Diseñamos contenido exclusivo para TikTok e Instagram, rompiendo el scroll para aumentar el tráfico o filtrar compradores calificados mediante formatos FPV inmersivos.
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 relative w-full flex flex-col sm:flex-row lg:block gap-6 min-h-[450px] lg:h-[500px] mt-8 lg:mt-0 z-20 perspective-1000">
-                <div id="parallax-card-1" class="glass-panel p-8 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] w-full lg:max-w-sm lg:absolute lg:top-0 lg:right-0 transform lg:rotate-3 transition-transform hover:rotate-0 hover:scale-105 duration-500">
-                    <div class="w-12 h-12 rounded-xl bg-[#DCCBAE]/20 flex items-center justify-center mb-6 border border-[#DCCBAE]/30"><i data-lucide="brain-circuit" class="text-[#CBB99C] w-6 h-6"></i></div>
-                    <h4 class="font-orbitron font-bold text-gray-900 text-sm uppercase mb-2 tracking-widest">Efecto Memoria</h4>
-                    <p class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#DCCBAE] to-[#CBB99C] font-orbitron mb-3">+80%</p>
-                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Aumento en la retención de marca o propiedad en el cerebro del consumidor mediante formato inmersivo.</p>
-                </div>
-                <div id="parallax-card-2" class="glass-panel p-8 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] w-full lg:max-w-sm lg:absolute lg:bottom-0 lg:left-0 transform lg:-rotate-3 transition-transform hover:rotate-0 hover:scale-105 duration-500">
-                    <div class="w-12 h-12 rounded-xl bg-[#8CA3B0]/20 flex items-center justify-center mb-6 border border-[#8CA3B0]/30"><i data-lucide="filter" class="text-[#8CA3B0] w-6 h-6"></i></div>
-                    <h4 class="font-orbitron font-bold text-gray-900 text-sm uppercase mb-2 tracking-widest">Filtro Inteligente</h4>
-                    <p class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#8CA3B0] to-[#607987] font-orbitron mb-3">100%</p>
-                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Filtramos curiosos. El cliente que agenda tras vivir un recorrido inmersivo ya está convencido.</p>
-                </div>
+    <section id="tecnologia" class="py-32 px-6 bg-[#FAFAF9] relative overflow-hidden border-y border-gray-100">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <div class="text-center reveal max-w-4xl mx-auto">
+                <h2 class="font-orbitron text-3xl md:text-5xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PUBLICIDAD AÉREA PARA <span class="text-[#8CA3B0] font-light">CORREDORAS Y MARCAS</span></h2>
+                <div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto mb-8"></div>
+                
+                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed mb-6">
+                    Más allá de operar tecnología avanzada, nuestro verdadero enfoque eres tú. Nuestro objetivo es <strong class="font-semibold text-gray-800">cultivar el prestigio de tu marca o incrementar tus ventas</strong> diseñando contenido nativo y exclusivo para los algoritmos de <strong class="text-[#8CA3B0]">TikTok, Instagram y Facebook</strong>.
+                </p>
+                <p class="text-sm md:text-base text-gray-600 font-light leading-relaxed">
+                    Entendemos el ADN de tu negocio para transformarlo en una experiencia visual magnética. Ya seas <strong class="font-semibold text-gray-800">un local comercial</strong> buscando más visitas, <strong class="font-semibold text-gray-800">un particular</strong> queriendo vender un bien raíz o una <strong class="font-semibold text-gray-800">corredora de propiedades</strong> buscando vender inmuebles más rápido, nuestros formatos Cinematográficos y en FPV están diseñados específicamente para romper el scroll y generar interacción masiva. 
+                </p>
+                <p class="text-sm md:text-base font-medium text-[#1F2937] bg-[#DCCBAE]/10 p-6 rounded-2xl border border-[#DCCBAE]/30 mt-8 shadow-sm">
+                    No solo volamos; aplicamos ciencia. Estudios demuestran que el contenido inmersivo <mark class="bg-transparent text-[#8CA3B0] font-bold">aumenta un 80% el recuerdo de la marca o propiedad</mark> en el cerebro del consumidor. Convertimos espectadores pasivos en clientes activos, <mark class="bg-transparent text-[#8CA3B0] font-bold">aumentando el tráfico a tu local o filtrando compradores calificados para tus propiedades</mark>, mediante la tecnología que domina los algoritmos de 2026.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- FASE 3: Portafolio Tilt 3D Holográfico -->
     <section id="portfolio" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-gradient-to-b from-[#8CA3B0]/10 to-transparent blur-[100px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DCCBAE]/5 rounded-full blur-[120px] pointer-events-none"></div>
-        
+
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="flex flex-col items-center text-center mb-20 reveal">
                 <p class="text-[#DCCBAE] font-orbitron text-[10px] tracking-[0.4em] uppercase mb-4">El Siguiente Nivel</p>
                 <h2 class="font-orbitron text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-tighter">EL <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">PORTAFOLIO</span></h2>
-                <p class="text-gray-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">Un espacio diseñado exclusivamente para las marcas que redefinirán su industria. ¿Será tu negocio el próximo?</p>
+                <p class="text-gray-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">
+                    Un espacio diseñado exclusivamente para las marcas que redefinirán su industria. La expectativa es máxima. ¿Será tu negocio el primero en aparecer aquí?
+                </p>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-6 lg:gap-10 max-w-5xl mx-auto">
-                <!-- Simulador 1 con Vanilla Tilt 3D -->
-                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.4">
-                    <div class="social-simulator w-full max-w-[300px] border-[#1F2937] group-hover:border-[#DCCBAE]/50 transition-colors duration-500">
-                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1776309532/2026-04-15-224925038_asopuw.mp4" type="video/mp4"></video>
+                <a href="https://wa.me/56987491964" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(220,203,174,0.15)]">
+                    <div class="social-simulator w-full max-w-[300px] transition-colors duration-500 group-hover:border-[#DCCBAE]/50">
+                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none">
+                            <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1776309532/2026-04-15-224925038_asopuw.mp4" type="video/mp4">
+                        </video>
                         <div class="social-overlay">
-                            <div class="flex justify-between items-center w-full"><span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span><i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i></div>
-                            <i data-lucide="heart" class="floating-heart" fill="currentColor"></i><i data-lucide="heart" class="floating-heart fh-2" fill="currentColor"></i><i data-lucide="heart" class="floating-heart fh-3" fill="currentColor"></i>
-                            <div class="flex justify-between items-end w-full mt-auto">
+                            <div class="flex justify-between items-center w-full">
+                                <span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span>
+                                <i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i>
+                            </div>
+                            <i data-lucide="heart" class="floating-heart" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-2" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-3" fill="currentColor"></i>
+                            <div class="flex justify-between items-end w-full">
                                 <div class="text-white drop-shadow-lg w-[85%]">
-                                    <div class="flex items-center gap-2 mb-2"><div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="scissors" class="w-4 h-4 text-white"></i></div><span class="font-bold text-sm">Salón_Nicole</span><span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span></div>
-                                    <p class="text-xs font-light mb-3">Caso de éxito real. Cautiva y retiene clientes. 🚀🔥 #PuertoMontt</p>
-                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.05]">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden">
+                                            <i data-lucide="scissors" class="w-4 h-4 text-white"></i>
+                                        </div>
+                                        <span class="font-bold text-sm">Salón_Nicole</span>
+                                        <span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span>
+                                    </div>
+                                    <p class="text-xs font-light mb-3">Caso de éxito real. Cautiva, retiene y convierte vistas en clientes reales. 🚀🔥 #PuertoMontt</p>
+                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[shimmer-flow_3s_infinite]"></div>
-                                        <div class="flex items-center gap-3 relative z-10"><div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div><div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div></div>
+                                        <div class="flex items-center gap-3 relative z-10">
+                                            <div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div>
+                                            <div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="social-metrics pb-4"><div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">12.4K</span></div><div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">850</span></div><div class="metric-icon"><i data-lucide="bookmark" class="w-7 h-7"></i><span class="text-[10px] font-bold">3.2K</span></div></div>
+                                <div class="social-metrics pb-4">
+                                    <div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">12.4K</span></div>
+                                    <div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">850</span></div>
+                                    <div class="metric-icon"><i data-lucide="bookmark" class="w-7 h-7"></i><span class="text-[10px] font-bold">3.2K</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Simulador 2 con Vanilla Tilt 3D -->
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.4" style="transition-delay: 100ms;">
-                    <div class="social-simulator w-full max-w-[300px] border-[#1F2937] group-hover:border-[#8CA3B0]/50 transition-colors duration-500">
-                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779934484/2026-05-27-214849595_jssvuw.mp4" type="video/mp4"></video>
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" style="transition-delay: 100ms;">
+                    <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
+                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none">
+                            <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779934484/2026-05-27-214849595_jssvuw.mp4" type="video/mp4">
+                        </video>
                         <div class="social-overlay">
-                            <div class="flex justify-between items-center w-full"><span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span><i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i></div>
-                            <div class="flex justify-between items-end w-full mt-auto">
+                            <div class="flex justify-between items-center w-full">
+                                <span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span>
+                                <i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i>
+                            </div>
+                            <i data-lucide="heart" class="floating-heart" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-2" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-3" fill="currentColor"></i>
+                            <div class="flex justify-between items-end w-full">
                                 <div class="text-white drop-shadow-lg w-[85%]">
-                                    <div class="flex items-center gap-2 mb-2"><div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="trees" class="w-4 h-4 text-white"></i></div><span class="font-bold text-sm">Terragestion</span><span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span></div>
-                                    <p class="text-xs font-light mb-3">Geolocalización espacial y deslindes dinámicos. 🚀🏔️</p>
-                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.05]">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="trees" class="w-4 h-4 text-white"></i></div>
+                                        <span class="font-bold text-sm">Terragestion</span>
+                                        <span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span>
+                                    </div>
+                                    <p class="text-xs font-light mb-3">Geolocalización espacial y deslindes dinámicos de terrenos en alta definición. 🚀🏔️ #RealEstate</p>
+                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[shimmer-flow_3s_infinite]"></div>
-                                        <div class="flex items-center gap-3 relative z-10"><div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div><div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div></div>
+                                        <div class="flex items-center gap-3 relative z-10">
+                                            <div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div>
+                                            <div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="social-metrics pb-4"><div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">9.8K</span></div><div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">542</span></div></div>
+                                <div class="social-metrics pb-4">
+                                    <div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">9.8K</span></div>
+                                    <div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">542</span></div>
+                                    <div class="metric-icon"><i data-lucide="bookmark" class="w-7 h-7"></i><span class="text-[10px] font-bold">1.9K</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </a>
 
-                <!-- Simulador 3 con Vanilla Tilt 3D -->
-                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas" target="_blank" class="reveal relative flex justify-center group cursor-pointer" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.4" style="transition-delay: 200ms;">
-                    <div class="social-simulator w-full max-w-[300px] border-[#1F2937] group-hover:border-[#8CA3B0]/50 transition-colors duration-500">
-                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"><source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779935388/2026-05-27-222528210_wi2fpr.mp4" type="video/mp4"></video>
+                <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20proyecto%20audiovisual%20de%20parcelas%20como%20el%20de%20Terragestion" target="_blank" class="reveal relative flex justify-center group cursor-pointer transition-all duration-700 hover:-translate-y-3 hover:drop-shadow-[0_20px_30px_rgba(140,163,176,0.15)]" style="transition-delay: 200ms;">
+                    <div class="social-simulator w-full max-w-[300px] border-[#1F2937] transition-colors duration-500 group-hover:border-[#8CA3B0]/50">
+                        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover pointer-events-none">
+                            <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/v1779935388/2026-05-27-222528210_wi2fpr.mp4" type="video/mp4">
+                        </video>
                         <div class="social-overlay">
-                            <div class="flex justify-between items-center w-full"><span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span><i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i></div>
-                            <div class="flex justify-between items-end w-full mt-auto">
+                            <div class="flex justify-between items-center w-full">
+                                <span class="font-orbitron text-white text-xs font-bold drop-shadow-md">Para ti</span>
+                                <i data-lucide="search" class="text-white w-5 h-5 drop-shadow-md"></i>
+                            </div>
+                            <i data-lucide="heart" class="floating-heart" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-2" fill="currentColor"></i>
+                            <i data-lucide="heart" class="floating-heart fh-3" fill="currentColor"></i>
+                            <div class="flex justify-between items-end w-full">
                                 <div class="text-white drop-shadow-lg w-[85%]">
-                                    <div class="flex items-center gap-2 mb-2"><div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="map" class="w-4 h-4 text-white"></i></div><span class="font-bold text-sm">Terragestion_Lotes</span><span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span></div>
-                                    <p class="text-xs font-light mb-3">Perspectiva inmersiva y mapeo de lotes. 🏞️✨</p>
-                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.05]">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-white/20 border border-white flex items-center justify-center overflow-hidden"><i data-lucide="map" class="w-4 h-4 text-white"></i></div>
+                                        <span class="font-bold text-sm">Terragestion_Lotes</span>
+                                        <span class="border border-white/50 rounded text-[9px] px-1.5 py-0.5 bg-white/20 backdrop-blur-sm">Seguir</span>
+                                    </div>
+                                    <p class="text-xs font-light mb-3">Perspectiva inmersiva y mapeo de lotes. Maximizando el valor visual de parcelas en el sur. 🏞️✨ #Inmobiliaria</p>
+                                    <div class="mt-2 bg-gradient-to-r from-[#1F2937]/95 to-black/95 backdrop-blur-md border border-[#DCCBAE]/40 rounded-xl p-3 w-full shadow-[0_0_20px_rgba(220,203,174,0.15)] relative overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
                                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[shimmer-flow_3s_infinite]"></div>
-                                        <div class="flex items-center gap-3 relative z-10"><div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div><div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div></div>
+                                        <div class="flex items-center gap-3 relative z-10">
+                                            <div class="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366] shrink-0"><i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i></div>
+                                            <div class="text-left"><p class="text-white font-orbitron font-bold text-[9px] uppercase tracking-widest leading-none mb-1">Impacto FPV</p><p class="text-[#DCCBAE] text-[10px] font-bold mt-1 flex items-center gap-1 leading-none drop-shadow-md">Ver Caso Completo <i data-lucide="chevron-right" class="w-3 h-3"></i></p></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="social-metrics pb-4"><div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">8.4K</span></div><div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">415</span></div></div>
+                                <div class="social-metrics pb-4">
+                                    <div class="metric-icon"><i data-lucide="heart" class="w-7 h-7 text-white hover:text-red-500 transition-colors" fill="transparent"></i><span class="text-[10px] font-bold">8.4K</span></div>
+                                    <div class="metric-icon"><i data-lucide="message-circle" class="w-7 h-7"></i><span class="text-[10px] font-bold">415</span></div>
+                                    <div class="metric-icon"><i data-lucide="bookmark" class="w-7 h-7"></i><span class="text-[10px] font-bold">1.2K</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -363,8 +538,11 @@
         </div>
     </section>
 
-    <!-- Inmobiliarias (Mantener exacto) -->
     <section id="inmobiliarias" class="py-32 px-6 bg-[#111827] relative overflow-hidden border-y border-white/5">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-[#DCCBAE]/10 rounded-full blur-[120px]"></div>
+            <div class="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-[#8CA3B0]/10 rounded-full blur-[100px]"></div>
+        </div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
@@ -378,19 +556,20 @@
                         <li class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-1"><i data-lucide="eye" class="w-5 h-5 text-[#8CA3B0]"></i></div><div><h4 class="text-white font-orbitron text-sm font-bold tracking-wide mb-1">Filtra Curiosos</h4><p class="text-xs text-gray-500 leading-relaxed">El cliente que agenda una visita presencial ya está un 80% convencido tras vivir el recorrido inmersivo.</p></div></li>
                         <li class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-1"><svg class="w-5 h-5 text-[#ff0000]" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.86-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M9.996,15.005l0-6.01l5.483,3.005L9.996,15.005z"/></svg></div><div><h4 class="text-white font-orbitron text-sm font-bold tracking-wide mb-1">Ecosistema YouTube</h4><p class="text-xs text-gray-500 leading-relaxed">Entregamos material en formato 16:9 cinematográfico listo para potenciar el canal de YouTube de tu agencia.</p></div></li>
                     </ul>
-                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20el%20servicio%20para%20Corredoras%20de%20Propiedades" target="_blank" class="btn-avant-garde inline-flex items-center gap-3 px-8 py-4 rounded-xl font-orbitron text-xs font-bold uppercase tracking-widest">Hablemos de Inmuebles <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20el%20servicio%20para%20Corredoras%20de%20Propiedades" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1F2937] rounded-xl font-orbitron text-xs font-bold uppercase tracking-widest hover:bg-[#DCCBAE] transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(220,203,174,0.3)]">Hablemos de Inmuebles <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
                 </div>
                 <div class="reveal group relative" style="transition-delay: 200ms;">
                     <div class="absolute -inset-1 bg-gradient-to-tr from-[#DCCBAE] to-[#8CA3B0] rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-700"></div>
-                    <div class="relative bg-black rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl aspect-video w-full"><iframe loading="lazy" class="absolute inset-0 w-full h-full z-10" src="https://www.youtube.com/embed/jWwg7QaQqoI?rel=0&modestbranding=1" title="Video Terragestion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="relative bg-black rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl aspect-video w-full"><iframe loading="lazy" class="absolute inset-0 w-full h-full z-10" src="https://www.youtube.com/embed/jWwg7QaQqoI?rel=0&modestbranding=1" title="Video en colaboración con Terragestion.cl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
                     <div class="absolute -right-6 -bottom-6 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 hidden md:flex items-center gap-4 animate-[floating_5s_ease-in-out_infinite] z-20"><div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center"><i data-lucide="mouse-pointer-click" class="w-6 h-6 text-red-600"></i></div><div><p class="text-xs text-gray-500 font-orbitron font-bold uppercase tracking-wider">Aumento de Marketing</p><p class="text-xl font-bold text-gray-900">+300%</p></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Masterplan (Mantener exacto) -->
     <section id="masterplan" class="py-32 px-6 bg-[#0B0F19] relative overflow-hidden border-t border-white/5">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#8CA3B0]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#DCCBAE]/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 reveal">
@@ -414,7 +593,6 @@
         </div>
     </section>
 
-    <!-- FASE 4: Precios Restaurados Completos con Estética Avant-Garde -->
     <section id="precios" class="py-32 px-6 bg-[#F3F4F6] relative overflow-hidden border-t border-gray-200">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal">
@@ -424,57 +602,46 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 items-stretch mb-24">
-                <!-- Tarjeta 1 Original -->
                 <div class="price-card p-10 border border-gray-200 rounded-3xl relative reveal flex flex-col bg-[#FAFAF9] shadow-md">
-                    <div class="mb-6 mt-2 flex items-center gap-4">
-                        <div class="bg-[#8CA3B0]/20 p-3.5 rounded-2xl"><i data-lucide="video" class="text-[#8CA3B0] w-6 h-6"></i></div>
-                        <div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Formato RRSS<br>& Cobertura Simple</h4></div>
-                    </div>
+                    <div class="mb-6 mt-2 flex items-center gap-4"><div class="bg-[#8CA3B0]/20 p-3.5 rounded-2xl"><i data-lucide="video" class="text-[#8CA3B0] w-6 h-6"></i></div><div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Formato RRSS<br>& Cobertura Simple</h4></div></div>
                     <p class="text-xs text-gray-600 font-medium mb-6 border-b border-gray-100 pb-4">Optimizado para romper el scroll en Instagram, Facebook y TikTok con tomas estratégicas.</p>
                     <div class="space-y-3 mb-8 flex-grow text-sm">
                         <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col"><div class="flex justify-between items-center"><span class="text-gray-900 font-bold text-xs uppercase">1 Video Inmobiliario</span><span class="text-[#8CA3B0] font-bold font-orbitron text-sm">$45.000 - $55.000</span></div></div>
                         <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col"><div class="flex justify-between items-center"><span class="text-gray-900 font-bold text-xs uppercase">2 Videos Inmobiliarios</span><span class="text-[#8CA3B0] font-bold font-orbitron text-sm">$75.000 - $95.000</span></div></div>
                         <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col"><div class="flex justify-between items-center"><span class="text-gray-900 font-bold text-xs uppercase">Reel Vertical Standard</span><span class="text-[#8CA3B0] font-bold font-orbitron text-sm">$70.000 - $120.000</span></div></div>
                     </div>
-                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesan%20los%20formatos%20simples%20de%20Video%20RRSS" target="_blank" class="w-full text-center py-4 rounded-xl btn-avant-garde btn-avant-blue font-bold text-[11px] font-orbitron uppercase tracking-widest">Elegir Formato RRSS</a>
+                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesan%20los%20formatos%20simples%20de%20Video%20RRSS" target="_blank" class="w-full text-center py-4 rounded-xl bg-[#8CA3B0] text-white font-bold text-[11px] font-orbitron uppercase tracking-widest shadow-md hover:bg-[#728A97] transition-all">Elegir Formato RRSS</a>
                 </div>
                 
-                <!-- Tarjeta 2 Original -->
                 <div class="price-card p-10 border-2 border-[#1F2937] rounded-3xl relative reveal flex flex-col bg-[#FAFAF9] shadow-xl transform md:-translate-y-4">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-[#1F2937] text-white text-[9px] px-5 py-1.5 rounded-b-xl font-bold font-orbitron uppercase tracking-[0.2em] shadow-sm whitespace-nowrap">RECOMENDADO PARCELAS Y LUJO</div>
-                    <div class="mb-6 mt-4 flex items-center gap-4">
-                        <div class="bg-[#1F2937]/10 p-3.5 rounded-2xl"><i data-lucide="award" class="text-[#1F2937] w-6 h-6"></i></div>
-                        <div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Cinematic Premium<br>& Loteos Extensos</h4></div>
-                    </div>
+                    <div class="mb-6 mt-4 flex items-center gap-4"><div class="bg-[#1F2937]/10 p-3.5 rounded-2xl"><i data-lucide="award" class="text-[#1F2937] w-6 h-6"></i></div><div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Cinematic Premium<br>& Loteos Extensos</h4></div></div>
                     <p class="text-xs text-gray-600 font-medium mb-6 border-b border-[#1F2937]/10 pb-4">Planificación visual superior, deslindes dinámicos y narrativa de alto estándar estético.</p>
                     <div class="space-y-3 mb-8 flex-grow text-sm">
                         <div class="bg-white p-3 rounded-xl border border-[#1F2937]/20 shadow-sm flex flex-col"><div class="flex justify-between items-center"><span class="text-gray-900 font-bold text-xs uppercase">4 Videos Parcelas/Terrenos</span><span class="text-[#1F2937] font-bold font-orbitron text-sm">$120.000 - $150.000</span></div></div>
                         <div class="bg-white p-3 rounded-xl border border-[#1F2937]/20 shadow-sm flex flex-col"><div class="flex justify-between items-center justify-between"><span class="text-gray-900 font-bold text-xs uppercase">Video Premium Cinematic</span><span class="text-[#1F2937] font-bold font-orbitron text-sm">Desde $180.000</span></div></div>
                         <div class="bg-white p-3 rounded-xl border border-[#1F2937]/20 shadow-sm flex flex-col"><div class="flex justify-between items-center"><span class="text-gray-900 font-bold text-xs uppercase">Tour FPV Recorrido Inmersivo</span><span class="text-[#1F2937] font-bold font-orbitron text-sm">Desde $140.000</span></div></div>
                     </div>
-                    <a href="https://wa.me/56987491964?text=Hola,%20necesito%20un%20Video%20Cinematic%20o%20de%20Parcelas%20Premium" target="_blank" class="w-full text-center py-4 rounded-xl btn-avant-garde font-bold text-[11px] font-orbitron uppercase tracking-widest">Cotizar Producción Premium</a>
+                    <a href="https://wa.me/56987491964?text=Hola,%20necesito%20un%20Video%20Cinematic%20o%20de%20Parcelas%20Premium" target="_blank" class="w-full text-center py-4 rounded-xl bg-[#1F2937] text-white font-bold text-[11px] font-orbitron uppercase tracking-widest shadow-md hover:bg-black transition-all">Cotizar Producción Premium</a>
                 </div>
                 
-                <!-- Tarjeta 3 Original -->
                 <div class="price-card p-10 border border-gray-200 rounded-3xl relative reveal flex flex-col bg-[#FAFAF9] shadow-md">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-[#DCCBAE] text-white text-[9px] px-5 py-1.5 rounded-b-xl font-bold font-orbitron uppercase tracking-[0.2em] shadow-sm">ALIANZAS CORPORATIVAS</div>
-                    <div class="mb-6 mt-4 flex items-center gap-4">
-                        <div class="bg-[#DCCBAE]/20 p-3.5 rounded-2xl"><i data-lucide="layers" class="text-[#CBB99C] w-6 h-6"></i></div>
-                        <div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Suscripciones<br>& Packs Mensuales</h4></div>
-                    </div>
+                    <div class="mb-6 mt-4 flex items-center gap-4"><div class="bg-[#DCCBAE]/20 p-3.5 rounded-2xl"><i data-lucide="layers" class="text-[#CBB99C] w-6 h-6"></i></div><div><h4 class="font-orbitron text-base text-gray-900 font-bold uppercase">Suscripciones<br>& Packs Mensuales</h4></div></div>
                     <p class="text-xs text-gray-600 font-medium mb-6 border-b border-gray-100 pb-4">Continuidad de contenido estratégico para Corredoras e Inmobiliarias con catálogo activo.</p>
                     <div class="space-y-3 mb-8 flex-grow text-sm">
                         <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col"><div class="flex justify-between items-center mb-1"><span class="text-gray-900 font-bold text-xs uppercase">Pack Corredoras Mensual</span><span class="text-[#CBB99C] font-bold font-orbitron text-sm">Desde $250.000</span></div><span class="text-[9px] text-gray-400">Contenido múltiple, reels, edición básica y RRSS.</span></div>
                         <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex flex-col"><div class="flex justify-between items-center mb-1"><span class="text-gray-900 font-bold text-xs uppercase">Pack Inmobiliaria Elite</span><span class="text-[#CBB99C] font-bold font-orbitron text-sm">$450k - $800k</span></div><span class="text-[9px] text-gray-400">Cinematic, FPV inmersivo, prioridad en agenda y entrega express.</span></div>
                     </div>
-                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20Pack%20Mensual%20para%20Corredoras/Inmobiliarias" target="_blank" class="w-full text-center py-4 rounded-xl btn-avant-garde btn-avant-sand font-bold text-[11px] font-orbitron uppercase tracking-widest">Solicitar Alianza Mensual</a>
+                    <a href="https://wa.me/56987491964?text=Hola,%20me%20interesa%20un%20Pack%20Mensual%20para%20Corredoras/Inmobiliarias" target="_blank" class="w-full text-center py-4 rounded-xl bg-[#DCCBAE] text-white font-bold text-[11px] font-orbitron uppercase tracking-widest shadow-md hover:bg-[#CBB99C] transition-all">Solicitar Alianza Mensual</a>
                 </div>
             </div>
 
-            <!-- FASE 4: Cotizador y ROI Originales Restaurados Íntegramente -->
             <div class="w-full max-w-4xl mx-auto reveal relative z-10 mt-10">
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#8CA3B0]/15 to-[#DCCBAE]/15 rounded-3xl blur-[40px] -z-10"></div>
                 <div class="bg-white border border-gray-200 shadow-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#DCCBAE]/20 to-transparent rounded-bl-full -z-10"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-[#8CA3B0]/20 to-transparent rounded-tr-full -z-10"></div>
                     <div class="text-center mb-10">
                         <span class="inline-block px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 font-orbitron text-[9px] tracking-[0.3em] font-bold mb-4 uppercase border border-gray-200">Cotizador en Tiempo Real</span>
                         <h3 class="font-orbitron text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Estima el Presupuesto de tu Proyecto</h3>
@@ -508,10 +675,7 @@
                                 </select>
                             </div>
                             <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="zap" class="text-amber-500 w-5 h-5"></i>
-                                    <div><p class="text-xs font-bold text-gray-800 font-orbitron uppercase">¿Edición Express 24 Horas?</p><p class="text-[10px] text-gray-400">Entrega prioritaria de urgencia (+$30.000)</p></div>
-                                </div>
+                                <div class="flex items-center gap-3"><i data-lucide="zap" class="text-amber-500 w-5 h-5"></i><div><p class="text-xs font-bold text-gray-800 font-orbitron uppercase">¿Edición Express 24 Horas?</p><p class="text-[10px] text-gray-400">Entrega prioritaria de urgencia (+$30.000)</p></div></div>
                                 <label class="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" id="expressCheckbox" class="sr-only peer">
                                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#8CA3B0]"></div>
@@ -520,6 +684,7 @@
                         </div>
 
                         <div class="bg-gradient-to-b from-[#1F2937] to-black rounded-2xl p-6 shadow-xl border border-gray-800 flex flex-col justify-between text-center md:text-left relative">
+                            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE]"></div>
                             <div class="space-y-4">
                                 <span class="text-[10px] text-gray-400 uppercase tracking-widest font-bold block mb-1">Presupuesto Estimado Recomendado</span>
                                 <div class="text-center py-4 bg-white/5 border border-white/10 rounded-xl">
@@ -528,17 +693,14 @@
                                 </div>
                             </div>
                             <div class="mt-6 border-t border-white/10 pt-4 text-xs text-gray-300 space-y-2">
-                                <div class="flex justify-between"><span class="text-gray-400">Base según UF de Propiedad:</span><span id="baseLabel" class="font-bold"></span></div>
-                                <div class="flex justify-between"><span class="text-gray-400">Recargo por Traslado / Zona:</span><span id="travelLabel" class="font-bold"></span></div>
-                                <div class="flex justify-between"><span class="text-gray-400">Adicional de Urgencia:</span><span id="expressLabel" class="font-bold"></span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Base según UF de Propiedad:</span><span id="baseLabel" class="font-bold">$70.000 - $120.000</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Recargo por Traslado / Zona:</span><span id="travelLabel" class="font-bold">$0</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">Adicional de Urgencia:</span><span id="expressLabel" class="font-bold">$0</span></div>
                             </div>
-                            <button id="sendQuoteBtn" class="mt-6 w-full text-center py-3 rounded-xl btn-avant-garde btn-avant-sand font-bold text-[11px] font-orbitron uppercase tracking-widest text-gray-900">
-                                Enviar Cotización por WhatsApp
-                            </button>
+                            <button id="sendQuoteBtn" class="mt-6 w-full text-center py-3 rounded-xl bg-gradient-to-r from-[#DCCBAE] to-[#8CA3B0] text-gray-900 font-bold text-[11px] font-orbitron uppercase tracking-widest transition-transform transform hover:scale-[1.02]">Enviar Cotización por WhatsApp</button>
                         </div>
                     </div>
 
-                    <!-- Notas originales rescatadas -->
                     <div class="border-t border-gray-100 pt-8 mb-12">
                         <h4 class="font-orbitron text-xs font-bold text-gray-800 uppercase tracking-wider mb-4 flex items-center gap-2"><i data-lucide="info" class="w-4 h-4 text-[#8CA3B0]"></i> Notas Logísticas & Gastos Operacionales</h4>
                         <div class="grid sm:grid-cols-2 gap-4 text-[11px] text-gray-500">
@@ -559,25 +721,17 @@
                                 <div class="bg-white border-2 border-[#8CA3B0] px-5 py-2 rounded-xl shadow-sm"><span id="currentTrafficDisplay" class="font-bold text-2xl text-[#1F2937] font-orbitron">5,000</span></div>
                             </div>
                             <div class="relative w-full h-12 flex items-center">
-                                <input type="range" id="trafficSlider" min="500" max="50000" step="500" value="5000" class="roi-slider absolute w-full h-full cursor-pointer z-20 opacity-0">
-                                <div class="absolute w-full h-3 bg-gray-200 rounded-full overflow-hidden z-0">
-                                    <div id="sliderFill" class="h-full bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE] w-0 transition-all duration-100 ease-out"></div>
-                                </div>
-                                <div id="sliderThumb" class="absolute w-8 h-8 bg-white border-4 border-[#1F2937] rounded-full shadow-lg z-10 pointer-events-none" style="left: 0%; transform: translateX(-50%);"></div>
+                                <div class="absolute w-full h-3 bg-gray-200 rounded-full overflow-hidden"><div id="sliderFill" class="h-full bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE] w-0 transition-all duration-100 ease-out"></div></div>
+                                <input type="range" id="trafficSlider" min="500" max="50000" step="500" value="5000" class="roi-slider absolute w-full h-full opacity-0 cursor-pointer z-20">
+                                <div id="sliderThumb" class="absolute w-8 h-8 bg-white border-4 border-[#1F2937] rounded-full shadow-lg z-10 transition-transform duration-100 ease-out pointer-events-none" style="left: 0%; transform: translateX(-50%);"></div>
                             </div>
                             <div class="flex justify-between text-[11px] text-gray-400 mt-2 font-orbitron font-medium"><span>Bajo (500)</span><span>Alto (50k+)</span></div>
                         </div>
                         <div class="text-center mb-6"><h4 class="font-orbitron text-sm font-bold text-gray-700 uppercase tracking-widest">2. El Efecto Austral Drone</h4></div>
                         <div class="grid md:grid-cols-3 gap-6 text-center">
-                            <div class="p-6 bg-white rounded-2xl border border-gray-100 flex flex-col justify-center shadow-sm relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
-                                <i data-lucide="trending-up" class="w-8 h-8 text-[#8CA3B0] mx-auto mb-4 opacity-80"></i><span class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-2">Aumento de Alcance (Est. +50%)</span><span id="netIncreaseDisplay" class="text-2xl font-bold text-[#8CA3B0] font-orbitron count-up">+2,500</span>
-                            </div>
-                            <div class="p-8 bg-gradient-to-b from-[#1F2937] to-black rounded-2xl shadow-xl border border-gray-800 flex flex-col justify-center transform md:-translate-y-4 relative overflow-hidden">
-                                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE]"></div><i data-lucide="eye" class="w-10 h-10 text-white mx-auto mb-4 opacity-90"></i><span class="text-[11px] text-gray-300 uppercase tracking-widest font-bold mb-2">Vistas Proyectadas FPV</span><span id="projectedViewsDisplay" class="text-5xl font-bold text-white font-orbitron drop-shadow-md count-up">7,500</span>
-                            </div>
-                            <div class="p-6 bg-white rounded-2xl border border-[#DCCBAE]/40 flex flex-col justify-center shadow-sm relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
-                                <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-[#DCCBAE]/10 rounded-full blur-xl"></div><i data-lucide="users" class="w-8 h-8 text-[#CBB99C] mx-auto mb-2 opacity-80"></i><span class="text-[11px] text-gray-800 uppercase tracking-widest font-bold mb-1">Impacto en tu Perfil</span><span class="text-[9px] text-gray-500 leading-tight mb-3">Usuarios que te seguirán, enviarán mensaje o visitarán enlace (Est. 2%)</span><span id="newCustomersDisplay" class="text-3xl font-bold text-[#CBB99C] font-orbitron count-up">150</span>
-                            </div>
+                            <div class="p-6 bg-white rounded-2xl border border-gray-100 flex flex-col justify-center shadow-sm relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md"><i data-lucide="trending-up" class="w-8 h-8 text-[#8CA3B0] mx-auto mb-4 opacity-80"></i><span class="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-2">Aumento de Alcance (Est. +50%)</span><span id="netIncreaseDisplay" class="text-2xl font-bold text-[#8CA3B0] font-orbitron count-up">+2,500</span></div>
+                            <div class="p-8 bg-gradient-to-b from-[#1F2937] to-black rounded-2xl shadow-xl border border-gray-800 flex flex-col justify-center transform md:-translate-y-4 relative overflow-hidden"><div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#8CA3B0] to-[#DCCBAE]"></div><i data-lucide="eye" class="w-10 h-10 text-white mx-auto mb-4 opacity-90"></i><span class="text-[11px] text-gray-300 uppercase tracking-widest font-bold mb-2">Vistas Proyectadas FPV</span><span id="projectedViewsDisplay" class="text-5xl font-bold text-white font-orbitron drop-shadow-md count-up">7,500</span></div>
+                            <div class="p-6 bg-white rounded-2xl border border-[#DCCBAE]/40 flex flex-col justify-center shadow-sm relative overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md"><div class="absolute -right-4 -bottom-4 w-20 h-20 bg-[#DCCBAE]/10 rounded-full blur-xl"></div><i data-lucide="users" class="w-8 h-8 text-[#CBB99C] mx-auto mb-2 opacity-80"></i><span class="text-[11px] text-gray-800 uppercase tracking-widest font-bold mb-1">Impacto en tu Perfil</span><span class="text-[9px] text-gray-500 leading-tight mb-3">Usuarios que te seguirán, enviarán mensaje o visitarán tu enlace (Est. 2%)</span><span id="newCustomersDisplay" class="text-3xl font-bold text-[#CBB99C] font-orbitron count-up">150</span></div>
                         </div>
                     </div>
                 </div>
@@ -585,159 +739,82 @@
         </div>
     </section>
 
-    <!-- FAQ Original Intacto -->
     <section id="faq" class="py-32 px-6 bg-[#FAFAF9]">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-20 reveal"><h2 class="font-orbitron text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase tracking-tighter">PREGUNTAS <span class="text-[#8CA3B0] font-light">FRECUENTES</span></h2><div class="h-[2px] w-16 bg-[#DCCBAE] mx-auto"></div></div>
             <div class="space-y-4">
-                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md">
-                    <button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Es seguro volar dentro de mis instalaciones?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button>
-                    <div class="faq-answer">Absolutamente. Utilizamos tecnología diseñada específicamente para interiores, con protecciones integrales y sensores de precisión. Operamos con total sutileza, garantizando la seguridad de sus espacios y clientes mientras capturamos imágenes espectaculares.</div>
-                </div>
-                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 100ms;">
-                    <button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Cómo gestionan el clima variable del sur?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button>
-                    <div class="faq-answer">La excelencia requiere adaptación. Los rodajes en interiores no se ven afectados, y para exteriores en Puerto Montt, mantenemos flexibilidad de agenda. Si las condiciones no cumplen nuestro estándar de calidad visual, reprogramamos sin fricciones ni costos adicionales.</div>
-                </div>
-                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 200ms;">
-                    <button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Cuál es el tiempo de entrega del material?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button>
-                    <div class="faq-answer">Entendemos los tiempos del negocio. Entregamos el material final, post-producido y optimizado para el ecosistema digital, en un margen de 24 a 48 horas hábiles tras la filmación.</div>
-                </div>
-                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 300ms;">
-                    <button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Necesito cerrar mi local durante el rodaje?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button>
-                    <div class="faq-answer">De ninguna manera. Nuestra presencia es ágil y poco invasiva. De hecho, capturar la vitalidad y el ambiente real de su negocio operando aporta autenticidad y confianza a la pieza audiovisual final.</div>
-                </div>
+                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md"><button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Es seguro volar dentro de mis instalaciones?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button><div class="faq-answer">Absolutamente. Utilizamos tecnología diseñada específicamente para interiores, con protecciones integrales y sensores de precisión. Operamos con total sutileza, garantizando la seguridad de sus espacios y clientes mientras capturamos imágenes espectaculares.</div></div>
+                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 100ms;"><button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Cómo gestionan el clima variable del sur?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button><div class="faq-answer">La excelencia requiere adaptación. Los rodajes en interiores no se ven afectados, y para exteriores en Puerto Montt, mantenemos flexibilidad de agenda. Si las condiciones no cumplen nuestro estándar de calidad visual, reprogramamos sin fricciones ni costos adicionales.</div></div>
+                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 200ms;"><button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Cuál es el tiempo de entrega del material?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button><div class="faq-answer">Entendemos los tiempos del negocio. Entregamos el material final, post-producido y optimizado para el ecosistema digital, en un margen de 24 a 48 horas hábiles tras la filmación.</div></div>
+                <div class="faq-item reveal bg-white rounded-2xl px-8 border border-gray-100 shadow-sm transition-all hover:shadow-md" style="transition-delay: 300ms;"><button class="faq-question font-orbitron text-sm font-semibold uppercase tracking-wider">¿Necesito cerrar mi local durante el rodaje?<i data-lucide="chevron-down" class="faq-icon w-5 h-5 transition-transform duration-300"></i></button><div class="faq-answer">De ninguna manera. Nuestra presencia es ágil y poco invasiva. De hecho, capturar la vitalidad y el ambiente real de su negocio operando aporta autenticidad y confianza a la pieza audiovisual final.</div></div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER MADRE ORIGINAL RESTAURADO CON ICONOS EXACTOS -->
     <footer class="bg-white py-20 px-6 border-t border-gray-200 relative overflow-hidden">
-        <div class="absolute inset-0 z-0 pointer-events-none">
-            <img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" class="w-full h-full object-cover opacity-[0.07] grayscale" alt="Background Austral Drone">
-        </div>
+        <div class="absolute inset-0 z-0 pointer-events-none"><img src="https://www.fotografiarte.es/fotoblog/wp-content/uploads/2024/04/DJI-avata-2-fotografiarte-07.webp" class="w-full h-full object-cover opacity-[0.07] grayscale" alt="Background Austral Drone"></div>
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 text-center md:text-left relative z-10">
-            <div>
-                <span class="font-orbitron text-xl font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0] font-light">DRONE.CL</span></span>
-                <p class="mt-6 text-gray-500 text-sm leading-relaxed">Producción audiovisual aérea. Transformamos la percepción de tu negocio con cinematografía de gama alta.</p>
-            </div>
-            <div class="flex flex-col items-center md:items-start space-y-6">
-                <h5 class="font-orbitron text-gray-900 text-[11px] tracking-[0.2em] uppercase font-bold">Contacto Directo</h5>
-                <a href="https://instagram.com/austral.drone" target="_blank" class="flex items-center space-x-3 group">
-                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/insta.png" alt="Instagram" class="w-5 h-5 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-                    <span class="text-xs font-medium text-gray-500 group-hover:text-gray-900 transition-colors tracking-widest font-orbitron uppercase">@AUSTRAL.DRONE</span>
-                </a>
-                <a href="https://wa.me/56987491964" target="_blank" class="flex items-center space-x-3 group">
-                    <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/pngegg.png" alt="WhatsApp" class="w-5 h-5 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-                    <span class="text-xs font-medium text-gray-500 group-hover:text-gray-900 transition-colors tracking-widest font-orbitron uppercase">+56 9 8749 1964</span>
-                </a>
-            </div>
-            <div class="flex flex-col space-y-5">
-                <h5 class="font-orbitron text-gray-900 text-[11px] tracking-[0.2em] uppercase font-bold">Operaciones</h5>
-                <div class="inline-block border border-[#25D366]/30 px-5 py-2 rounded-full bg-[#25D366]/5 w-fit mx-auto md:mx-0">
-                    <p class="text-[#20B958] font-orbitron text-[10px] tracking-[0.2em] uppercase font-bold flex items-center justify-center">
-                        <span class="radar-ping"></span> AGENDA DISPONIBLE
-                    </p>
-                </div>
-                <p class="text-gray-500 text-[11px] uppercase tracking-widest">Puerto Montt - Región de Los Lagos</p>
-            </div>
+            <div><span class="font-orbitron text-xl font-bold text-gray-900">AUSTRAL<span class="text-[#8CA3B0] font-light">DRONE.CL</span></span><p class="mt-6 text-gray-500 text-sm leading-relaxed">Producción audiovisual aérea. Transformamos la percepción de tu negocio con cinematografía de gama alta.</p></div>
+            <div class="flex flex-col items-center md:items-start space-y-6"><h5 class="font-orbitron text-gray-900 text-[11px] tracking-[0.2em] uppercase font-bold">Contacto Directo</h5><a href="https://instagram.com/austral.drone" target="_blank" class="flex items-center space-x-3 group"><img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/insta.png" alt="Instagram" class="w-5 h-5 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"><span class="text-xs font-medium text-gray-500 group-hover:text-gray-900 transition-colors tracking-widest font-orbitron uppercase">@AUSTRAL.DRONE</span></a><a href="https://wa.me/56987491964" target="_blank" class="flex items-center space-x-3 group"><img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/main/pngegg.png" alt="WhatsApp" class="w-5 h-5 object-contain opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"><span class="text-xs font-medium text-gray-500 group-hover:text-gray-900 transition-colors tracking-widest font-orbitron uppercase">+56 9 8749 1964</span></a></div>
+            <div class="flex flex-col space-y-5"><h5 class="font-orbitron text-gray-900 text-[11px] tracking-[0.2em] uppercase font-bold">Operaciones</h5><div class="inline-block border border-[#25D366]/30 px-5 py-2 rounded-full bg-[#25D366]/5 w-fit mx-auto md:mx-0"><p class="text-[#20B958] font-orbitron text-[10px] tracking-[0.2em] uppercase font-bold flex items-center justify-center"><span class="radar-ping"></span> AGENDA DISPONIBLE</p></div><p class="text-gray-500 text-[11px] uppercase tracking-widest">Puerto Montt - Región de Los Lagos</p></div>
         </div>
-        <div class="mt-20 pt-8 border-t border-gray-100/50 text-center text-[10px] text-gray-400 font-orbitron tracking-[0.2em] uppercase relative z-10">
-            &copy; 2026 Austral Drone. Publicidad y Marketing FPV Drone en el sur de Chile. Designed by Deus Vult ©
-        </div>
+        <div class="mt-20 pt-8 border-t border-gray-100/50 text-center text-[10px] text-gray-400 font-orbitron tracking-[0.2em] uppercase relative z-10">&copy; 2026 Austral Drone. Publicidad y Marketing FPV Drone en el sur de Chile. Designed by Deus Vult ©</div>
     </footer>
 
-    <!-- LÓGICA GLOBAL DE TODA LA PÁGINA -->
     <script>
         lucide.createIcons();
 
-        // Lenis Scroll
-        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-
-        // Vanilla Tilt para Fase 3 (Forzado de inicialización)
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-            max: 12, speed: 400, glare: true, "max-glare": 0.4
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(ScrollTrigger);
-            lenis.on('scroll', ScrollTrigger.update);
-            gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
-            gsap.ticker.lagSmoothing(0, 0);
-
-            // GSAP Nav Scroll
-            const nav = document.querySelector('.glass-nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            });
-
-            // GSAP Ticker Dinámico (Fase 2)
-            let tickerDirection = -1;
-            const tickerTrack = document.querySelector('.ticker-track');
-            let tickerTween = gsap.to(tickerTrack, { xPercent: -50, repeat: -1, duration: 25, ease: "none" });
-            ScrollTrigger.create({
-                onUpdate: (self) => {
-                    tickerDirection = self.direction === 1 ? -1 : 1; 
-                    gsap.to(tickerTween, { timeScale: tickerDirection * 1.5, overwrite: true });
-                }
-            });
-
-            // GSAP Scrollytelling Text Reveal (Fase 2)
-            const textContainer = document.getElementById("reveal-text-container");
-            const words = textContainer.innerText.split(" ");
-            textContainer.innerHTML = "";
-            words.forEach(word => {
-                const span = document.createElement("span");
-                span.className = "reveal-word";
-                span.innerText = word + " ";
-                textContainer.appendChild(span);
-            });
-            gsap.to("#reveal-text-container .reveal-word", {
-                color: "#111827", stagger: 0.05,
-                scrollTrigger: { trigger: "#tecnologia", start: "top 60%", end: "center 40%", scrub: 1 }
-            });
-
-            // GSAP Parallax Tarjetas (Fase 2)
-            if (window.innerWidth > 1024) {
-                gsap.to("#parallax-card-1", { y: -100, scrollTrigger: { trigger: "#tecnologia", start: "top bottom", end: "bottom top", scrub: 1 } });
-                gsap.to("#parallax-card-2", { y: 100, scrollTrigger: { trigger: "#tecnologia", start: "top bottom", end: "bottom top", scrub: 1 } });
-            }
-        });
-
-        // Mobile Menu
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuClose = document.getElementById('menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => { mobileMenu.classList.add('active'); lenis.stop(); });
-        menuClose.addEventListener('click', () => { mobileMenu.classList.remove('active'); lenis.start(); });
-        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('active'); lenis.start(); }));
-
-        // Observer Global
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // FAQ
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
                 const isActive = item.classList.contains('active');
                 document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
                 if (!isActive) item.classList.add('active');
-                setTimeout(() => ScrollTrigger.refresh(), 400); 
             });
         });
 
-        // ==========================================
-        // LÓGICA COTIZADOR EXACTA ORIGINAL RESTAURADA
-        // ==========================================
+        // Lógica del Navbar estilo Mac Dock
+        const nav = document.querySelector('.glass-dock');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        menuToggle.addEventListener('click', () => { 
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+        };
+
+        menuClose.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- LÓGICA DINÁMICA DEL COTIZADOR ---
         const propValueSelect = document.getElementById('propValueSelect');
         const zoneSelect = document.getElementById('zoneSelect');
         const expressCheckbox = document.getElementById('expressCheckbox');
+        
         const estimatedBudgetRange = document.getElementById('estimatedBudgetRange');
         const baseLabel = document.getElementById('baseLabel');
         const travelLabel = document.getElementById('travelLabel');
@@ -751,7 +828,9 @@
             range4: { min: 300000, max: 450000, name: "Sobre 20.000 UF" }
         };
 
-        function formatCLP(num) { return "$" + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+        function formatCLP(num) {
+            return "$" + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
 
         function calculateQuote() {
             const selectedRange = propValueSelect.value;
@@ -791,11 +870,8 @@
         zoneSelect.addEventListener('change', calculateQuote);
         expressCheckbox.addEventListener('change', calculateQuote);
         sendQuoteBtn.addEventListener('click', redirectToWhatsApp);
-        calculateQuote();
 
-        // ==========================================
-        // LÓGICA CALCULADORA ROI EXACTA ORIGINAL
-        // ==========================================
+        // --- LÓGICA DE LA CALCULADORA ROI ---
         const trafficSlider = document.getElementById('trafficSlider');
         const sliderFill = document.getElementById('sliderFill');
         const sliderThumb = document.getElementById('sliderThumb');
@@ -804,7 +880,9 @@
         const projectedViewsDisplay = document.getElementById('projectedViewsDisplay');
         const newCustomersDisplay = document.getElementById('newCustomersDisplay');
 
-        function formatNumberROI(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
         function animateValue(obj, start, end, duration, prefix = "") {
             let startTimestamp = null;
@@ -812,8 +890,10 @@
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const easeProgress = 1 - (1 - progress) * (1 - progress); 
-                obj.innerHTML = prefix + formatNumberROI(Math.floor(easeProgress * (end - start) + start));
-                if (progress < 1) window.requestAnimationFrame(step);
+                obj.innerHTML = prefix + formatNumber(Math.floor(easeProgress * (end - start) + start));
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
             };
             window.requestAnimationFrame(step);
         }
@@ -831,14 +911,18 @@
             const projectedViews = Math.round(currentViews + netIncrease);
             const newCustomers = Math.round(projectedViews * 0.02); 
 
-            currentTrafficDisplay.textContent = formatNumberROI(currentViews);
+            currentTrafficDisplay.textContent = formatNumber(currentViews);
+            
             animateValue(netIncreaseDisplay, 0, netIncrease, 300, "+");
             animateValue(projectedViewsDisplay, 0, projectedViews, 300);
             animateValue(newCustomersDisplay, 0, newCustomers, 300);
         }
 
         trafficSlider.addEventListener('input', updateROI);
+
+        calculateQuote();
         updateROI();
     </script>
 </body>
 </html>
+
