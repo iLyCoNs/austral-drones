@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Austral Drone AI Solutions | Automatización e Inteligencia Artificial</title>
+    <title>Austral Drone AI Solutions | Asistente Comercial Inteligente</title>
     
     <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/favicon.png">
-    <meta name="description" content="División de Tecnología e Inteligencia Artificial de Austral Drone. Automatización para PYMES, Chatbots y Transformación Digital.">
+    <meta name="description" content="Automatizamos procesos comerciales y acompañamos la transformación digital mediante Asistentes de Inteligencia Artificial para atención en WhatsApp y Agenda Automática.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -23,14 +23,6 @@
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--text-dark); }
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-        }
-
         .dark-glass {
             background: rgba(17, 24, 39, 0.85);
             backdrop-filter: blur(16px);
@@ -49,126 +41,320 @@
             background-clip: text;
             color: transparent;
         }
+
+        .luxury-text-gradient {
+            background: linear-gradient(to right, #ffffff, #DCCBAE, #8CA3B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
     </style>
 </head>
-<body class="relative overflow-x-hidden antialiased">
+<body class="relative overflow-x-hidden antialiased bg-[#050505]">
 
-    <!-- FONDOS ANIMADOS IA (Estilo Home) -->
+    <!-- FONDOS ANIMADOS IA -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-10 grayscale scale-105 pointer-events-none">
-            <!-- Usamos el mismo video de fondo o uno similar abstracto, aquí reutilizamos el del home pero muy tenue -->
-            <source src="https://res.cloudinary.com/dwuwtpbpp/video/upload/q_auto/f_auto/v1775934431/loop10seg_z5wugh.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/90 to-[#FAFAF9]"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#DCCBAE]/5 blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#8CA3B0]/5 blur-[120px] pointer-events-none"></div>
     </div>
 
-    <!-- NAVEGACIÓN (Estilo Mac OS Dock simplificado) -->
+    <!-- NAVEGACIÓN -->
     <div class="fixed bottom-6 lg:bottom-auto lg:top-6 left-1/2 -translate-x-1/2 z-50 w-full px-4 sm:px-0 sm:w-auto">
-        <nav class="bg-white/90 backdrop-blur-xl border border-gray-200 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-full px-2 py-2 flex items-center justify-between sm:justify-center gap-2 sm:gap-6 mx-auto max-w-full overflow-x-auto">
+        <nav class="bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-full px-2 py-2 flex items-center justify-between sm:justify-center gap-2 sm:gap-6 mx-auto max-w-full overflow-x-auto">
             
-            <a href="index.html" class="flex items-center gap-3 bg-white px-4 py-1.5 rounded-full shadow-[inset_0_1px_3px_rgba(255,255,255,1),_0_4px_10px_rgba(0,0,0,0.05)] border border-gray-100 transition-opacity hover:opacity-90 shrink-0">
-                <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-6 w-auto object-contain">
-                <span class="hidden md:block font-orbitron text-xs font-bold tracking-tight text-gray-900 pl-3 border-l border-gray-300">
-                    AI<span class="text-[#8CA3B0] font-light">SOLUTIONS</span>
+            <a href="index.html" class="flex items-center gap-3 bg-[#111827] px-4 py-1.5 rounded-full border border-white/10 transition-opacity hover:opacity-90 shrink-0">
+                <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-6 w-auto object-contain brightness-0 invert">
+                <span class="hidden md:block font-orbitron text-xs font-bold tracking-tight text-white pl-3 border-l border-white/20">
+                    AI<span class="text-[#DCCBAE] font-light">SOLUTIONS</span>
                 </span>
             </a>
             
-            <div class="flex items-center gap-1 px-2 border-l border-gray-200">
-                <a href="index.html" class="px-3 py-2 font-orbitron text-[10px] font-semibold text-gray-600 tracking-[0.1em] hover:text-gray-900 transition-colors flex items-center gap-1">
+            <div class="flex items-center gap-1 px-2 border-l border-white/10">
+                <a href="index.html" class="px-3 py-2 font-orbitron text-[10px] font-semibold text-gray-400 tracking-[0.1em] hover:text-[#DCCBAE] transition-colors flex items-center gap-1">
                     <i data-lucide="arrow-left" class="w-3 h-3"></i> VOLVER
                 </a>
             </div>
 
-            <div class="flex items-center pl-2 border-l border-gray-200 shrink-0">
-                <a href="https://wa.me/56987491964" target="_blank" class="bg-[#111827] text-white hover:bg-[#1F2937] px-5 py-2 rounded-full font-bold text-[10px] font-orbitron tracking-widest transition-all shadow-[0_4px_10px_rgba(17,24,39,0.2)]">
-                    AGENDAR
+            <div class="flex items-center pl-2 border-l border-white/10 shrink-0">
+                <a href="https://wa.me/56987491964" target="_blank" class="bg-[#DCCBAE] text-[#111827] hover:bg-white px-5 py-2 rounded-full font-bold text-[10px] font-orbitron tracking-widest transition-all shadow-[0_4px_15px_rgba(220,203,174,0.3)]">
+                    COTIZAR IA
                 </a>
             </div>
         </nav>
     </div>
 
     <!-- HERO SECTION -->
-    <section class="relative z-10 min-h-screen flex flex-col justify-center items-center pt-24 pb-16 px-4 text-center">
-        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 bg-gray-600/80 backdrop-blur-md mb-6 shadow-sm">
+    <section class="relative z-10 min-h-screen flex flex-col justify-center items-center pt-32 pb-16 px-4 text-center">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#DCCBAE]/30 bg-[#111827]/80 backdrop-blur-md mb-8 shadow-sm">
             <span class="w-2.5 h-2.5 rounded-full bg-[#DCCBAE] animate-pulse"></span>
-            <span class="text-gray-100 font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Automatización • IA • Transformación Digital</span>
+            <span class="text-[#DCCBAE] font-orbitron text-[10px] uppercase tracking-[0.3em] font-bold">Automatización Comercial</span>
         </div>
 
-        <h1 class="font-orbitron font-bold text-[#111827] mb-6 leading-[1.1] tracking-tighter w-full max-w-4xl mx-auto">
-            <span class="block text-3xl sm:text-5xl md:text-6xl">ESCALA TU NEGOCIO CON</span>
-            <span class="block text-3xl sm:text-5xl md:text-7xl ai-glow-text py-2">INTELIGENCIA ARTIFICIAL</span>
+        <h1 class="font-orbitron font-bold text-white mb-6 leading-[1.1] tracking-tighter w-full max-w-5xl mx-auto">
+            <span class="block text-3xl sm:text-5xl md:text-6xl">TRANSFORMACIÓN DIGITAL MEDIANTE</span>
+            <span class="block text-3xl sm:text-5xl md:text-7xl luxury-text-gradient py-2">INTELIGENCIA ARTIFICIAL</span>
         </h1>
 
-        <p class="text-sm md:text-lg text-gray-600 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            Diseñamos e implementamos <strong class="font-bold text-gray-900">Chatbots Inteligentes y Flujos de Automatización</strong> para PYMES, corporaciones y profesionales independientes. Reduce costos operativos, atiende 24/7 y transforma prospectos en clientes de forma automática.
+        <p class="text-sm md:text-lg text-gray-400 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            Implementamos <strong class="text-white font-medium">Asistentes Comerciales Inteligentes</strong>. Automatizamos la atención inicial de tus prospectos, optimizamos el proceso comercial y preparamos tu negocio para escalar.
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <a href="https://wa.me/56987491964" target="_blank" class="group relative px-8 py-3.5 bg-[#111827] border border-[#111827] transition-all duration-300 rounded-full flex items-center gap-3 text-white shadow-[0_10px_20px_rgba(17,24,39,0.2)] hover:bg-[#1F2937] hover:shadow-[0_15px_30px_rgba(17,24,39,0.3)] hover:-translate-y-1">
-                <span class="font-orbitron font-bold text-[11px] tracking-[0.2em] uppercase">Diagnóstico Gratuito</span>
-                <i data-lucide="arrow-down-right" class="w-4 h-4 text-[#DCCBAE]"></i>
+            <a href="https://wa.me/56987491964" target="_blank" class="group relative px-8 py-4 bg-[#DCCBAE] border border-[#DCCBAE] transition-all duration-300 rounded-full flex items-center gap-3 text-[#111827] shadow-[0_10px_20px_rgba(220,203,174,0.15)] hover:bg-white hover:shadow-[0_15px_30px_rgba(220,203,174,0.3)] hover:-translate-y-1">
+                <span class="font-orbitron font-bold text-[11px] tracking-[0.2em] uppercase">Implementar IA Ahora</span>
+                <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
             </a>
-            <a href="#soluciones" class="font-orbitron text-[11px] text-gray-600 hover:text-gray-900 transition-colors tracking-[0.2em] flex items-center gap-3 font-bold uppercase group">
-                <div class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-[#8CA3B0] group-hover:bg-[#8CA3B0]/10 transition-all duration-300">
-                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-600 group-hover:text-[#8CA3B0] mt-0.5"></i>
+            <a href="#flujo" class="font-orbitron text-[11px] text-gray-400 hover:text-white transition-colors tracking-[0.2em] flex items-center gap-3 font-bold uppercase group">
+                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#DCCBAE] group-hover:bg-[#DCCBAE]/10 transition-all duration-300">
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-[#DCCBAE] mt-0.5"></i>
                 </div>
-                Ver Soluciones
+                Ver Flujo de Trabajo
             </a>
         </div>
     </section>
 
-    <!-- SOLUCIONES SECTION (Estilo Portfolio Dark) -->
-    <section id="soluciones" class="relative z-10 py-24 px-6 bg-[#050505] border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-orbitron font-bold text-3xl md:text-5xl text-white mb-4 tracking-tighter">ECOSISTEMA <span class="text-[#DCCBAE] font-light">IA</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto font-light">Soluciones tecnológicas a la medida para modernizar la infraestructura digital de tu empresa.</p>
+    <!-- FLUJO DEL ASISTENTE -->
+    <section id="flujo" class="relative z-10 py-24 px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="font-orbitron font-bold text-2xl md:text-4xl text-white mb-2">DEL PRIMER CONTACTO</h2>
+            <h3 class="font-orbitron font-light text-xl md:text-3xl text-[#8CA3B0] mb-16 tracking-widest">A LA REUNIÓN COMERCIAL</h3>
+
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0 relative">
+                <!-- Línea conectora visible solo en desktop -->
+                <div class="hidden lg:block absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#DCCBAE]/30 to-transparent -translate-y-1/2 z-0"></div>
+
+                <!-- Paso 1 -->
+                <div class="flex flex-col items-center relative z-10 w-full lg:w-1/5 group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[3px] border-[#8CA3B0] bg-[#111827] flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:border-[#DCCBAE] shadow-[0_0_20px_rgba(140,163,176,0.1)]">
+                        <i data-lucide="message-circle" class="w-8 h-8 text-white group-hover:text-[#DCCBAE] transition-colors"></i>
+                    </div>
+                    <h4 class="font-orbitron font-bold text-white text-sm">WhatsApp</h4>
+                    <p class="text-xs text-gray-500 mt-2 font-light">Atención 24/7</p>
+                </div>
+
+                <div class="lg:hidden w-1 h-8 border-l-2 border-dashed border-[#8CA3B0]/50 my-2"></div>
+
+                <!-- Paso 2 -->
+                <div class="flex flex-col items-center relative z-10 w-full lg:w-1/5 group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[3px] border-[#8CA3B0] bg-[#111827] flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:border-[#DCCBAE] shadow-[0_0_20px_rgba(140,163,176,0.1)]">
+                        <i data-lucide="bot" class="w-8 h-8 text-white group-hover:text-[#DCCBAE] transition-colors"></i>
+                    </div>
+                    <h4 class="font-orbitron font-bold text-white text-sm">IA Califica</h4>
+                    <p class="text-xs text-gray-500 mt-2 font-light">Filtro inteligente</p>
+                </div>
+
+                <div class="lg:hidden w-1 h-8 border-l-2 border-dashed border-[#8CA3B0]/50 my-2"></div>
+
+                <!-- Paso 3 -->
+                <div class="flex flex-col items-center relative z-10 w-full lg:w-1/5 group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[3px] border-[#8CA3B0] bg-[#111827] flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:border-[#DCCBAE] shadow-[0_0_20px_rgba(140,163,176,0.1)]">
+                        <i data-lucide="calendar" class="w-8 h-8 text-white group-hover:text-[#DCCBAE] transition-colors"></i>
+                    </div>
+                    <h4 class="font-orbitron font-bold text-white text-sm">Agenda</h4>
+                    <p class="text-xs text-gray-500 mt-2 font-light">Sincronización Automática</p>
+                </div>
+
+                <div class="lg:hidden w-1 h-8 border-l-2 border-dashed border-[#8CA3B0]/50 my-2"></div>
+
+                <!-- Paso 4 -->
+                <div class="flex flex-col items-center relative z-10 w-full lg:w-1/5 group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[3px] border-[#8CA3B0] bg-[#111827] flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:border-[#DCCBAE] shadow-[0_0_20px_rgba(140,163,176,0.1)]">
+                        <i data-lucide="file-text" class="w-8 h-8 text-white group-hover:text-[#DCCBAE] transition-colors"></i>
+                    </div>
+                    <h4 class="font-orbitron font-bold text-white text-sm">Resumen</h4>
+                    <p class="text-xs text-gray-500 mt-2 font-light">Brief para tu equipo</p>
+                </div>
+
+                <div class="lg:hidden w-1 h-8 border-l-2 border-dashed border-[#8CA3B0]/50 my-2"></div>
+
+                <!-- Paso 5 -->
+                <div class="flex flex-col items-center relative z-10 w-full lg:w-1/5 group">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[3px] border-[#DCCBAE] bg-[#DCCBAE]/10 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:bg-[#DCCBAE]/20 shadow-[0_0_30px_rgba(220,203,174,0.3)]">
+                        <i data-lucide="handshake" class="w-8 h-8 text-[#DCCBAE] transition-colors"></i>
+                    </div>
+                    <h4 class="font-orbitron font-bold text-[#DCCBAE] text-sm">Reunión</h4>
+                    <p class="text-xs text-gray-400 mt-2 font-light">Cierre Comercial de Alto Valor</p>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="dark-glass p-8 rounded-3xl relative overflow-hidden group hover:border-[#DCCBAE]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(220,203,174,0.05)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#8CA3B0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform">
-                        <i data-lucide="message-square-text" class="w-7 h-7 text-[#DCCBAE]"></i>
-                    </div>
-                    <h3 class="font-orbitron font-bold text-xl text-white mb-3 relative z-10">Chatbots Cognitivos</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10 font-light">Asistentes virtuales impulsados por IA para WhatsApp, Instagram y Web. Capaces de responder preguntas complejas, agendar citas y cualificar leads 24/7 sin intervención humana.</p>
-                </div>
+            <div class="mt-16 text-gray-400 text-sm md:text-base font-light max-w-3xl mx-auto dark-glass p-6 rounded-2xl border-l-4 border-l-[#DCCBAE]">
+                El asistente opera de forma autónoma, garantizando una experiencia fluida para el cliente y <strong class="text-white font-medium">liberando tiempo valioso</strong> para que tu equipo se concentre en las reuniones de mayor valor comercial.
+            </div>
+        </div>
+    </section>
 
-                <!-- Card 2 -->
-                <div class="dark-glass p-8 rounded-3xl relative overflow-hidden group hover:border-[#DCCBAE]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(220,203,174,0.05)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#8CA3B0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform">
-                        <i data-lucide="git-merge" class="w-7 h-7 text-[#DCCBAE]"></i>
+    <!-- FUNCIONES CLAVE Y DIAGNÓSTICO -->
+    <section class="relative z-10 py-24 px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="font-orbitron font-bold text-3xl md:text-4xl text-white mb-6">Funciones del Asistente</h2>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-[#8CA3B0]/20 flex items-center justify-center shrink-0 border border-[#8CA3B0]/50"><i data-lucide="clock" class="w-3 h-3 text-[#DCCBAE]"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm mb-1">Atención 24/7 sin esperas</h4>
+                            <p class="text-gray-400 text-xs font-light">Responde consultas frecuentes y presenta tus servicios inmediatamente en todo momento.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-[#8CA3B0]/20 flex items-center justify-center shrink-0 border border-[#8CA3B0]/50"><i data-lucide="filter" class="w-3 h-3 text-[#DCCBAE]"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm mb-1">Clasificación Automática</h4>
+                            <p class="text-gray-400 text-xs font-light">Califica prospectos con preguntas inteligentes y registra su información sin intervención manual.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-[#8CA3B0]/20 flex items-center justify-center shrink-0 border border-[#8CA3B0]/50"><i data-lucide="calendar-check" class="w-3 h-3 text-[#DCCBAE]"></i></div>
+                        <div>
+                            <h4 class="text-white font-bold text-sm mb-1">Agenda Inteligente</h4>
+                            <p class="text-gray-400 text-xs font-light">Organiza reuniones automáticamente basándose en la disponibilidad de tu equipo (Google Calendar).</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="dark-glass p-8 rounded-3xl relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#111827] to-[#0A192F] opacity-90 z-0"></div>
+                <div class="relative z-10">
+                    <h3 class="font-orbitron font-bold text-xl text-white mb-6 border-b border-white/10 pb-4">¿Por qué automatizar?</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400 font-light">Menor carga administrativa</span>
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#25D366]"></i>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400 font-light">Mayor productividad del equipo</span>
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#25D366]"></i>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400 font-light">Escalabilidad sin aumentar personal</span>
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#25D366]"></i>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400 font-light">Imagen profesional y diferenciada</span>
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#25D366]"></i>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron font-bold text-xl text-white mb-3 relative z-10">Automatización</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10 font-light">Conectamos tus herramientas (CRM, ERP, Emails, Hojas de cálculo) mediante flujos de trabajo automatizados. Eliminamos las tareas repetitivas para que tu equipo se enfoque en vender.</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Card 3 -->
-                <div class="dark-glass p-8 rounded-3xl relative overflow-hidden group hover:border-[#DCCBAE]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(220,203,174,0.05)]">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#8CA3B0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 relative z-10 group-hover:scale-110 transition-transform">
-                        <i data-lucide="bar-chart-3" class="w-7 h-7 text-[#DCCBAE]"></i>
-                    </div>
-                    <h3 class="font-orbitron font-bold text-xl text-white mb-3 relative z-10">Análisis y Big Data</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10 font-light">Sistemas de IA para procesar grandes volúmenes de datos de tu empresa, generando reportes predictivos, dashboards en tiempo real y toma de decisiones basadas en métricas reales.</p>
+    <!-- ROADMAP 5 FASES -->
+    <section class="relative z-10 py-24 px-6 border-t border-white/5 bg-[#111827]/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-orbitron font-bold text-3xl md:text-5xl text-white mb-4">ROADMAP DE TRANSFORMACIÓN</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto font-light">Cinco fases para generar una infraestructura digital sólida y escalable para el crecimiento sostenido de tu empresa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="dark-glass p-6 rounded-2xl border-t-4 border-t-[#8CA3B0] hover:border-t-[#DCCBAE] transition-colors">
+                    <span class="font-orbitron font-black text-4xl text-white/10 block mb-2">01</span>
+                    <h4 class="font-bold text-white text-sm mb-2">Asistente Comercial IA</h4>
+                    <p class="text-xs text-gray-400 font-light">Atención y calificación por WhatsApp.</p>
                 </div>
+                <div class="dark-glass p-6 rounded-2xl border-t-4 border-t-[#8CA3B0] hover:border-t-[#DCCBAE] transition-colors">
+                    <span class="font-orbitron font-black text-4xl text-white/10 block mb-2">02</span>
+                    <h4 class="font-bold text-white text-sm mb-2">Agenda Inteligente</h4>
+                    <p class="text-xs text-gray-400 font-light">Sincronización de citas y reuniones.</p>
+                </div>
+                <div class="dark-glass p-6 rounded-2xl border-t-4 border-t-[#8CA3B0] hover:border-t-[#DCCBAE] transition-colors">
+                    <span class="font-orbitron font-black text-4xl text-white/10 block mb-2">03</span>
+                    <h4 class="font-bold text-white text-sm mb-2">Web Corporativa</h4>
+                    <p class="text-xs text-gray-400 font-light">Creación de ecosistema web y RRSS.</p>
+                </div>
+                <div class="dark-glass p-6 rounded-2xl border-t-4 border-t-[#8CA3B0] hover:border-t-[#DCCBAE] transition-colors">
+                    <span class="font-orbitron font-black text-4xl text-white/10 block mb-2">04</span>
+                    <h4 class="font-bold text-white text-sm mb-2">Marketing Digital</h4>
+                    <p class="text-xs text-gray-400 font-light">Campañas de conversión en Meta Ads.</p>
+                </div>
+                <div class="dark-glass p-6 rounded-2xl border-t-4 border-t-[#DCCBAE] hover:border-t-white transition-colors bg-[#DCCBAE]/5">
+                    <span class="font-orbitron font-black text-4xl text-[#DCCBAE]/20 block mb-2">05</span>
+                    <h4 class="font-bold text-[#DCCBAE] text-sm mb-2">Optimización</h4>
+                    <p class="text-xs text-gray-300 font-light">Mejora continua y nuevas automatizaciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVERSIÓN Y PRECIOS -->
+    <section class="relative z-10 py-24 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-orbitron font-bold text-3xl md:text-5xl text-white mb-4">INVERSIÓN DEL PROYECTO</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto font-light">Estructura de precios transparente para la digitalización de tu negocio.</p>
+            </div>
+
+            <div class="dark-glass rounded-3xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-white/5">
+                                <th class="p-6 font-orbitron font-bold text-white text-sm border-b border-white/10">Concepto / Servicio</th>
+                                <th class="p-6 font-orbitron font-bold text-[#DCCBAE] text-sm border-b border-white/10 text-right">Valor Estimado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-light text-gray-300">
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 border-b border-white/5">
+                                    <strong class="text-white block font-medium mb-1">Asistente Comercial IA</strong>
+                                    Diseño, desarrollo e implementación del chatbot.
+                                </td>
+                                <td class="p-6 border-b border-white/5 text-right font-medium text-white">Desde $350.000 + IVA</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 border-b border-white/5">
+                                    <strong class="text-white block font-medium mb-1">Módulo Agenda Inteligente</strong>
+                                    Integración con calendarios y notificaciones.
+                                </td>
+                                <td class="p-6 border-b border-white/5 text-right font-medium text-white">$150.000 + IVA</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 border-b border-white/5">
+                                    <strong class="text-white block font-medium mb-1">Sitio Web Corporativo</strong>
+                                    Landing pages de alta conversión optimizadas para ventas.
+                                </td>
+                                <td class="p-6 border-b border-white/5 text-right font-medium text-white">$450.000 + IVA</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 border-b border-white/5">
+                                    <strong class="text-white block font-medium mb-1">RRSS y Marketing Digital</strong>
+                                    Creación de ecosistema social y campañas Meta Ads (Mensual).
+                                </td>
+                                <td class="p-6 border-b border-white/5 text-right font-medium text-white">Desde $180.000 + IVA</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors bg-[#DCCBAE]/5">
+                                <td class="p-6 border-b border-white/5 text-[#DCCBAE]">
+                                    <strong class="block font-medium mb-1">Mantenimiento y Optimización</strong>
+                                    Soporte mensual continuo.
+                                </td>
+                                <td class="p-6 border-b border-white/5 text-right font-medium text-[#DCCBAE]">Desde $80.000 + IVA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center">
+                <a href="https://wa.me/56987491964" target="_blank" class="px-8 py-3 bg-[#111827] border border-gray-600 rounded-full font-bold text-white text-[10px] font-orbitron tracking-widest uppercase hover:border-[#DCCBAE] transition-all">
+                    Condiciones 50/50 y Soporte
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="relative z-10 bg-white py-12 px-6 border-t border-gray-200">
+    <footer class="relative z-10 bg-[#030303] py-12 px-6 border-t border-white/5">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-5 w-auto grayscale opacity-70">
-                <span class="text-gray-500 text-xs border-l border-gray-300 pl-4 font-orbitron tracking-widest">DIVISIÓN AI SOLUTIONS &copy; 2026</span>
+                <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="h-5 w-auto grayscale opacity-50 invert brightness-200">
+                <span class="text-gray-600 text-xs border-l border-gray-700 pl-4 font-orbitron tracking-widest">DIVISIÓN AI SOLUTIONS &copy; 2026</span>
             </div>
             <div class="flex gap-6">
-                <a href="index.html" class="text-gray-500 hover:text-gray-900 font-orbitron text-[9px] uppercase tracking-widest transition-colors font-bold">Volver al Home</a>
-                <a href="https://wa.me/56987491964" class="text-gray-500 hover:text-gray-900 font-orbitron text-[9px] uppercase tracking-widest transition-colors font-bold">Contacto IA</a>
+                <a href="index.html" class="text-gray-500 hover:text-white font-orbitron text-[9px] uppercase tracking-widest transition-colors font-bold">Volver al Home</a>
+                <a href="https://wa.me/56987491964" class="text-[#DCCBAE] hover:text-white font-orbitron text-[9px] uppercase tracking-widest transition-colors font-bold">Liderado por Nicol Vidal</a>
             </div>
         </div>
     </footer>
