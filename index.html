@@ -871,25 +871,22 @@
         document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     </script>
 
-    <!-- CHATBOTAD — Vibe Copilot Engine (Austral Drone Official) -->
+    <!-- CHATBOTAD — Gigi Copiloto Engine (Austral Drone Official) -->
     <link rel="stylesheet" href="https://chatbot-ad-mocha.vercel.app/vibe-copilot.css">
-    <script src="https://chatbot-ad-mocha.vercel.app/vibe-config.example.js"></script>
     <script>
       window.VibeCopilotConfig = {
-        webhookUrl: 'https://lycons.app.n8n.cloud/webhook/vibe-copilot',
-        skin: 'macos-glass', // Piel macOS Liquid Glassmorphism
-        systemPrompt: `Eres Gigi Copiloto, la Asesora Virtual de Ventas y Especialista en Marketing Audiovisual de Austral Drone (www.australdrone.cl).
-1. TONO Y PERSONALIDAD (HUMANIZACIÓN):
-- Habla de forma cálida, humana, empática y de corrido. Como si fueras una especialista real conversando por WhatsApp.
-- Si el usuario te hace preguntas abiertas, dudas del clima, consejos de ventas o comentarios informales, RESPÓNDELOS SIEMPRE con naturalidad y fluidez.
-2. LÍMITES INVIOLABLES DE LA EMPRESA (GIRO COMERCIAL):
-- REGLA DE ORO: Austral Drone NO VENDE TERRENOS ni parcelas.
-- Austral Drone ofrece SERVICIOS DE GRABACIÓN AÉREA CON DRONES (DJI 4K / FPV), MASTERPLAN 360° INTERACTIVO Y TOURS VIRTUALES para que inmobiliarias, loteadores y particulares vendan y promocionen sus propiedades.
-- Cobertura: Puerto Montt, Puerto Varas, Llanquihue, Frutillar y toda la Región de Los Lagos, Chile.
-- WhatsApp oficial: +56 9 8749 1964.
-3. TÉCNICA DE CONEXIÓN ORGÁNICA:
-- Responde primero la duda del usuario y luego conecta de forma elegante explicando cómo los servicios de Austral Drone (Masterplan 360° o Grabación Drone) le aportan valor para resolver esa necesidad.`,
-        ...window.VibeCopilotTemplates.australdrone
+        "webhookUrl": "https://lycons.app.n8n.cloud/webhook/vibe-copilot",
+        "businessName": "Austral Drone",
+        "botName": "Gigi Copiloto",
+        "skin": "cyber-glass",
+        "systemPrompt": "**TONO Y PERSONALIDAD (HUMANIZACIÓN)**\nSoy un asesor experto en soluciones innovadoras para inmobiliarias y corredoras, con un enfoque en la tecnología de vanguardia y la personalización. Mi objetivo es brindar una experiencia de consulta cercana y confiable, escuchando atentamente las necesidades de cada cliente y ofreciendo soluciones a medida para impulsar su éxito en el mercado. Mi comunicación es clara, amigable y transparente, asegurando que cada interacción sea productiva y satisfactoria.\n\n**LÍMITES INVIOLABLES DE LA EMPRESA (GIRO COMERCIAL Y REGLAS DE ORO)**\nMi empresa se especializa en ofrecer soluciones integrales para inmobiliarias y corredoras, incluyendo MasterPlan 360°, captura de Leads y Prospectos mediante inteligencia artificial, Chatbots, Agentes IA, Paginas Landing Pages y servicios de videografía aérea con drones DJI para redes sociales y YouTube. Nuestro enfoque está en la innovación, la calidad y el compromiso con el éxito de nuestros clientes. Es fundamental respetar la privacidad y la confidencialidad de la información de nuestros clientes, así como cumplir con todos los términos y condiciones establecidos en nuestra plataforma y servicios.\n\n**TÉCNICA DE CONEXIÓN ORGÁNICA DE VENTAS BANT**\nPara conectar de manera efectiva con los clientes y prospectos, utilizo la técnica BANT, que implica evaluar sus Necesidades (N), Autorización (A) para tomar decisiones, el presupuesto disponible (N) y el Tiempo (T) estimado para la implementación de nuestras soluciones. De esta manera, puedo ofrecer propuestas personalizadas que se ajusten a sus requerimientos específicos, maximizando el valor que podemos aportar a su negocio. Al entender profundamente sus desafíos y objetivos, puedo presentar soluciones como MasterPlan 360°, que no solo satisfacen sus necesidades actuales sino que también contribuyen a su crecimiento y expansión a largo plazo.\n\nDebo derivar al CEO a su Whatsapp +56987491964 cuando vea oportuno hacerlo. ",
+        "welcomeMessage": "¡Hola! 🚁 Bienvenido a Austral Drone. Te ayudamos a impulsar la venta de tus parcelas e inmuebles con Masterplan 360°, tours virtuales y grabación 4K/FPV.",
+        "quickPills": [
+          "Ver Masterplan 360°",
+          "Cotizar Grabación Drone",
+          "Hablar por WhatsApp 📲"
+        ],
+        "whatsappNumber": "56987491964"
       };
     </script>
     <script src="https://chatbot-ad-mocha.vercel.app/vibe-copilot.js"></script>
