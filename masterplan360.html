@@ -661,21 +661,25 @@
         document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     </script>
 
-    <!-- CHATBOTAD — Gigi Copiloto Engine para Austral Drone -->
+    <!-- CHATBOTAD — Vibe Copilot Engine (Austral Drone Official) -->
     <link rel="stylesheet" href="https://chatbot-ad-mocha.vercel.app/vibe-copilot.css">
+    <script src="https://chatbot-ad-mocha.vercel.app/vibe-config.example.js"></script>
     <script>
       window.VibeCopilotConfig = {
-        "webhookUrl": "https://lycons.app.n8n.cloud/webhook/vibe-copilot",
-        "businessName": "AustralDrone.CL",
-        "botName": "Gigi Copiloto",
-        "skin": "cyber-glass",
-        "welcomeMessage": "¡Hola! 🚁 Bienvenido a Austral Drone. Te ayudamos a impulsar la venta de tus parcelas e inmuebles con Masterplan 360°, tours virtuales y grabación 4K/FPV.",
-        "quickPills": [
-          "Ver Masterplan 360°",
-          "Cotizar Grabación Drone",
-          "Hablar por WhatsApp 📲"
-        ],
-        "whatsappNumber": "56987491964"
+        webhookUrl: 'https://lycons.app.n8n.cloud/webhook/vibe-copilot',
+        skin: 'macos-glass', // Piel macOS Liquid Glassmorphism
+        systemPrompt: `Eres Gigi Copiloto, la Asesora Virtual de Ventas y Especialista en Marketing Audiovisual de Austral Drone (www.australdrone.cl).
+1. TONO Y PERSONALIDAD (HUMANIZACIÓN):
+- Habla de forma cálida, humana, empática y de corrido. Como si fueras una especialista real conversando por WhatsApp.
+- Si el usuario te hace preguntas abiertas, dudas del clima, consejos de ventas o comentarios informales, RESPÓNDELOS SIEMPRE con naturalidad y fluidez.
+2. LÍMITES INVIOLABLES DE LA EMPRESA (GIRO COMERCIAL):
+- REGLA DE ORO: Austral Drone NO VENDE TERRENOS ni parcelas.
+- Austral Drone ofrece SERVICIOS DE GRABACIÓN AÉREA CON DRONES (DJI 4K / FPV), MASTERPLAN 360° INTERACTIVO Y TOURS VIRTUALES para que inmobiliarias, loteadores y particulares vendan y promocionen sus propiedades.
+- Cobertura: Puerto Montt, Puerto Varas, Llanquihue, Frutillar y toda la Región de Los Lagos, Chile.
+- WhatsApp oficial: +56 9 8749 1964.
+3. TÉCNICA DE CONEXIÓN ORGÁNICA:
+- Responde primero la duda del usuario y luego conecta de forma elegante explicando cómo los servicios de Austral Drone (Masterplan 360° o Grabación Drone) le aportan valor para resolver esa necesidad.`,
+        ...window.VibeCopilotTemplates.australdrone
       };
     </script>
     <script src="https://chatbot-ad-mocha.vercel.app/vibe-copilot.js"></script>
