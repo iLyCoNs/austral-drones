@@ -661,12 +661,21 @@
         document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     </script>
 
-    <!-- CHATBOTAD — Vibe Copilot Engine para Austral Drone -->
-    <script src="https://chatbot-ad-mocha.vercel.app/vibe-config.example.js"></script>
+    <!-- CHATBOTAD — Gigi Copiloto Engine para Austral Drone -->
+    <link rel="stylesheet" href="https://chatbot-ad-mocha.vercel.app/vibe-copilot.css">
     <script>
       window.VibeCopilotConfig = {
-        webhookUrl: 'https://lycons.app.n8n.cloud/webhook/vibe-copilot',
-        ...window.VibeCopilotTemplates.australdrone
+        "webhookUrl": "https://lycons.app.n8n.cloud/webhook/vibe-copilot",
+        "businessName": "AustralDrone.CL",
+        "botName": "Gigi Copiloto",
+        "skin": "cyber-glass",
+        "welcomeMessage": "¡Hola! 🚁 Bienvenido a Austral Drone. Te ayudamos a impulsar la venta de tus parcelas e inmuebles con Masterplan 360°, tours virtuales y grabación 4K/FPV.",
+        "quickPills": [
+          "Ver Masterplan 360°",
+          "Cotizar Grabación Drone",
+          "Hablar por WhatsApp 📲"
+        ],
+        "whatsappNumber": "56987491964"
       };
     </script>
     <script src="https://chatbot-ad-mocha.vercel.app/vibe-copilot.js"></script>
