@@ -660,5 +660,15 @@
         document.addEventListener('fullscreenchange', handleFullscreenChange);
         document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     </script>
+
+    <!-- CHATBOTAD — Vibe Copilot Engine para Austral Drone -->
+    <script src="https://chatbot-ad-mocha.vercel.app/vibe-config.example.js"></script>
+    <script>
+      window.VibeCopilotConfig = {
+        webhookUrl: 'https://lycons.app.n8n.cloud/webhook/vibe-copilot',
+        ...window.VibeCopilotTemplates.australdrone
+      };
+    </script>
+    <script src="https://chatbot-ad-mocha.vercel.app/vibe-copilot.js"></script>
 </body>
 </html>
