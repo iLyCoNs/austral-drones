@@ -588,7 +588,7 @@
                     <div class="relative w-full max-w-[310px] aspect-[9/16] select-none touch-pan-y" id="reel-deck-container">
                         
                         <!-- TELÉFONO 2 (Segundo Video: WEB_rwysqs.mp4) - Inicialmente de fondo / baraja -->
-                        <div id="phone-card-2" onclick="switchReelPhone(1)" class="absolute inset-0 w-full h-full bg-black rounded-[42px] border-[10px] border-[#1F2937] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden cursor-pointer transition-all duration-500 ease-out z-10 translate-x-4 translate-y-3 rotate-3 scale-95 opacity-85 hover:opacity-100 hover:rotate-1">
+                        <div id="phone-card-2" onclick="handleCardClick(1)" class="absolute inset-0 w-full h-full bg-black rounded-[42px] border-[10px] border-[#1F2937] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden cursor-pointer transition-all duration-500 ease-out z-10 translate-x-4 translate-y-3 rotate-3 scale-95 opacity-85 hover:opacity-100 hover:rotate-1">
                             <!-- Dynamic Island Notch -->
                             <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#1F2937] rounded-full z-30 flex items-center justify-center pointer-events-none">
                                 <div class="w-2.5 h-2.5 rounded-full bg-black/80 ml-auto mr-2"></div>
@@ -636,7 +636,7 @@
                         </div>
 
                         <!-- TELÉFONO 1 (Primer Video: R1_jjvx3p.mp4) - Inicialmente al frente -->
-                        <div id="phone-card-1" class="absolute inset-0 w-full h-full bg-black rounded-[42px] border-[10px] border-[#1F2937] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] overflow-hidden cursor-grab active:cursor-grabbing transition-all duration-500 ease-out z-20 translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100">
+                        <div id="phone-card-1" onclick="handleCardClick(0)" class="absolute inset-0 w-full h-full bg-black rounded-[42px] border-[10px] border-[#1F2937] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] overflow-hidden cursor-grab active:cursor-grabbing transition-all duration-500 ease-out z-20 translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100">
                             <!-- Dynamic Island Notch -->
                             <div class="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#1F2937] rounded-full z-30 flex items-center justify-center pointer-events-none">
                                 <div class="w-2.5 h-2.5 rounded-full bg-black/80 ml-auto mr-2"></div>
@@ -1449,21 +1449,29 @@
         const btnPhone2 = document.getElementById('btn-phone-2');
         const deckContainer = document.getElementById('reel-deck-container');
 
+        function handleCardClick(clickedIndex) {
+            if (clickedIndex !== currentReelIndex) {
+                switchReelPhone(clickedIndex);
+            }
+        }
+
         function switchReelPhone(index) {
             if (index === currentReelIndex) return;
             currentReelIndex = index;
 
             if (currentReelIndex === 0) {
                 // Traer Celular 1 al frente
-                phoneCard1.style.zIndex = '20';
+                phoneCard1.style.zIndex = '25';
                 phoneCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
                 phoneCard1.style.opacity = '1';
+                phoneCard1.style.pointerEvents = 'auto';
                 phoneCard1.style.cursor = 'grab';
 
-                // Enviar Celular 2 atrás (baraja)
+                // Enviar Celular 2 atrás (baraja derecha)
                 phoneCard2.style.zIndex = '10';
-                phoneCard2.style.transform = 'translate(16px, 12px) rotate(3deg) scale(0.95)';
+                phoneCard2.style.transform = 'translate(24px, 14px) rotate(3.5deg) scale(0.94)';
                 phoneCard2.style.opacity = '0.85';
+                phoneCard2.style.pointerEvents = 'auto';
                 phoneCard2.style.cursor = 'pointer';
 
                 // Reproducción inteligente
@@ -1477,15 +1485,17 @@
                 }
             } else {
                 // Traer Celular 2 al frente
-                phoneCard2.style.zIndex = '20';
+                phoneCard2.style.zIndex = '25';
                 phoneCard2.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
                 phoneCard2.style.opacity = '1';
+                phoneCard2.style.pointerEvents = 'auto';
                 phoneCard2.style.cursor = 'grab';
 
-                // Enviar Celular 1 atrás (baraja)
+                // Enviar Celular 1 atrás (baraja izquierda)
                 phoneCard1.style.zIndex = '10';
-                phoneCard1.style.transform = 'translate(-16px, 12px) rotate(-3deg) scale(0.95)';
+                phoneCard1.style.transform = 'translate(-24px, 14px) rotate(-3.5deg) scale(0.94)';
                 phoneCard1.style.opacity = '0.85';
+                phoneCard1.style.pointerEvents = 'auto';
                 phoneCard1.style.cursor = 'pointer';
 
                 // Reproducción inteligente
@@ -1523,7 +1533,6 @@
 
             deckContainer.addEventListener('touchend', () => {
                 if (Math.abs(distX) > 40) {
-                    // Deslizó hacia la izquierda o derecha
                     switchReelPhone(currentReelIndex === 0 ? 1 : 0);
                 }
                 distX = 0;
@@ -1531,6 +1540,8 @@
 
             // Eventos Mouse Drag (Escritorio)
             deckContainer.addEventListener('mousedown', (e) => {
+                // Solo inicializar arrastre si es clic izquierdo
+                if (e.button !== 0) return;
                 isDragging = true;
                 startX = e.clientX;
                 distX = 0;
