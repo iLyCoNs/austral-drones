@@ -1448,302 +1448,6 @@
         document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     </script>
 
-    <!-- CONTROLADOR INTERACTIVO DE BARAJA Y SWIPE DE CELULARES (REELS) -->
-    <script>
-        let currentReelIndex = 0;
-        const phoneCard1 = document.getElementById('phone-card-1');
-        const phoneCard2 = document.getElementById('phone-card-2');
-        const video1 = document.getElementById('reel-video-1');
-        const video2 = document.getElementById('reel-video-2');
-        const btnPhone1 = document.getElementById('btn-phone-1');
-        const btnPhone2 = document.getElementById('btn-phone-2');
-        const deckContainer = document.getElementById('reel-deck-container');
-
-        function handleCardClick(clickedIndex) {
-            if (clickedIndex !== currentReelIndex) {
-                switchReelPhone(clickedIndex);
-            } else {
-                openReelFullscreen(clickedIndex);
-            }
-        }
-
-        function switchReelPhone(index) {
-            if (index === currentReelIndex) return;
-            currentReelIndex = index;
-
-            if (currentReelIndex === 0) {
-                // Traer Celular 1 al frente
-                phoneCard1.style.zIndex = '25';
-                phoneCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-                phoneCard1.style.opacity = '1';
-                phoneCard1.style.pointerEvents = 'auto';
-                phoneCard1.style.cursor = 'pointer';
-
-                // Enviar Celular 2 atras (baraja derecha)
-                phoneCard2.style.zIndex = '10';
-                phoneCard2.style.transform = 'translate(24px, 14px) rotate(3.5deg) scale(0.94)';
-                phoneCard2.style.opacity = '0.85';
-                phoneCard2.style.pointerEvents = 'auto';
-                phoneCard2.style.cursor = 'pointer';
-
-                // Reproduccion inteligente
-                if (video1) video1.play().catch(() => {});
-                if (video2) video2.pause();
-
-                // Actualizar botones
-                if (btnPhone1 && btnPhone2) {
-                    btnPhone1.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-emerald-600 text-white shadow-sm flex items-center gap-1.5';
-                    btnPhone2.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-gray-200 text-gray-700 hover:bg-gray-300 flex items-center gap-1.5';
-                }
-            } else {
-                // Traer Celular 2 al frente
-                phoneCard2.style.zIndex = '25';
-                phoneCard2.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-                phoneCard2.style.opacity = '1';
-                phoneCard2.style.pointerEvents = 'auto';
-                phoneCard2.style.cursor = 'pointer';
-
-                // Enviar Celular 1 atras (baraja izquierda)
-                phoneCard1.style.zIndex = '10';
-                phoneCard1.style.transform = 'translate(-24px, 14px) rotate(-3.5deg) scale(0.94)';
-                phoneCard1.style.opacity = '0.85';
-                phoneCard1.style.pointerEvents = 'auto';
-                phoneCard1.style.cursor = 'pointer';
-
-                // Reproduccion inteligente
-                if (video2) video2.play().catch(() => {});
-                if (video1) video1.pause();
-
-                // Actualizar botones
-                if (btnPhone1 && btnPhone2) {
-                    btnPhone2.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-cyan-600 text-white shadow-sm flex items-center gap-1.5';
-                    btnPhone1.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-gray-200 text-gray-700 hover:bg-gray-300 flex items-center gap-1.5';
-                }
-            }
-        }
-
-        // SOPORTE PARA GESTO TACTIL (TOUCH SWIPE Y TAP) Y DRAG CON RATON
-        if (deckContainer) {
-            let startX = 0;
-            let startY = 0;
-            let distX = 0;
-            let distY = 0;
-            let startTime = 0;
-            let isDragging = false;
-
-            // Eventos Touch (Moviles y Tablets)
-            deckContainer.addEventListener('touchstart', (e) => {
-                const touch = e.touches[0];
-                startX = touch.clientX;
-                startY = touch.clientY;
-                distX = 0;
-                distY = 0;
-                startTime = Date.now();
-            }, { passive: true });
-
-            deckContainer.addEventListener('touchmove', (e) => {
-                if (!e.touches.length) return;
-                const touch = e.touches[0];
-                distX = touch.clientX - startX;
-                distY = touch.clientY - startY;
-            }, { passive: true });
-
-            deckContainer.addEventListener('touchend', () => {
-                const elapsed = Date.now() - startTime;
-                const absX = Math.abs(distX);
-                const absY = Math.abs(distY);
-
-                if (absX > 40 && absX > absY) {
-                    switchReelPhone(currentReelIndex === 0 ? 1 : 0);
-                } else if (absX < 15 && absY < 15 && elapsed < 400) {
-                    handleCardClick(currentReelIndex);
-                }
-                distX = 0;
-                distY = 0;
-            });
-
-            // Eventos Mouse Drag (Escritorio)
-            deckContainer.addEventListener('mousedown', (e) => {
-                if (e.button !== 0) return;
-                isDragging = true;
-                startX = e.clientX;
-                distX = 0;
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                distX = e.clientX - startX;
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (!isDragging) return;
-                isDragging = false;
-                if (Math.abs(distX) > 40) {
-                    switchReelPhone(currentReelIndex === 0 ? 1 : 0);
-                }
-                distX = 0;
-            });
-        }
-
-        // VISOR INMERSIVO EN PANTALLA COMPLETA ESTILO REEL (TIKTOK / INSTAGRAM 4K)
-        const reelFullscreenModal = document.getElementById('reel-fullscreen-modal');
-        const reelFullscreenVideo = document.getElementById('reel-fullscreen-video');
-        const reelFullscreenTitle = document.getElementById('reel-fullscreen-title');
-        const reelFullscreenBadge = document.getElementById('reel-fullscreen-badge');
-        const reelVideosData = [
-            {
-                src: "https://res.cloudinary.com/dwuwtpbpp/video/upload/v1791486110/R1_jjvx3p.mp4",
-                title: "Video Drone Parcela 5.000 m² • Vista & Rol Propio",
-                badge: "Parcela 5.000 m² • Video 1"
-            },
-            {
-                src: "https://res.cloudinary.com/dwuwtpbpp/video/upload/v1791654313/WEB_rwysqs.mp4",
-                title: "Toma Aerea Dinamica y Deslindes de Terreno",
-                badge: "Terreno & Sitio • Video 2"
-            }
-        ];
-
-        let activeFullscreenIndex = 0;
-        let lastOpenFullscreenTimestamp = 0;
-
-        function openReelFullscreen(index) {
-            const now = Date.now();
-            if (now - lastOpenFullscreenTimestamp < 300) return;
-            lastOpenFullscreenTimestamp = now;
-
-            activeFullscreenIndex = typeof index === 'number' ? index : currentReelIndex;
-            const data = reelVideosData[activeFullscreenIndex];
-            if (!reelFullscreenModal || !reelFullscreenVideo || !data) return;
-
-            // Pausar videos de fondo del simulador
-            if (video1) video1.pause();
-            if (video2) video2.pause();
-
-            // Cargar fuente del video si cambia
-            if (reelFullscreenVideo.src !== data.src) {
-                reelFullscreenVideo.src = data.src;
-                reelFullscreenVideo.load();
-            }
-
-            if (reelFullscreenTitle) reelFullscreenTitle.textContent = data.title;
-            if (reelFullscreenBadge) reelFullscreenBadge.textContent = data.badge;
-
-            reelFullscreenModal.classList.remove('hidden');
-            reelFullscreenModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-
-            // Reproduccion con audio y fallback automatico en silencio para politicas de Chrome/Android
-            reelFullscreenVideo.muted = false;
-            const playPromise = reelFullscreenVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    updateSoundIcon(false);
-                }).catch(() => {
-                    reelFullscreenVideo.muted = true;
-                    reelFullscreenVideo.play().catch(() => {});
-                    updateSoundIcon(true);
-                });
-            }
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        }
-
-        function closeReelFullscreen() {
-            if (!reelFullscreenModal || !reelFullscreenVideo) return;
-
-            reelFullscreenVideo.pause();
-            reelFullscreenModal.classList.remove('flex');
-            reelFullscreenModal.classList.add('hidden');
-            document.body.style.overflow = '';
-
-            // Reanudar el video activo en el simulador
-            if (currentReelIndex === 0 && video1) {
-                video1.play().catch(() => {});
-            } else if (currentReelIndex === 1 && video2) {
-                video2.play().catch(() => {});
-            }
-        }
-
-        function toggleReelFullscreenVideo() {
-            const nextIndex = activeFullscreenIndex === 0 ? 1 : 0;
-            switchReelPhone(nextIndex);
-            openReelFullscreen(nextIndex);
-        }
-
-        function toggleReelSound() {
-            if (!reelFullscreenVideo) return;
-            reelFullscreenVideo.muted = !reelFullscreenVideo.muted;
-            if (!reelFullscreenVideo.muted && reelFullscreenVideo.paused) {
-                reelFullscreenVideo.play().catch(() => {});
-            }
-            updateSoundIcon(reelFullscreenVideo.muted);
-        }
-
-        function updateSoundIcon(isMuted) {
-            const soundBtnText = document.getElementById('reel-sound-text');
-            const soundIconWrap = document.getElementById('reel-sound-icon-wrap');
-            if (!soundIconWrap) return;
-            if (isMuted) {
-                soundIconWrap.innerHTML = '<i data-lucide="volume-x" class="w-3.5 h-3.5 text-amber-400"></i>';
-                if (soundBtnText) soundBtnText.textContent = 'Silencio';
-            } else {
-                soundIconWrap.innerHTML = '<i data-lucide="volume-2" class="w-3.5 h-3.5 text-emerald-300"></i>';
-                if (soundBtnText) soundBtnText.textContent = 'Audio';
-            }
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        }
-
-        function toggleReelPlayPause() {
-            if (!reelFullscreenVideo) return;
-            const playIndicator = document.getElementById('reel-play-indicator');
-            if (reelFullscreenVideo.paused) {
-                reelFullscreenVideo.play().catch(() => {});
-                if (playIndicator) {
-                    playIndicator.classList.remove('opacity-0');
-                    playIndicator.classList.add('opacity-100');
-                    setTimeout(() => {
-                        playIndicator.classList.remove('opacity-100');
-                        playIndicator.classList.add('opacity-0');
-                    }, 400);
-                }
-            } else {
-                reelFullscreenVideo.pause();
-                if (playIndicator) {
-                    playIndicator.classList.remove('opacity-0');
-                    playIndicator.classList.add('opacity-100');
-                }
-            }
-        }
-
-        function launchReelNativeDeviceFullscreen() {
-            if (!reelFullscreenVideo) return;
-            if (reelFullscreenVideo.requestFullscreen) {
-                reelFullscreenVideo.requestFullscreen();
-            } else if (reelFullscreenVideo.webkitRequestFullscreen) {
-                reelFullscreenVideo.webkitRequestFullscreen();
-            } else if (reelFullscreenVideo.webkitEnterFullscreen) {
-                reelFullscreenVideo.webkitEnterFullscreen();
-            }
-        }
-
-        function handleModalBackdropClick(e) {
-            if (e.target === reelFullscreenModal) {
-                closeReelFullscreen();
-            }
-        }
-
-        // Cerrar con tecla Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && reelFullscreenModal && !reelFullscreenModal.classList.contains('hidden')) {
-                closeReelFullscreen();
-            }
-        });
-    </script>
-
     <!-- MODAL INMERSIVO DE PANTALLA COMPLETA ESTILO REEL (4K NATIVO VERTICAL) -->
     <div id="reel-fullscreen-modal" class="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-xl hidden flex-col justify-between items-center p-3 sm:p-5 select-none h-[100dvh] max-h-[100dvh] overflow-hidden" onclick="handleModalBackdropClick(event)">
         
@@ -1813,6 +1517,302 @@
         </div>
 
     </div>
+
+    <!-- CONTROLADOR INTERACTIVO DE BARAJA Y SWIPE DE CELULARES (REELS) -->
+    <script>
+        let currentReelIndex = 0;
+        let activeFullscreenIndex = 0;
+        let modalOpenTime = 0;
+
+        const reelVideosData = [
+            {
+                src: "https://res.cloudinary.com/dwuwtpbpp/video/upload/v1791486110/R1_jjvx3p.mp4",
+                title: "Video Drone Parcela 5.000 m² • Vista & Rol Propio",
+                badge: "Parcela 5.000 m² • Video 1"
+            },
+            {
+                src: "https://res.cloudinary.com/dwuwtpbpp/video/upload/v1791654313/WEB_rwysqs.mp4",
+                title: "Toma Aerea Dinamica y Deslindes de Terreno",
+                badge: "Terreno & Sitio • Video 2"
+            }
+        ];
+
+        function handleCardClick(clickedIndex) {
+            if (clickedIndex !== currentReelIndex) {
+                switchReelPhone(clickedIndex);
+            } else {
+                openReelFullscreen(clickedIndex);
+            }
+        }
+
+        function switchReelPhone(index) {
+            if (index === currentReelIndex) return;
+            currentReelIndex = index;
+
+            const phoneCard1 = document.getElementById('phone-card-1');
+            const phoneCard2 = document.getElementById('phone-card-2');
+            const video1 = document.getElementById('reel-video-1');
+            const video2 = document.getElementById('reel-video-2');
+            const btnPhone1 = document.getElementById('btn-phone-1');
+            const btnPhone2 = document.getElementById('btn-phone-2');
+
+            if (currentReelIndex === 0) {
+                if (phoneCard1) {
+                    phoneCard1.style.zIndex = '25';
+                    phoneCard1.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+                    phoneCard1.style.opacity = '1';
+                    phoneCard1.style.pointerEvents = 'auto';
+                    phoneCard1.style.cursor = 'pointer';
+                }
+                if (phoneCard2) {
+                    phoneCard2.style.zIndex = '10';
+                    phoneCard2.style.transform = 'translate(24px, 14px) rotate(3.5deg) scale(0.94)';
+                    phoneCard2.style.opacity = '0.85';
+                    phoneCard2.style.pointerEvents = 'auto';
+                    phoneCard2.style.cursor = 'pointer';
+                }
+                if (video1) video1.play().catch(() => {});
+                if (video2) video2.pause();
+
+                if (btnPhone1 && btnPhone2) {
+                    btnPhone1.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-emerald-600 text-white shadow-sm flex items-center gap-1.5';
+                    btnPhone2.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-gray-200 text-gray-700 hover:bg-gray-300 flex items-center gap-1.5';
+                }
+            } else {
+                if (phoneCard2) {
+                    phoneCard2.style.zIndex = '25';
+                    phoneCard2.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
+                    phoneCard2.style.opacity = '1';
+                    phoneCard2.style.pointerEvents = 'auto';
+                    phoneCard2.style.cursor = 'pointer';
+                }
+                if (phoneCard1) {
+                    phoneCard1.style.zIndex = '10';
+                    phoneCard1.style.transform = 'translate(-24px, 14px) rotate(-3.5deg) scale(0.94)';
+                    phoneCard1.style.opacity = '0.85';
+                    phoneCard1.style.pointerEvents = 'auto';
+                    phoneCard1.style.cursor = 'pointer';
+                }
+                if (video2) video2.play().catch(() => {});
+                if (video1) video1.pause();
+
+                if (btnPhone1 && btnPhone2) {
+                    btnPhone2.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-cyan-600 text-white shadow-sm flex items-center gap-1.5';
+                    btnPhone1.className = 'px-3.5 py-1.5 rounded-full text-[10px] font-orbitron font-bold uppercase tracking-wider transition-all bg-gray-200 text-gray-700 hover:bg-gray-300 flex items-center gap-1.5';
+                }
+            }
+        }
+
+        // SOPORTE PARA GESTO TACTIL (TOUCH SWIPE) Y DRAG CON RATON
+        const deckContainer = document.getElementById('reel-deck-container');
+        if (deckContainer) {
+            let startX = 0;
+            let startY = 0;
+            let distX = 0;
+            let distY = 0;
+            let isDragging = false;
+
+            deckContainer.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                distX = 0;
+                distY = 0;
+            }, { passive: true });
+
+            deckContainer.addEventListener('touchmove', (e) => {
+                if (!e.touches.length) return;
+                const touch = e.touches[0];
+                distX = touch.clientX - startX;
+                distY = touch.clientY - startY;
+            }, { passive: true });
+
+            deckContainer.addEventListener('touchend', () => {
+                const absX = Math.abs(distX);
+                const absY = Math.abs(distY);
+                if (absX > 40 && absX > absY) {
+                    switchReelPhone(currentReelIndex === 0 ? 1 : 0);
+                }
+                distX = 0;
+                distY = 0;
+            });
+
+            deckContainer.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                isDragging = true;
+                startX = e.clientX;
+                distX = 0;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                distX = e.clientX - startX;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                if (Math.abs(distX) > 40) {
+                    switchReelPhone(currentReelIndex === 0 ? 1 : 0);
+                }
+                distX = 0;
+            });
+        }
+
+        // VISOR INMERSIVO EN PANTALLA COMPLETA ESTILO REEL (TIKTOK / INSTAGRAM 4K)
+        function openReelFullscreen(index) {
+            modalOpenTime = Date.now();
+            activeFullscreenIndex = typeof index === 'number' ? index : currentReelIndex;
+            const data = reelVideosData[activeFullscreenIndex];
+
+            const modal = document.getElementById('reel-fullscreen-modal');
+            const video = document.getElementById('reel-fullscreen-video');
+            const title = document.getElementById('reel-fullscreen-title');
+            const badge = document.getElementById('reel-fullscreen-badge');
+            const video1 = document.getElementById('reel-video-1');
+            const video2 = document.getElementById('reel-video-2');
+
+            if (!modal || !video || !data) return;
+
+            // Pausar videos de fondo del simulador
+            if (video1) video1.pause();
+            if (video2) video2.pause();
+
+            // Cargar fuente del video si cambia
+            if (video.src !== data.src) {
+                video.src = data.src;
+                video.load();
+            }
+
+            if (title) title.textContent = data.title;
+            if (badge) badge.textContent = data.badge;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            // Iniciar reproduccion: muted inicial para compatibilidad universal (Brave Shields, Chrome Android, iOS)
+            video.muted = true;
+            video.playsInline = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                });
+            }
+
+            updateSoundIcon(true);
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        function closeReelFullscreen() {
+            const modal = document.getElementById('reel-fullscreen-modal');
+            const video = document.getElementById('reel-fullscreen-video');
+            const video1 = document.getElementById('reel-video-1');
+            const video2 = document.getElementById('reel-video-2');
+
+            if (!modal || !video) return;
+
+            video.pause();
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+
+            // Reanudar el video activo en el simulador
+            if (currentReelIndex === 0 && video1) {
+                video1.play().catch(() => {});
+            } else if (currentReelIndex === 1 && video2) {
+                video2.play().catch(() => {});
+            }
+        }
+
+        function toggleReelFullscreenVideo() {
+            const nextIndex = activeFullscreenIndex === 0 ? 1 : 0;
+            switchReelPhone(nextIndex);
+            openReelFullscreen(nextIndex);
+        }
+
+        function toggleReelSound() {
+            const video = document.getElementById('reel-fullscreen-video');
+            if (!video) return;
+            video.muted = !video.muted;
+            if (!video.muted && video.paused) {
+                video.play().catch(() => {});
+            }
+            updateSoundIcon(video.muted);
+        }
+
+        function updateSoundIcon(isMuted) {
+            const soundBtnText = document.getElementById('reel-sound-text');
+            const soundIconWrap = document.getElementById('reel-sound-icon-wrap');
+            if (!soundIconWrap) return;
+            if (isMuted) {
+                soundIconWrap.innerHTML = '<i data-lucide="volume-x" class="w-3.5 h-3.5 text-amber-400"></i>';
+                if (soundBtnText) soundBtnText.textContent = 'Silencio';
+            } else {
+                soundIconWrap.innerHTML = '<i data-lucide="volume-2" class="w-3.5 h-3.5 text-emerald-300"></i>';
+                if (soundBtnText) soundBtnText.textContent = 'Audio';
+            }
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        function toggleReelPlayPause() {
+            const video = document.getElementById('reel-fullscreen-video');
+            if (!video) return;
+            const playIndicator = document.getElementById('reel-play-indicator');
+            if (video.paused) {
+                video.play().catch(() => {});
+                if (playIndicator) {
+                    playIndicator.classList.remove('opacity-0');
+                    playIndicator.classList.add('opacity-100');
+                    setTimeout(() => {
+                        playIndicator.classList.remove('opacity-100');
+                        playIndicator.classList.add('opacity-0');
+                    }, 400);
+                }
+            } else {
+                video.pause();
+                if (playIndicator) {
+                    playIndicator.classList.remove('opacity-0');
+                    playIndicator.classList.add('opacity-100');
+                }
+            }
+        }
+
+        function launchReelNativeDeviceFullscreen() {
+            const video = document.getElementById('reel-fullscreen-video');
+            if (!video) return;
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.webkitEnterFullscreen) {
+                video.webkitEnterFullscreen();
+            }
+        }
+
+        function handleModalBackdropClick(e) {
+            if (Date.now() - modalOpenTime < 450) return;
+            const modal = document.getElementById('reel-fullscreen-modal');
+            if (e.target === modal) {
+                closeReelFullscreen();
+            }
+        }
+
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('reel-fullscreen-modal');
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeReelFullscreen();
+            }
+        });
+    </script>
 
     <!-- CHATBOTAD — Vibe Copilot Engine (Piel macOS Sonoma Glassmorphism — Gigi Ultra-Humana) -->
 <link rel="stylesheet" href="https://chatbot-ad-mocha.vercel.app/vibe-copilot.css">
