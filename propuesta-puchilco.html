@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Propuesta Técnica & Comercial Austral Drone - Parcela 5 Ha Puchilco, Isla Lemuy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #1E293B;
+      background: #FFFFFF;
+      font-size: 9pt;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      box-sizing: border-box;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    /* ========================================================
+       PAGE 1: PORTADA BLANCA CORPORATIVA
+       ======================================================== */
+    .page-cover-white {
+      padding: 22mm 22mm 20mm 22mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FFFFFF;
+      position: relative;
+    }
+
+    .cover-top-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #0F172A 0%, #DCCBAE 50%, #059669 100%);
+    }
+
+    .cover-bottom-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #059669 0%, #DCCBAE 50%, #0F172A 100%);
+    }
+
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 22px;
+      border-bottom: 2px solid #F1F5F9;
+    }
+
+    .cover-logo-img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .cover-folio-badge {
+      text-align: right;
+    }
+
+    .cover-folio-pill {
+      display: inline-block;
+      background: #0F172A;
+      color: #DCCBAE;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+
+    .cover-date-text {
+      font-size: 8.5pt;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    .cover-main {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .cover-badge-pre {
+      display: inline-block;
+      background: rgba(5, 150, 105, 0.08);
+      border: 1px solid rgba(5, 150, 105, 0.25);
+      color: #047857;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8pt;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .cover-title {
+      font-size: 26pt;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: #0F172A;
+      margin-bottom: 14px;
+    }
+
+    .cover-title span {
+      color: #059669;
+    }
+
+    .cover-subtitle {
+      font-size: 11pt;
+      font-weight: 500;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 26px;
+      max-width: 95%;
+    }
+
+    .cover-project-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 5px solid #DCCBAE;
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .cover-project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .cover-project-item-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7.2pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748B;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .cover-project-item-val {
+      font-size: 10pt;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .cover-footer {
+      border-top: 2px solid #F1F5F9;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .cover-meta-col {
+      font-size: 8.5pt;
+    }
+
+    .cover-meta-col-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7.2pt;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .cover-meta-col-name {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .cover-meta-col-sub {
+      color: #475569;
+      font-size: 8.2pt;
+    }
+
+    /* ========================================================
+       PAGE 2 & 3: ESTILOS COMUNES DE CONTENIDO INTERNO
+       ======================================================== */
+    .page-inner {
+      padding: 14mm 16mm 12mm 16mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FFFFFF;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E2E8F0;
+      margin-bottom: 12px;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .doc-meta-box {
+      text-align: right;
+    }
+
+    .doc-id-pill {
+      display: inline-block;
+      background: #0F172A;
+      color: #DCCBAE;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 2px;
+    }
+
+    .doc-date {
+      font-size: 8pt;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #0F172A;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background: #25D366;
+      border-radius: 2px;
+    }
+
+    /* HERO BANNER MINI */
+    .hero-banner-mini {
+      background: linear-gradient(135deg, #0B132B 0%, #1E293B 100%);
+      color: #FFFFFF;
+      padding: 12px 16px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 1px solid rgba(220, 203, 174, 0.3);
+    }
+
+    .hero-banner-mini::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #DCCBAE, #25D366);
+    }
+
+    .hero-banner-mini h2 {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+
+    .hero-banner-mini p {
+      font-size: 8.5pt;
+      color: #CBD5E1;
+    }
+
+    /* SUMMARY GRID */
+    .grid-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .summary-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .summary-label {
+      font-size: 6.8pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748B;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .summary-value {
+      font-size: 9pt;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    /* INTRO PARAGRAPH */
+    .intro-paragraph {
+      font-size: 8.5pt;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      background: #F8FAFC;
+      border-left: 3px solid #DCCBAE;
+      padding: 9px 12px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* FEATURES GRID */
+    .features-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .feature-item {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 9px 11px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .feature-title {
+      font-size: 8.8pt;
+      font-weight: 750;
+      color: #0F172A;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .feature-desc {
+      font-size: 7.8pt;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* RAW MATERIAL CALLOUT */
+    .callout-raw {
+      background: linear-gradient(135deg, rgba(220, 203, 174, 0.15) 0%, rgba(37, 211, 102, 0.08) 100%);
+      border: 1px solid #DCCBAE;
+      border-left: 4px solid #059669;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .callout-raw-icon {
+      font-size: 18pt;
+    }
+
+    .callout-raw-text h4 {
+      font-size: 9pt;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+
+    .callout-raw-text p {
+      font-size: 7.8pt;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* ========================================================
+       PAGE 3: TABLA DE PRECIOS Y FORMA DE PAGO
+       ======================================================== */
+    .pricing-table-container {
+      margin-bottom: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.2pt;
+    }
+
+    .pricing-table th {
+      background: #0F172A;
+      color: #FFFFFF;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6.8pt;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    .pricing-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #E2E8F0;
+      vertical-align: top;
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-rec {
+      display: inline-block;
+      background: #DCCBAE;
+      color: #0F172A;
+      font-size: 6.2pt;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 2px 5px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .price-col {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 9.5pt;
+      color: #0F172A;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .price-total {
+      color: #059669;
+      font-size: 11pt;
+    }
+
+    .price-sub {
+      font-size: 6.5pt;
+      color: #64748B;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* PAYMENT METHOD BOX */
+    .payment-highlight-box {
+      background: #F0FDF4;
+      border: 1.5px solid #059669;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .payment-icon {
+      font-size: 18pt;
+      color: #059669;
+    }
+
+    .payment-content h4 {
+      font-size: 8.8pt;
+      font-weight: 800;
+      color: #065F46;
+      margin-bottom: 2px;
+    }
+
+    .payment-content p {
+      font-size: 7.8pt;
+      color: #047857;
+      line-height: 1.35;
+    }
+
+    /* INFO BOXES */
+    .info-boxes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .info-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 6px 9px;
+    }
+
+    .info-box-title {
+      font-size: 8pt;
+      font-weight: 750;
+      color: #0F172A;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .info-box-text {
+      font-size: 7.2pt;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* FOOTER SIGNATURE */
+    .footer-signature {
+      border-top: 2px solid #E2E8F0;
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .signature-info {
+      font-size: 7.8pt;
+      color: #334155;
+    }
+
+    .signature-name {
+      font-size: 9.5pt;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .signature-role {
+      font-size: 7.5pt;
+      color: #64748B;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #475569;
+      font-size: 7.8pt;
+      margin-top: 1px;
+    }
+
+    .stamp-box {
+      text-align: right;
+    }
+
+    .stamp-pill {
+      display: inline-block;
+      border: 2px solid #059669;
+      background: rgba(5, 150, 105, 0.05);
+      color: #047857;
+      padding: 4px 10px;
+      border-radius: 18px;
+      font-size: 7pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PAGE 1: PORTADA BLANCA CORPORATIVA
+       ======================================================== -->
+  <div class="page page-cover-white">
+    <div class="cover-top-line"></div>
+    <div class="cover-bottom-line"></div>
+
+    <!-- HEADER PORTADA -->
+    <div class="cover-header">
+      <img src="http://localhost:8089/logobanner.png" alt="Austral Drone" class="cover-logo-img">
+      <div class="cover-folio-badge">
+        <div class="cover-folio-pill">PROPUESTA AD-2026-084</div>
+        <div class="cover-date-text">Puerto Montt &bull; Octubre 2026</div>
+      </div>
+    </div>
+
+    <!-- MAIN PORTADA -->
+    <div class="cover-main">
+      <div class="cover-badge-pre">Audiovisual Inmobiliario &bull; Filmación Aérea 4K</div>
+      <h1 class="cover-title">
+        Producción Audiovisual Aérea &bull; <span>Campaña Inmobiliaria</span>
+      </h1>
+      <p class="cover-subtitle">
+        Propuesta técnica y comercial para la puesta en valor, promoción estratégica y venta de parcela de 5 Hectáreas en Puchilco, Isla Lemuy.
+      </p>
+
+      <!-- CAJA PROYECTO -->
+      <div class="cover-project-box">
+        <div class="cover-project-grid">
+          <div>
+            <div class="cover-project-item-label">Localidad / Zona</div>
+            <div class="cover-project-item-val">Puchilco &bull; Isla Lemuy</div>
+            <div style="font-size: 7.5pt; color: #64748B;">Comuna de Puqueldón, Chiloé</div>
+          </div>
+          <div>
+            <div class="cover-project-item-label">Superficie Terreno</div>
+            <div class="cover-project-item-val">5 Hectáreas</div>
+            <div style="font-size: 7.5pt; color: #64748B;">50.000 m&sup2; de extensión</div>
+          </div>
+          <div>
+            <div class="cover-project-item-label">Coordenadas GPS</div>
+            <div class="cover-project-item-val" style="font-family: 'Orbitron', monospace; font-size: 8.5pt; color: #047857;">
+              42°37'32"S 73°34'36"W
+            </div>
+            <div style="font-size: 7.5pt; color: #64748B;">Georreferencia Oficial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER PORTADA -->
+    <div class="cover-footer">
+      <div class="cover-meta-col">
+        <div class="cover-meta-col-title">Preparado Para</div>
+        <div class="cover-meta-col-name">Propietario / Administración Predial</div>
+        <div class="cover-meta-col-sub">Comercialización Parcela 5 Ha Puchilco</div>
+      </div>
+      <div class="cover-meta-col" style="text-align: right;">
+        <div class="cover-meta-col-title">Desarrollado Por</div>
+        <div class="cover-meta-col-name">Austral Drone Chile</div>
+        <div class="cover-meta-col-sub">Jaime Vidal &bull; Piloto Drone</div>
+        <div style="font-size: 7.8pt; color: #047857; margin-top: 2px; font-weight: 600;">WhatsApp: +56 9 8749 1964</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       PAGE 2: ALCANCE TÉCNICO Y ESPECIFICACIONES
+       ======================================================== -->
+  <div class="page page-inner">
+    <div>
+      <!-- HEADER -->
+      <div class="header-bar">
+        <img src="http://localhost:8089/logobanner.png" alt="Austral Drone" class="brand-logo-img">
+        <div class="doc-meta-box">
+          <div class="doc-id-pill">COTIZACIÓN N° AD-2026-084</div>
+          <div class="doc-date">Puerto Montt, 28 de Octubre de 2026</div>
+        </div>
+      </div>
+
+      <!-- HERO BANNER MINI -->
+      <div class="hero-banner-mini">
+        <h2>1. Alcance Operativo & Estrategia Audiovisual</h2>
+        <p>Filmación cinematográfica aérea 4K UHD para parcela de 5 Ha en Puchilco (42°37'32.00"S 73°34'36.35"W), Isla Lemuy.</p>
+      </div>
+
+      <!-- KPI METRICS -->
+      <div class="grid-summary">
+        <div class="summary-card">
+          <div class="summary-label">Extensión Predial</div>
+          <div class="summary-value">5 Ha (50.000 m²)</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Ubicación Exacta</div>
+          <div class="summary-value">Puchilco, Lemuy</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Estándar Visual</div>
+          <div class="summary-value">Cinema 4K + FPV</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Plazo de Entrega</div>
+          <div class="summary-value">4 a 6 Días Hábiles</div>
+        </div>
+      </div>
+
+      <!-- INTRO -->
+      <div class="intro-paragraph">
+        <strong>Objetivo Estratégico & Puesta en Valor Inmobiliario:</strong> Un predio de 5 hectáreas en Chiloé posee un valor comercial y escénico extraordinario cuando se comunica desde el aire. Nuestra producción combina tomas cinematográficas de alta cota, barridos perimetrales y vuelos inmersivos para exhibir el relieve, las zonas de bosque nativo, los caminos de acceso vial y las vistas al mar interior de Chiloé, logrando que el potencial comprador dimensione de inmediato la magnitud, plusvalía y belleza real del terreno.
+      </div>
+
+      <!-- FEATURES GRID -->
+      <div class="section-title">2. Características Técnicas y Entregables Incluidos</div>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-title">🚁 Vuelo Cinematográfico 4K Ultra HD</div>
+          <div class="feature-desc">Tomas aéreas de alta cota, paneos cenitales de la extensión total, tomas a ras de suelo en caminos de acceso y planos paisajísticos del entorno insular de Puchilco.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-title">📐 Trazado Digital de Deslindes Perimetrales</div>
+          <div class="feature-desc">Marcado gráfico animado en postproducción (motion graphics) sobre las 5 Ha, permitiendo al comprador identificar con total claridad la geometría y deslindes del predio.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-title">🖥️ Video(s) Horizontal(es) 16:9 en 4K</div>
+          <div class="feature-desc">Producción en formato panorámico para exhibición en YouTube, portales inmobiliarios líderes (PortalInmobiliario, Yapo) y presentaciones a inversionistas.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-title">📱 Videos Verticales Dinámicos (9:16)</div>
+          <div class="feature-desc">Edición ágil con música comercial en tendencia, rotulación llamativa y ritmos modernos, listos para campañas en Instagram Reels, TikTok, Marketplace y WhatsApp.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-title">📸 Set de Fotografías Aéreas HDR en Alta Cota</div>
+          <div class="feature-desc">Fotografías en alta resolución corregidas de color con encuadres verticales y horizontales para portadas de anuncios, catálogos web y afiches digitales de venta.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-title">🏷️ Rotulación de Datos Clave en Pantalla</div>
+          <div class="feature-desc">Textos dinámicos en pantalla destacando: Superficie 5 Ha, Rol Propio, factibilidad eléctrica y de agua, tiempos a centros urbanos y contacto del propietario.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT BRUTOS RAW 4K -->
+    <div class="callout-raw">
+      <div class="callout-raw-icon">📦</div>
+      <div class="callout-raw-text">
+        <h4>Entrega Íntegra de Todo el Material en Bruto (Raw 4K Footage)</h4>
+        <p>Ambos planes incluyen la entrega completa de todas las tomas aéreas originales sin cortes ni compresión en resolución 4K nativa. El cliente queda en propiedad absoluta de todo el archivo audiovisual para cualquier campaña futura, loteo o reedición publicitaria.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       PAGE 3: PLANES DE INVERSIÓN, PAGO Y LOGÍSTICA
+       ======================================================== -->
+  <div class="page page-inner">
+    <div>
+      <!-- HEADER -->
+      <div class="header-bar">
+        <img src="http://localhost:8089/logobanner.png" alt="Austral Drone" class="brand-logo-img">
+        <div class="doc-meta-box">
+          <div class="doc-id-pill">PRESUPUESTO ESTIMADO 2026</div>
+          <div class="doc-date">Validez de Oferta: 30 Días Corridos</div>
+        </div>
+      </div>
+
+      <!-- PRICING TABLE -->
+      <div class="section-title">3. Opciones de Inversión y Presupuesto Detallado</div>
+      <div class="pricing-table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th style="width: 27%;">Plan de Producción</th>
+              <th style="width: 49%;">Especificaciones y Material Incluido</th>
+              <th style="width: 24%; text-align: right;">Inversión Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong style="color: #0F172A; font-size: 9.5pt;">OPCIÓN 1: PACK ESENCIAL</strong><br>
+                <span style="font-size: 7.5pt; color: #64748B;">Promoción Redes + Portales</span>
+              </td>
+              <td>
+                • <strong>1 Video Horizontal Cinemático (16:9)</strong> para YouTube y Portales.<br>
+                • <strong>2 Videos Verticales Dinámicos (9:16)</strong> para Reels, TikTok y WhatsApp.<br>
+                • <strong>10 Fotografías Aéreas HDR</strong> panorámicas en alta resolución.<br>
+                • Marcado perimetral de deslindes aproximados + música licenciada.<br>
+                • <strong>Entrega de TODO el material en bruto (Raw 4K)</strong> sin compresión.<br>
+                <span style="font-size: 7pt; color: #64748B;">• Producción 5 Ha: $199.999 | Traslado y Logística Operativa: $95.000</span>
+              </td>
+              <td class="price-col">
+                <span class="price-total">$294.999</span>
+                <div class="price-sub">CLP (Exento de IVA)</div>
+              </td>
+            </tr>
+            <tr style="background: #F0FDF4;">
+              <td>
+                <strong style="color: #065F46; font-size: 9.5pt;">OPCIÓN 2: PACK INTEGRAL</strong>
+                <span class="badge-rec">RECOMENDADO</span><br>
+                <span style="font-size: 7.5pt; color: #047857;">Campaña 360° Multicanal</span>
+              </td>
+              <td>
+                • <strong>2 Videos Horizontales (16:9)</strong>: Promocional + Accesos y Conectividad.<br>
+                • <strong>3 Videos Verticales Dinámicos (9:16)</strong> para Reels, TikTok y Marketplace.<br>
+                • <strong>20 Fotografías Aéreas HDR</strong> (vistas marítimas, bosque y límites).<br>
+                • Trazado dinámico de deslindes + rotulación técnica completa animada.<br>
+                • <strong>Entrega de TODO el material en bruto (Raw 4K)</strong> de la jornada.<br>
+                <span style="font-size: 7pt; color: #047857;">• Producción 5 Ha: $299.999 | Traslado y Logística Operativa: $95.000</span>
+              </td>
+              <td class="price-col">
+                <span class="price-total" style="color: #059669; font-size: 13pt;">$394.999</span>
+                <div class="price-sub" style="color: #047857;">CLP (Inversión Integral)</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong style="color: #0F172A; font-size: 9pt;">UPGRADE OPCIONAL:</strong><br>
+                <span style="font-size: 7.2pt; color: #64748B;">MasterPlan 360° Interactivo</span>
+              </td>
+              <td>
+                • <strong>Tour Virtual Aéreo 360° Georreferenciado</strong> en servidor cloud interactivo.<br>
+                • Puntos de interés clicables y navegación panorámica desde smartphone o PC (ideal si se proyecta loteo o parcelación futura).
+              </td>
+              <td class="price-col">
+                <span style="color: #1E293B; font-size: 10pt;">+$490.000</span>
+                <div class="price-sub">CLP (Opcional Loteo)</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FORMA DE PAGO DESTACADA -->
+      <div class="payment-highlight-box">
+        <div class="payment-icon">💳</div>
+        <div class="payment-content">
+          <h4>Modalidad y Forma de Pago: 50% al Llegar a Terreno / 50% Contra Entrega</h4>
+          <p>Para máxima seguridad y confianza mutua, el pago se realiza en dos etapas: <strong>50% al momento de llegar a terreno en Puchilco</strong> (previo al inicio de la jornada de vuelo y filmación) y el <strong>50% restante contra entrega final y conformidad</strong> de todo el material editado en la nube. Facturación disponible.</p>
+        </div>
+      </div>
+
+      <!-- INFO BOXES (LOGISTICA BREVE Y PROFESIONAL) -->
+      <div class="section-title">4. Condiciones Operativas y Garantías</div>
+      <div class="info-boxes-grid">
+        <div class="info-box">
+          <div class="info-box-title">📍 Traslado y Logística Operativa a Terreno</div>
+          <div class="info-box-text">El ítem de logística ($95.000) cubre los traslados técnicos, pasajes y conexiones insulares hasta el predio en Puchilco, Isla Lemuy (ida y vuelta).</div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-title">☀️ Garantía Climática de la Región de Los Lagos</div>
+          <div class="info-box-text">Monitoreamos de forma satelital el pronóstico meteorológico. La jornada se coordina para un día con óptima luz y cielo despejado. En caso de lluvia o viento desfavorable, se reprograma sin costo.</div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-title">⏱️ Plazos de Entrega y Formato Digital 4K</div>
+          <div class="info-box-text">El material completamente editado, graduado de color y masterizado se entrega en un plazo de 4 a 6 días hábiles vía enlace seguro de descarga privada en Google Drive / Dropbox en máxima calidad 4K sin compresión.</div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-title">🛡️ Seguridad Operacional y Piloto</div>
+          <div class="info-box-text">Operación audiovisual realizada por piloto profesional, drones con sistemas de redundancia GPS, sensores anticolisión y protocolos de seguridad aérea.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE -->
+    <div class="footer-signature">
+      <div class="signature-info">
+        <div class="signature-name">Jaime Vidal</div>
+        <div class="signature-role">Director Audiovisual & Piloto Drone — Austral Drone Chile</div>
+        <div class="contact-item">📲 <strong>WhatsApp Oficial:</strong> +56 9 8749 1964</div>
+        <div class="contact-item">🌐 <strong>Sitio Web:</strong> www.australdrone.cl • Puerto Montt & Chiloé</div>
+        <div class="contact-item">📧 <strong>Contacto:</strong> contacto@australdrone.cl</div>
+      </div>
+      <div class="stamp-box">
+        <div class="stamp-pill">✓ Cotización Oficial Válida por 30 Días</div>
+        <div style="font-size: 6.8pt; color: #94A3B8; margin-top: 4px; font-family: 'Orbitron', sans-serif;">AUSTRAL DRONE &bull; SUR DE CHILE</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
