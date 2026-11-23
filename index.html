@@ -406,7 +406,8 @@
     <!-- HERO SECTION (Light Mode Original con Tarjetas Centradas Móvil) -->
     <section id="inicio" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-white pb-10">
         <div class="absolute inset-0 z-0 overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30 grayscale scale-105 pointer-events-none">
+            <video id="hero-bg-video" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" class="w-full h-full object-cover opacity-30 grayscale scale-105 pointer-events-none">
+                <source src="loop10seg.mp4" type="video/mp4">
                 <source src="https://github.com/iLyCoNs/austral-drones/releases/download/videos/loop10seg_z5wugh.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-white/80 to-[#FAFAF9]"></div>
@@ -2024,6 +2025,88 @@
             if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
                 closeReelFullscreen();
             }
+        });
+
+        // ==========================================
+        // CONTROLADOR INTELIGENTE DE VIDEO LOOP DE FONDO
+        // Evita congelamiento en móviles, Safari y bajo consumo
+        // ==========================================
+        (function initHeroVideoWatchdog() {
+            const heroVideo = document.getElementById('hero-bg-video');
+            if (!heroVideo) return;
+
+            heroVideo.muted = true;
+            heroVideo.defaultMuted = true;
+            heroVideo.playsInline = true;
+
+            const tryPlay = () => {
+                if (heroVideo.paused) {
+                    const prom = heroVideo.play();
+                    if (prom && typeof prom.catch === 'function') {
+                        prom.catch(() => {});
+                    }
+                }
+            };
+
+            // Loop infalible por evento
+            heroVideo.addEventListener('ended', () => {
+                heroVideo.currentTime = 0;
+                tryPlay();
+            });
+
+            // Recuperación de pausa o espera inesperada
+            heroVideo.addEventListener('waiting', () => setTimeout(tryPlay, 200));
+            heroVideo.addEventListener('stalled', () => {
+                if (heroVideo.currentTime >= (heroVideo.duration || 9.5) - 0.3) {
+                    heroVideo.currentTime = 0;
+                }
+                setTimeout(tryPlay, 300);
+            });
+
+            // Watchdog cada 500ms: si se queda pegado cerca del final o pausado sin razón
+            let prevTime = -1;
+            let stuckTicks = 0;
+
+            setInterval(() => {
+                if (document.hidden) return;
+
+                const cur = heroVideo.currentTime;
+                const dur = heroVideo.duration;
+
+                if (heroVideo.paused) {
+                    tryPlay();
+                } else if (dur && cur >= dur - 0.25) {
+                    heroVideo.currentTime = 0;
+                    tryPlay();
+                } else if (cur === prevTime && cur > 0) {
+                    stuckTicks++;
+                    if (stuckTicks >= 2) {
+                        tryPlay();
+                        stuckTicks = 0;
+                    }
+                } else {
+                    prevTime = cur;
+                    stuckTicks = 0;
+                }
+            }, 500);
+
+            // Reanudar en la primera interacción si la política de ahorro de batería lo frenó
+            ['touchstart', 'click', 'scroll'].forEach(evt => {
+                window.addEventListener(evt, tryPlay, { once: true, passive: true });
+            });
+
+            tryPlay();
+        })();
+
+        // Watchdog general para cualquier otro video de fondo con loop (portafolio)
+        document.querySelectorAll('video[autoplay][loop]').forEach(v => {
+            v.muted = true;
+            v.defaultMuted = true;
+            v.playsInline = true;
+            v.addEventListener('ended', () => {
+                v.currentTime = 0;
+                v.play().catch(() => {});
+            });
         });
     </script>
 
