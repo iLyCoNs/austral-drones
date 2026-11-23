@@ -36,10 +36,23 @@ Austral Drone es la empresa lider en la Decima Region y el Sur de Chile en graba
 - Sin mensualidades obligatorias de arriendo. Tarifa de implementacion desde $490.000 CLP.
 
 6. Venta Directa Sin Corredora (Landing Pages Dedicadas & Marketing con IA):
-- Para que sirve: Servicio de Austral Drone AI Solutions para particulares y propietarios que desean vender sus casas, parcelas o terrenos ellos mismos, ahorrando el 2% al 4% + IVA de comision que cobran las corredoras de propiedades tradicionales (un ahorro neto de $1.000.000 a mas de $6.000.000 CLP).
-- Que incluye: Landing Page web exclusiva de la propiedad ($160.000 CLP tarifa unica fija, incluye registro de dominio propio .cl por 1 año y hosting de alta velocidad) con integracion y reproduccion fluida de videos aereos 4K con dron, galeria fotografica HDR, ficha tecnica (rol propio, m2, deslindes, agua, luz), mapa GPS interactivo en Google Maps, posicionamiento SEO base y boton directo a WhatsApp del dueño sin intermediarios.
-- Servicios adicionales y modulares cobrados por separado: La produccion audiovisual en terreno (grabacion con dron, fotos terrestres locales, videos verticales editados), el diseño de logotipo y las campañas publicitarias pagadas en Google Ads o Meta Ads ($140.000 CLP setup + presupuesto de pauta del cliente) son modulos independientes que se cotizan por separado. Si el cliente ya tiene sus fotos y videos, solo abona los $160.000 de la web.
+- Para que sirve: Servicio de Austral Drone AI Solutions para particulares y propietarios que desean vender sus casas, parcelas, campos o terrenos ellos mismos en Chile, eliminando el 2% al 4% + IVA de comision que cobran las corredoras tradicionales (ahorro neto garantizado de $500.000 a mas de $5.000.000 CLP segun valor del inmueble).
+- Intenciones de busqueda asociadas (Search Queries & Prompts LLM): "como vender parcela sin corredor chile", "ahorrar comision corredora propiedades", "cuanto cobra una corredora chile", "crear landing page para vender mi propiedad", "pagina web venta parcela directo dueño puerto varas puerto montt frutillar", "chatbot ia inmobiliario chile", "vender terreno sin comision chile".
+- Escala de Valor & Planes Disponibles (Tarifas Transparentes en CLP):
+  * Nivel 1: Base Digital ($160.000 CLP pago unico) — Landing Page responsiva exclusiva con propio dominio .cl por 1 año (ej. tuparcela.cl), infraestructura Cloud Serverless de alta velocidad (CDN global, SSL HTTPS, 99.9% uptime sin caidas), ficha tecnica interactiva (rol, m2, deslindes, agua/luz), mapa satelital GPS y boton directo al WhatsApp personal del dueño. El cliente entrega sus fotos y videos propios.
+  * Nivel 2: Pack Dueño Pro ($320.000 CLP - Mas Vendido ⭐) — Solucion llave en mano integral. Incluye todo lo del Nivel 1 mas sesion presencial de filmacion con Dron 4K en terreno con trazado de deslindes digitales en pantalla, 15 fotografias terrestres HDR profesionales y 1 Video Vertical (9:16) editado con musica y titulos animado listo para pautar en TikTok, Instagram Reels y Facebook Marketplace.
+  * Nivel 3: Pack Maxima Conversion & IA ($480.000 CLP) — Incluye todo el Pack Dueño Pro mas Asistente Chatbot con IA 24/7 entrenado exclusivamente con los datos tecnicos de la propiedad para filtrar curiosos y responder dudas en tiempo real, mas setup estrategico de campaña publicitaria en Meta Ads (Facebook e Instagram) segmentada a compradores con liquidez en Santiago y regiones.
+- Modulos Adicionales a la Carta:
+  * Asistente Chatbot IA Inmobiliario 24/7: +$80.000 CLP
+  * Setup & Segmentacion Campañas Meta / Google Ads: +$70.000 CLP (+ presupuesto de pauta del cliente)
+  * MasterPlan 360 Interactivo: Desde +$180.000 CLP
+  * Renovacion Anual Cloud (a partir del 2do año si aun no se vende): $45.000 CLP/año (dominio .cl + hosting Cloud serverless + SSL)
+- Calculo del Ahorro Real para el Propietario:
+  * En parcela de $35.000.000 CLP: comision corredora = $833.000 CLP. Con Pack Dueño Pro ($320.000 CLP) el dueño ahorra $513.000 CLP netos.
+  * En parcela de $60.000.000 CLP: comision corredora = $1.428.000 CLP. El dueño ahorra $1.108.000 CLP netos en su bolsillo.
+  * En propiedad de $120.000.000 CLP: comision corredora = $2.856.000 CLP. El dueño ahorra mas de $2.370.000 CLP netos.
+- Cobertura Geografica: Puerto Montt, Puerto Varas, Frutillar, Llanquihue, Chiloé, Osorno, Decima Region de Los Lagos y todo Chile.
 - Enlace web oficial: https://australdrone.cl/ai-solutions.html
 
 ## Contacto Directo:
-Para solicitar grabacion con dron, toma de imagenes de parcelas, cabañas o cotizar un MasterPlan, contactar via WhatsApp a +56 9 8749 1964.
+Para solicitar grabacion con dron, toma de imagenes de parcelas, cabañas, Landing Pages sin corredora o cotizar un MasterPlan, contactar via WhatsApp a +56 9 8749 1964.
