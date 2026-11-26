@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cotización Oficial - MasterPlan 360° 76 Lotes Cunco | Austral Drone</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #1E293B;
+      background: #E2E8F0;
+      font-size: 8.8pt;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      box-sizing: border-box;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+      background: #FFFFFF;
+      margin: 0 auto;
+      padding: 16mm 20mm 16mm 20mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* BARRAS DE COLOR CORPORATIVAS */
+    .top-gradient-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #0F172A 0%, #DCCBAE 50%, #059669 100%);
+    }
+
+    .bottom-gradient-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #059669 0%, #DCCBAE 50%, #0F172A 100%);
+    }
+
+    /* ENCABEZADOS Y PIES DE PÁGINA */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #F1F5F9;
+    }
+
+    .logo-img {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .folio-pill {
+      display: inline-block;
+      background: #0F172A;
+      color: #DCCBAE;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 3px;
+    }
+
+    .page-footer {
+      border-top: 2px solid #F1F5F9;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: #64748B;
+    }
+
+    /* TIPOGRAFÍAS Y ELEMENTOS */
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .text-emerald { color: #059669; }
+    .text-gold { color: #B49A6C; }
+    .text-dark { color: #0F172A; }
+
+    .badge-tag {
+      display: inline-block;
+      background: rgba(5, 150, 105, 0.08);
+      border: 1px solid rgba(5, 150, 105, 0.25);
+      color: #047857;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .title-main {
+      font-size: 20pt;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .subtitle-main {
+      font-size: 9.5pt;
+      color: #475569;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    /* TARJETA DE PROYECTO */
+    .project-info-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 5px solid #DCCBAE;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .project-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6.8pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748B;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .project-val {
+      font-size: 8.8pt;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    /* CAJAS DE NEUROMARKETING */
+    .neuro-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .neuro-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .neuro-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(5, 150, 105, 0.1);
+      color: #059669;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 9pt;
+    }
+
+    /* TABLA COMPARATIVA */
+    .table-container {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+    }
+
+    .table-container th {
+      background: #0F172A;
+      color: #FFFFFF;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .table-container th.col-rec {
+      background: #064E3B;
+      color: #A7F3D0;
+      border-left: 1px solid #059669;
+    }
+
+    .table-container td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 8pt;
+      vertical-align: middle;
+    }
+
+    .table-container tr:nth-child(even) {
+      background: #F8FAFC;
+    }
+
+    .table-container tr.highlight-row {
+      background: #F0FDF4;
+      font-weight: 700;
+    }
+
+    /* CAJAS DE PRECIOS FINALES */
+    .pricing-box {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: #F8FAFC;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pricing-box.premium-box {
+      border: 2px solid #059669;
+      background: #F0FDF4;
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.1);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6.8pt;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: fit-content;
+      margin-bottom: 6px;
+    }
+
+    .badge-std { background: #E2E8F0; color: #475569; }
+    .badge-prem { background: #059669; color: #FFFFFF; }
+
+    .price-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16pt;
+      font-weight: 900;
+      color: #0F172A;
+      margin: 4px 0;
+    }
+
+    .price-num.premium { color: #047857; }
+
+    .price-iva-note {
+      font-size: 7.2pt;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    /* POLÍTICAS Y GARANTÍA */
+    .guarantee-box {
+      background: rgba(220, 203, 174, 0.15);
+      border: 1px solid #DCCBAE;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       PÁGINA 1: PORTADA EJECUTIVA Y PROPUESTA DE VALOR
+       ============================================================ -->
+  <div class="page">
+    <div class="top-gradient-bar"></div>
+
+    <div>
+      <div class="header-bar">
+        <div>
+          <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="logo-img">
+        </div>
+        <div style="text-align: right;">
+          <div class="folio-pill">COT-AD-2026-MP076</div>
+          <div style="font-size: 8pt; color: #64748B; font-weight: 600;">Fecha de Emisión: 26 de Noviembre, 2026</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px;">
+        <span class="badge-tag">PROPUESTA TÉCNICA & COMERCIAL</span>
+        <h1 class="title-main">MASTERPLAN 360° INTERACTIVO<br><span class="text-emerald">LOTE O RESIDENCIAL 76 PARCELAS</span></h1>
+        <p class="subtitle-main">
+          Plataforma web inmersiva de venta autónoma para comercialización en verde y blanco de macroloteos en la Región de La Araucanía. Diseñada para derribar objeciones geográficas y acelerar la reserva de lotes por inversionistas a distancia (Santiago, Concepción y Temuco).
+        </p>
+
+        <!-- TARJETA DEL PROYECTO -->
+        <div class="project-info-card">
+          <div class="project-grid">
+            <div>
+              <div class="project-label">Proyecto</div>
+              <div class="project-val">Loteo Residencial (76 Lotes)</div>
+            </div>
+            <div>
+              <div class="project-label">Ubicación</div>
+              <div class="project-val">Comuna de Cunco (La Araucanía)</div>
+            </div>
+            <div>
+              <div class="project-label">Superficie Estimada</div>
+              <div class="project-val">~45 a 55 Hectáreas</div>
+            </div>
+            <div>
+              <div class="project-label">Modalidad Tarifaria</div>
+              <div class="project-val text-emerald">Valores Netos (+ 19% IVA)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENFOQUE DE NEUROMARKETING INMOBILIARIO -->
+        <h3 class="font-orbitron" style="font-size: 10pt; font-weight: 800; color: #0F172A; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
+          Por Qué Este Sistema Acelera la Conversión Comercial
+        </h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="neuro-card">
+            <div class="neuro-card-header">
+              <div class="neuro-icon">✓</div>
+              <h4 class="font-orbitron" style="font-size: 8.5pt; font-weight: 700;">Elimina la Incertidumbre a Distancia</h4>
+            </div>
+            <p style="font-size: 8pt; color: #475569; line-height: 1.45;">
+              Más del 70% de los compradores de parcelas en el sur residen fuera de la región. El MasterPlan 360° permite al inversionista explorar la orientación solar, la topografía y las vistas al Volcán Llaima desde su celular en Santiago, eliminando el freno de "tener que viajar para decidir".
+            </p>
+          </div>
+
+          <div class="neuro-card">
+            <div class="neuro-card-header">
+              <div class="neuro-icon">✓</div>
+              <h4 class="font-orbitron" style="font-size: 8.5pt; font-weight: 700;">Gatilla Efecto Escasez en Tiempo Real</h4>
+            </div>
+            <p style="font-size: 8pt; color: #475569; line-height: 1.45;">
+              Visualizar los lotes en colores neón (Verde: Disponible, Naranja: Reservado, Rojo: Vendido) activa el sesgo psicológico de escasez y urgencia. Cuando un cliente ve que los lotes colindantes se están reservando, apresura su decisión y reserva en 1-click a WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="guarantee-box" style="margin-top: 14px;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="font-size: 16pt;">💡</div>
+            <div style="font-size: 8pt; color: #451A03; line-height: 1.4;">
+              <strong>Perspectiva Financiera:</strong> Para un proyecto de 76 parcelas valorado en más de $1.500.000.000 CLP, una inversión tecnológica de esta escala representa menos del <strong>0.09% del valor bruto del desarrollo</strong>. La venta de una sola fracción de parcela paga el 100% de la plataforma comercial de por vida.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div><strong>Austral Drone</strong> &bull; Cinematografía Aérea & MasterPlan 360° Inmobiliario</div>
+      <div>Página 1 de 3</div>
+      <div>www.australdrone.cl</div>
+    </div>
+    <div class="bottom-gradient-bar"></div>
+  </div>
+
+  <!-- ============================================================
+       PÁGINA 2: ESPECIFICACIONES TÉCNICAS Y COMPARATIVA DE VERSIONES
+       ============================================================ -->
+  <div class="page">
+    <div class="top-gradient-bar"></div>
+
+    <div>
+      <div class="header-bar">
+        <div>
+          <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="logo-img">
+        </div>
+        <div style="text-align: right;">
+          <div class="folio-pill">COT-AD-2026-MP076</div>
+          <div style="font-size: 8pt; color: #64748B; font-weight: 600;">Proyecto: Loteo Cunco (76 Lotes)</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px;">
+        <span class="badge-tag">ALCANCE Y ESPECIFICACIONES TÉCNICAS</span>
+        <h2 class="title-main" style="font-size: 16pt;">COMPARATIVA DE ENTREGABLES POR OPCIÓN</h2>
+        <p class="subtitle-main" style="margin-bottom: 12px;">
+          Desarrollado sobre tecnología WebGL / HTML5 de alta velocidad, optimizado para navegación táctil fluida en iPhone, Android y computadores sin necesidad de descargar aplicaciones.
+        </p>
+
+        <!-- TABLA COMPARATIVA -->
+        <table class="table-container">
+          <thead>
+            <tr>
+              <th style="width: 38%;">Componente Técnico</th>
+              <th style="width: 31%;">Opción 1: Versión Estándar</th>
+              <th style="width: 31%;" class="col-rec">Opción 2: Versión PREMIUM (⭐)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Digitalización de Lotes</strong></td>
+              <td>76 Polígonos interactivos individuales</td>
+              <td style="font-weight: 700; color: #047857;">76 Polígonos interactivos individuales</td>
+            </tr>
+            <tr>
+              <td><strong>Captura 360° en Terreno</strong></td>
+              <td>1 a 2 Panoramas cenitales de alta altitud</td>
+              <td style="font-weight: 700; color: #047857;">3 a 5 Panoramas aéreos interconectados (Acceso, pradera, mirador volcán)</td>
+            </tr>
+            <tr>
+              <td><strong>Estados de Disponibilidad</strong></td>
+              <td>Disponible, Reservado, Vendido</td>
+              <td style="font-weight: 700; color: #047857;">Disponible, Reservado, Vendido (Colores neón dinámicos)</td>
+            </tr>
+            <tr>
+              <td><strong>Ficha Técnica por Parcela</strong></td>
+              <td>Modal con N° lote, m² y valor fijo</td>
+              <td style="font-weight: 700; color: #047857;">Ficha Smart con conversión diaria automática UF ➔ Pesos Chilenos</td>
+            </tr>
+            <tr>
+              <td><strong>Copiloto IA ("Jarvis")</strong></td>
+              <td><span style="color: #94A3B8;">No incluido</span></td>
+              <td style="font-weight: 700; color: #047857;">✅ Incluido: Búsqueda por voz/texto y control de cámara 360°</td>
+            </tr>
+            <tr>
+              <td><strong>Clima Atmosférico en Vivo</strong></td>
+              <td><span style="color: #94A3B8;">No incluido</span></td>
+              <td style="font-weight: 700; color: #047857;">✅ Widget translúcido conectado a satélite en Cunco</td>
+            </tr>
+            <tr>
+              <td><strong>Rutas Inteligentes Waze/Maps</strong></td>
+              <td>Enlace estándar Google Maps</td>
+              <td style="font-weight: 700; color: #047857;">✅ Acceso directo 1-click a Waze y Google Maps (Tiempos a Temuco/Lago)</td>
+            </tr>
+            <tr>
+              <td><strong>Gestión de Inventario</strong></td>
+              <td>Actualización manual vía soporte</td>
+              <td style="font-weight: 700; color: #047857;">✅ Panel de Autoadministración No-Code (Cambio de estados en 3 seg)</td>
+            </tr>
+            <tr>
+              <td><strong>Video Teaser Cinemático 4K</strong></td>
+              <td><span style="color: #94A3B8;">Opcional (se cotiza aparte)</span></td>
+              <td style="font-weight: 700; color: #047857;">✅ BONUS: 1 Video Cinemático 4K (60 seg) editado para Meta Ads</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Costos Mensuales de Arriendo</strong></td>
+              <td><strong>$0 / Sin mensualidades forzosas</strong></td>
+              <td style="color: #047857; font-weight: 800;">$0 / Sin mensualidades forzosas</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- LOGÍSTICA DE OPERACIÓN -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px 16px; margin-top: 10px;">
+          <h4 class="font-orbitron" style="font-size: 8pt; font-weight: 700; color: #0F172A; text-transform: uppercase; margin-bottom: 6px;">
+            Logística Operacional en Terreno (Puerto Montt ➔ Cunco, La Araucanía)
+          </h4>
+          <p style="font-size: 7.8pt; color: #475569; line-height: 1.45;">
+            Operación de ~760 km totales de traslado carretero. La jornada de vuelo comprende de 4 a 6 horas en el predio, programada estratégicamente con ventanas de luz óptimas para destacar la cordillera, esteros y áreas de bosque nativo. El personal técnico pernocta en la zona para garantizar doble ventana de vuelo (tarde y amanecer) en caso de variaciones térmicas.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div><strong>Austral Drone</strong> &bull; Cotización COT-AD-2026-MP076</div>
+      <div>Página 2 de 3</div>
+      <div>+56 9 8749 1964</div>
+    </div>
+    <div class="bottom-gradient-bar"></div>
+  </div>
+
+  <!-- ============================================================
+       PÁGINA 3: TABLA DE INVERSIÓN FORMAL, GARANTÍAS Y CIERRE
+       ============================================================ -->
+  <div class="page">
+    <div class="top-gradient-bar"></div>
+
+    <div>
+      <div class="header-bar">
+        <div>
+          <img src="https://raw.githubusercontent.com/iLyCoNs/austral-drones/refs/heads/main/logobanner.png" alt="Austral Drone Logo" class="logo-img">
+        </div>
+        <div style="text-align: right;">
+          <div class="folio-pill">COT-AD-2026-MP076</div>
+          <div style="font-size: 8pt; color: #64748B; font-weight: 600;">Condiciones Comerciales Formales</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px;">
+        <span class="badge-tag">TABLA DE INVERSIÓN ECONÓMICA FORMAL</span>
+        <h2 class="title-main" style="font-size: 16pt; margin-bottom: 4px;">PRESUPUESTO NETO Y CONDICIONES DE PAGO</h2>
+        <p class="subtitle-main" style="margin-bottom: 12px;">Valores expresados en Pesos Chilenos (CLP). Modalidad formal con emisión de Factura Electrónica Afecta (+ IVA).</p>
+
+        <!-- CAJAS COMPARATIVAS DE PRECIO FINAL -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          
+          <!-- OPCIÓN 1: BÁSICA -->
+          <div class="pricing-box">
+            <div>
+              <span class="pricing-badge badge-std">Opción 1 &bull; Esencial</span>
+              <h3 class="font-orbitron" style="font-size: 11pt; font-weight: 800; color: #0F172A;">MasterPlan 360° Estándar</h3>
+              <p style="font-size: 7.5pt; color: #64748B; margin-top: 3px;">Visor interactivo 76 parcelas + Filmación aérea 360° en terreno.</p>
+            </div>
+            
+            <div style="margin: 12px 0; padding: 10px 0; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 3px;">
+                <span style="color: #64748B;">Desarrollo Digital 76 Lotes:</span>
+                <span style="font-weight: 700;">$690.000 Neto</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 3px;">
+                <span style="color: #64748B;">Logística & Viáticos Cunco (760 km):</span>
+                <span style="font-weight: 700;">$200.000 Neto</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; color: #059669; font-weight: 700;">
+                <span>Subtotal Neto:</span>
+                <span>$890.000</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; color: #64748B;">
+                <span>IVA (19%):</span>
+                <span>$169.100</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="price-num">$1.059.100</div>
+              <div class="price-iva-note">TOTAL FACTURADO CON IVA INCLUIDO</div>
+            </div>
+          </div>
+
+          <!-- OPCIÓN 2: PREMIUM -->
+          <div class="pricing-box premium-box">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="pricing-badge badge-prem">⭐ OPCIÓN RECOMENDADA</span>
+                <span style="font-family: 'Orbitron'; font-size: 6.8pt; color: #047857; font-weight: 800;">ALTA CONVERSIÓN</span>
+              </div>
+              <h3 class="font-orbitron" style="font-size: 11pt; font-weight: 800; color: #0F172A;">MasterPlan 360° PREMIUM IA</h3>
+              <p style="font-size: 7.5pt; color: #475569; margin-top: 3px;">Multipunto 360° + Jarvis IA + UF en vivo + Panel No-Code + Video 4K.</p>
+            </div>
+
+            <div style="margin: 12px 0; padding: 10px 0; border-top: 1px solid rgba(5, 150, 105, 0.2); border-bottom: 1px solid rgba(5, 150, 105, 0.2);">
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 3px;">
+                <span style="color: #475569;">Desarrollo Premium + IA + Panel:</span>
+                <span style="font-weight: 700;">$1.190.000 Neto</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 3px;">
+                <span style="color: #475569;">Logística & Viáticos Cunco (760 km):</span>
+                <span style="font-weight: 700;">$200.000 Neto</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; color: #047857; font-weight: 700;">
+                <span>Subtotal Neto:</span>
+                <span>$1.390.000</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8pt; color: #475569;">
+                <span>IVA (19%):</span>
+                <span>$264.100</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="price-num premium">$1.654.100</div>
+              <div class="price-iva-note text-emerald" style="font-weight: 700;">TOTAL FACTURADO CON IVA INCLUIDO</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PLAZOS, GARANTÍAS Y SEGURIDAD -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px;">
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 12px; border-radius: 8px;">
+            <div style="font-family: 'Orbitron'; font-size: 7pt; font-weight: 800; color: #0F172A; text-transform: uppercase; margin-bottom: 3px;">Plazo de Entrega</div>
+            <div style="font-size: 7.8pt; color: #475569;"><strong>5 a 7 días hábiles</strong> tras la filmación en terreno para montaje, codificación e inductores IA.</div>
+          </div>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 12px; border-radius: 8px;">
+            <div style="font-family: 'Orbitron'; font-size: 7pt; font-weight: 800; color: #0F172A; text-transform: uppercase; margin-bottom: 3px;">Garantía Climática</div>
+            <div style="font-size: 7.8pt; color: #475569;">Reprogramación sin costo en caso de lluvia o viento severo (>32 km/h) que afecte la estética visual.</div>
+          </div>
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 12px; border-radius: 8px;">
+            <div style="font-family: 'Orbitron'; font-size: 7pt; font-weight: 800; color: #0F172A; text-transform: uppercase; margin-bottom: 3px;">Forma de Pago</div>
+            <div style="font-size: 7.8pt; color: #475569;"><strong>50%</strong> para agendar jornada de rodaje en terreno y <strong>50%</strong> contra entrega de plataforma operativa.</div>
+          </div>
+        </div>
+
+        <!-- CIERRE Y FIRMA -->
+        <div style="border-top: 2px solid #F1F5F9; padding-top: 12px; display: flex; justify-content: space-between; align-items: flex-end;">
+          <div>
+            <div style="font-family: 'Orbitron'; font-size: 8.5pt; font-weight: 800; color: #0F172A;">AUSTRAL DRONE &bull; DIVISIÓN MASTERPLAN 360°</div>
+            <div style="font-size: 7.8pt; color: #64748B; margin-top: 2px;">Dirección Comercial & Producción Cinematográfica</div>
+            <div style="font-size: 7.8pt; color: #059669; font-weight: 600; margin-top: 1px;">WhatsApp Directo: +56 9 8749 1964 &bull; contacto@australdrone.cl</div>
+          </div>
+
+          <div style="text-align: right;">
+            <div style="font-size: 7.5pt; color: #64748B; margin-bottom: 2px;">Validez de la Propuesta: 15 días corridos</div>
+            <div style="font-family: 'Orbitron'; font-size: 7.5pt; font-weight: 700; color: #0F172A; background: #F1F5F9; padding: 4px 10px; border-radius: 4px; display: inline-block;">
+              OPERACIÓN NORMATIVA DGAC CHILE
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div><strong>Austral Drone</strong> &bull; Cotización Oficial COT-AD-2026-MP076</div>
+      <div>Página 3 de 3</div>
+      <div>Puerto Montt, Chile</div>
+    </div>
+    <div class="bottom-gradient-bar"></div>
+  </div>
+
+</body>
+</html>
